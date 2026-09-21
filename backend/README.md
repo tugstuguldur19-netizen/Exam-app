@@ -21,13 +21,21 @@ Demo login: `demo@example.com` / `password123`
 npm test
 ```
 
-Unit tests for the docx parser (`src/services/docxParser.test.ts`) and
-grading logic (`src/services/grading.test.ts`) — no database or running
-server required. Coverage is deliberately narrow: the parsing heuristics
-and grading rules, which are the parts most likely to silently misbehave on
-input the developer didn't think to try, not the Express routes themselves
-(those are exercised by hand against a live server; see the git history for
-the curl/Playwright walkthroughs used to verify them).
+Three suites:
+- `src/services/docxParser.test.ts` — parsing heuristics, no DB needed.
+- `src/services/grading.test.ts` — normalization/matching + the semantic-grading
+  fallback's no-key/no-network behavior, no DB needed.
+- `src/routes/examFlow.integration.test.ts` — the real Express app (from
+  `src/app.ts`) against a dedicated SQLite test database, exercising the
+  actual user journey over HTTP: register → get blocked from an unsubscribed
+  subject → subscribe → upload the fixture `.docx` → confirm answers aren't
+  leaked before submission → take the exam → grade against a known answer
+  key → confirm a second submission is rejected → confirm a different user
+  can't read the first user's exam or attempt.
+
+`npm test`'s `pretest` step runs migrations against `prisma/test.db`
+(gitignored, separate from your dev database) before vitest runs — no
+manual setup needed.
 
 ## Core model
 
