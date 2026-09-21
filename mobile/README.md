@@ -28,11 +28,21 @@ computer's LAN IP instead of localhost.
 - **Results** — score, and per-question correct/incorrect with the right
   answer revealed (only after submission).
 
+## Design
+
+`src/theme.ts` is the single source of colors, spacing, radii, typography,
+and shadows — every screen pulls from it instead of hardcoding values, so a
+palette or density change is a one-file edit. Icons are `@expo/vector-icons`
+(Ionicons) throughout. All interactive elements carry `accessibilityRole` /
+`accessibilityLabel` (see `src/screens/*`) for VoiceOver/TalkBack.
+
 ## Notes
 
-- Web (`npm run web`) is not a real target platform: `expo-secure-store` has
-  no web implementation, so token storage silently fails there. It's fine for
-  quickly checking that a screen renders, not for exercising login end to end.
+- Web (`npm run web`) is a convenience for quickly checking a screen renders
+  in a browser (used for the screenshots verifying this app), not a shipping
+  target — some native-only behavior (e.g. `expo-secure-store`, handled via
+  an `@react-native-async-storage/async-storage` fallback on web in
+  `src/api/client.ts`) is emulated rather than native there.
 - `npm audit` will flag a moderate `uuid` advisory pulled in transitively by
   Expo's own CLI/build tooling (`@expo/config-plugins` and friends) — that
   code runs during `expo prebuild`/native builds, not in the shipped app, and

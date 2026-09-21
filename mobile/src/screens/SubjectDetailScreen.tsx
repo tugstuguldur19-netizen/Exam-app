@@ -9,6 +9,8 @@ import { api, ApiError } from "../api/client";
 import type { ExamSummary } from "../types";
 import { colors, radius, spacing, type, shadow } from "../theme";
 
+const MAX_UPLOAD_BYTES = 15 * 1024 * 1024;
+
 type Props = NativeStackScreenProps<RootStackParamList, "SubjectDetail">;
 
 export default function SubjectDetailScreen({ route, navigation }: Props) {
@@ -41,6 +43,17 @@ export default function SubjectDetailScreen({ route, navigation }: Props) {
     if (result.canceled) return;
 
     const file = result.assets[0];
+    // Matches the backend's multer limit (see backend/src/routes/exams.ts) —
+    // catch it here so a large file fails instantly instead of after a
+    // full upload the server was always going to reject.
+    if (file.size !== undefined && file.size > MAX_UPLOAD_BYTES) {
+      Alert.alert(
+        "File too large",
+        `"${file.name}" is ${(file.size / 1024 / 1024).toFixed(1)} MB. The limit is ${MAX_UPLOAD_BYTES / 1024 / 1024} MB.`
+      );
+      return;
+    }
+
     setUploading(true);
     try {
       const res = await api.uploadExam(subjectId, {
