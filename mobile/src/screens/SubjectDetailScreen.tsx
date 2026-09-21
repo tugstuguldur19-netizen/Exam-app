@@ -99,6 +99,9 @@ export default function SubjectDetailScreen({ route, navigation }: Props) {
               style={({ pressed }) => [styles.uploadButton, pressed && styles.uploadButtonPressed]}
               onPress={onUpload}
               disabled={uploading}
+              accessibilityRole="button"
+              accessibilityLabel="Upload .docx exam"
+              accessibilityState={{ disabled: uploading, busy: uploading }}
             >
               {uploading ? (
                 <ActivityIndicator color={colors.white} />
@@ -121,7 +124,12 @@ export default function SubjectDetailScreen({ route, navigation }: Props) {
           </View>
         }
         renderItem={({ item }) => (
-          <Pressable style={({ pressed }) => [styles.card, pressed && styles.cardPressed]} onPress={() => onTakeExam(item)}>
+          <Pressable
+            style={({ pressed }) => [styles.card, pressed && styles.cardPressed]}
+            onPress={() => onTakeExam(item)}
+            accessibilityRole="button"
+            accessibilityLabel={`${item.title}, ${item.questionCount} questions`}
+          >
             <View style={styles.cardIcon}>
               <Ionicons name="document-text" size={20} color={colors.primary} />
             </View>

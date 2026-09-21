@@ -45,6 +45,7 @@ export default function LoginScreen({ navigation }: Props) {
             keyboardType="email-address"
             value={email}
             onChangeText={setEmail}
+            accessibilityLabel="Email"
           />
         </View>
         <View style={styles.field}>
@@ -56,13 +57,26 @@ export default function LoginScreen({ navigation }: Props) {
             secureTextEntry
             value={password}
             onChangeText={setPassword}
+            accessibilityLabel="Password"
           />
         </View>
 
-        <Pressable style={({ pressed }) => [styles.button, pressed && styles.buttonPressed]} onPress={onSubmit} disabled={submitting}>
+        <Pressable
+          style={({ pressed }) => [styles.button, pressed && styles.buttonPressed]}
+          onPress={onSubmit}
+          disabled={submitting}
+          accessibilityRole="button"
+          accessibilityLabel="Log in"
+          accessibilityState={{ disabled: submitting, busy: submitting }}
+        >
           {submitting ? <ActivityIndicator color={colors.white} /> : <Text style={styles.buttonText}>Log in</Text>}
         </Pressable>
-        <Pressable onPress={() => navigation.navigate("Register")} hitSlop={8}>
+        <Pressable
+          onPress={() => navigation.navigate("Register")}
+          hitSlop={8}
+          accessibilityRole="button"
+          accessibilityLabel="Need an account? Register"
+        >
           <Text style={styles.link}>Need an account? <Text style={styles.linkStrong}>Register</Text></Text>
         </Pressable>
       </View>

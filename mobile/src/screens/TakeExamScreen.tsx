@@ -114,7 +114,7 @@ export default function TakeExamScreen({ route, navigation }: Props) {
               </View>
 
               {q.type === "MULTIPLE_CHOICE" ? (
-                <View style={{ gap: spacing.sm }}>
+                <View style={{ gap: spacing.sm }} accessibilityRole="radiogroup">
                   {q.choices.map((c) => {
                     const selected = choiceAnswers[q.id] === c.id;
                     return (
@@ -122,6 +122,9 @@ export default function TakeExamScreen({ route, navigation }: Props) {
                         key={c.id}
                         style={[styles.choice, selected && styles.choiceSelected]}
                         onPress={() => setChoiceAnswers((prev) => ({ ...prev, [q.id]: c.id }))}
+                        accessibilityRole="radio"
+                        accessibilityState={{ selected }}
+                        accessibilityLabel={`${c.label}. ${c.text}`}
                       >
                         <View style={[styles.radio, selected && styles.radioSelected]}>
                           {selected && <View style={styles.radioDot} />}
@@ -140,13 +143,21 @@ export default function TakeExamScreen({ route, navigation }: Props) {
                   multiline
                   value={textAnswers[q.id] ?? ""}
                   onChangeText={(text) => setTextAnswers((prev) => ({ ...prev, [q.id]: text }))}
+                  accessibilityLabel={`Your answer to: ${q.prompt}`}
                 />
               )}
             </View>
           );
         })}
 
-        <Pressable style={({ pressed }) => [styles.submitButton, pressed && styles.submitButtonPressed]} onPress={onSubmit} disabled={submitting}>
+        <Pressable
+          style={({ pressed }) => [styles.submitButton, pressed && styles.submitButtonPressed]}
+          onPress={onSubmit}
+          disabled={submitting}
+          accessibilityRole="button"
+          accessibilityLabel="Submit exam"
+          accessibilityState={{ disabled: submitting, busy: submitting }}
+        >
           {submitting ? <ActivityIndicator color={colors.white} /> : <Text style={styles.submitButtonText}>Submit exam</Text>}
         </Pressable>
       </ScrollView>

@@ -89,7 +89,13 @@ export default function SubjectsScreen({ navigation }: Props) {
               <Text style={styles.eyebrow}>Welcome back</Text>
               <Text style={styles.title}>Your subjects</Text>
             </View>
-            <Pressable onPress={logout} hitSlop={8} style={styles.logoutButton}>
+            <Pressable
+              onPress={logout}
+              hitSlop={8}
+              style={styles.logoutButton}
+              accessibilityRole="button"
+              accessibilityLabel="Log out"
+            >
               <Ionicons name="log-out-outline" size={22} color={colors.danger} />
             </Pressable>
           </View>
@@ -121,6 +127,8 @@ export default function SubjectsScreen({ navigation }: Props) {
                   <Pressable
                     style={({ pressed }) => [styles.primaryButton, pressed && styles.primaryButtonPressed]}
                     onPress={() => navigation.navigate("SubjectDetail", { subjectId: item.id, subjectName: item.name })}
+                    accessibilityRole="button"
+                    accessibilityLabel={`Open ${item.name}`}
                   >
                     <Text style={styles.primaryButtonText}>Open</Text>
                     <Ionicons name="arrow-forward" size={16} color={colors.white} />
@@ -135,6 +143,8 @@ export default function SubjectsScreen({ navigation }: Props) {
                   <Pressable
                     style={({ pressed }) => [styles.secondaryButton, pressed && styles.secondaryButtonPressed]}
                     onPress={() => setPlanPickerSubject(item)}
+                    accessibilityRole="button"
+                    accessibilityLabel={`Subscribe to ${item.name}`}
                   >
                     <Text style={styles.secondaryButtonText}>Subscribe</Text>
                   </Pressable>
@@ -162,6 +172,8 @@ export default function SubjectsScreen({ navigation }: Props) {
                 style={({ pressed }) => [styles.planRow, pressed && styles.planRowPressed]}
                 onPress={() => purchase(planPickerSubject.id, plan.id)}
                 disabled={purchasingPlanId !== null}
+                accessibilityRole="button"
+                accessibilityLabel={`${plan.name}, $${(plan.priceCents / 100).toFixed(2)}`}
               >
                 <Text style={styles.planName}>{plan.name}</Text>
                 {purchasingPlanId === plan.id ? (
@@ -171,7 +183,12 @@ export default function SubjectsScreen({ navigation }: Props) {
                 )}
               </Pressable>
             ))}
-            <Pressable style={styles.modalCancel} onPress={() => setPlanPickerSubject(null)}>
+            <Pressable
+              style={styles.modalCancel}
+              onPress={() => setPlanPickerSubject(null)}
+              accessibilityRole="button"
+              accessibilityLabel="Cancel"
+            >
               <Text style={styles.modalCancelText}>Cancel</Text>
             </Pressable>
           </Pressable>

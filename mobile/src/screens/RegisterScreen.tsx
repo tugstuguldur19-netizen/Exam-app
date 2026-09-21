@@ -42,7 +42,14 @@ export default function RegisterScreen({ navigation }: Props) {
 
         <View style={styles.field}>
           <Ionicons name="person-outline" size={18} color={colors.textMuted} style={styles.fieldIcon} />
-          <TextInput style={styles.input} placeholder="Name" placeholderTextColor={colors.textMuted} value={name} onChangeText={setName} />
+          <TextInput
+            style={styles.input}
+            placeholder="Name"
+            placeholderTextColor={colors.textMuted}
+            value={name}
+            onChangeText={setName}
+            accessibilityLabel="Name"
+          />
         </View>
         <View style={styles.field}>
           <Ionicons name="mail-outline" size={18} color={colors.textMuted} style={styles.fieldIcon} />
@@ -54,6 +61,7 @@ export default function RegisterScreen({ navigation }: Props) {
             keyboardType="email-address"
             value={email}
             onChangeText={setEmail}
+            accessibilityLabel="Email"
           />
         </View>
         <View style={styles.field}>
@@ -65,13 +73,26 @@ export default function RegisterScreen({ navigation }: Props) {
             secureTextEntry
             value={password}
             onChangeText={setPassword}
+            accessibilityLabel="Password, minimum 8 characters"
           />
         </View>
 
-        <Pressable style={({ pressed }) => [styles.button, pressed && styles.buttonPressed]} onPress={onSubmit} disabled={submitting}>
+        <Pressable
+          style={({ pressed }) => [styles.button, pressed && styles.buttonPressed]}
+          onPress={onSubmit}
+          disabled={submitting}
+          accessibilityRole="button"
+          accessibilityLabel="Register"
+          accessibilityState={{ disabled: submitting, busy: submitting }}
+        >
           {submitting ? <ActivityIndicator color={colors.white} /> : <Text style={styles.buttonText}>Register</Text>}
         </Pressable>
-        <Pressable onPress={() => navigation.navigate("Login")} hitSlop={8}>
+        <Pressable
+          onPress={() => navigation.navigate("Login")}
+          hitSlop={8}
+          accessibilityRole="button"
+          accessibilityLabel="Already have an account? Log in"
+        >
           <Text style={styles.link}>Already have an account? <Text style={styles.linkStrong}>Log in</Text></Text>
         </Pressable>
       </View>

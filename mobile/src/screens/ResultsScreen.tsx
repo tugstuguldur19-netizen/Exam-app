@@ -113,7 +113,12 @@ export default function ResultsScreen({ route, navigation }: Props) {
         );
       })}
 
-      <Pressable style={({ pressed }) => [styles.doneButton, pressed && styles.doneButtonPressed]} onPress={() => navigation.popToTop()}>
+      <Pressable
+        style={({ pressed }) => [styles.doneButton, pressed && styles.doneButtonPressed]}
+        onPress={() => navigation.popToTop()}
+        accessibilityRole="button"
+        accessibilityLabel="Back to subjects"
+      >
         <Text style={styles.doneButtonText}>Back to subjects</Text>
       </Pressable>
     </ScrollView>
