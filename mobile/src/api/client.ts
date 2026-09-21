@@ -1,18 +1,28 @@
+import { Platform } from "react-native";
 import * as SecureStore from "expo-secure-store";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { API_BASE_URL } from "../config";
 
 const TOKEN_KEY = "exam_prep_token";
 
+// expo-secure-store has no web implementation (its native module is a stub
+// there), so use it on iOS/Android and fall back to AsyncStorage — which has
+// its own web backing — for the web target.
+const store =
+  Platform.OS === "web"
+    ? { getItemAsync: AsyncStorage.getItem, setItemAsync: AsyncStorage.setItem, deleteItemAsync: AsyncStorage.removeItem }
+    : SecureStore;
+
 export async function getToken(): Promise<string | null> {
-  return SecureStore.getItemAsync(TOKEN_KEY);
+  return store.getItemAsync(TOKEN_KEY);
 }
 
 export async function setToken(token: string): Promise<void> {
-  await SecureStore.setItemAsync(TOKEN_KEY, token);
+  await store.setItemAsync(TOKEN_KEY, token);
 }
 
 export async function clearToken(): Promise<void> {
-  await SecureStore.deleteItemAsync(TOKEN_KEY);
+  await store.deleteItemAsync(TOKEN_KEY);
 }
 
 export class ApiError extends Error {
@@ -63,10 +73,18 @@ export const api = {
   listExams: (subjectId: string) =>
     request<import("../types").ExamSummary[]>(`/subjects/${subjectId}/exams`),
 
-  uploadExam: async (subjectId: string, file: { uri: string; name: string; mimeType?: string }) => {
+  uploadExam: async (
+    subjectId: string,
+    file: { uri: string; name: string; mimeType?: string; webFile?: File }
+  ) => {
     const form = new FormData();
-    // React Native's FormData accepts { uri, name, type } for file parts.
-    form.append("file", { uri: file.uri, name: file.name, type: file.mimeType ?? "application/octet-stream" } as any);
+    if (file.webFile) {
+      // Browser FormData needs an actual Blob/File — the RN {uri,name,type}
+      // shape below isn't valid here (only the RN FormData polyfill accepts it).
+      form.append("file", file.webFile, file.name);
+    } else {
+      form.append("file", { uri: file.uri, name: file.name, type: file.mimeType ?? "application/octet-stream" } as any);
+    }
     return request<{ examId: string; status: string; questionCount: number; warnings: string[] }>(
       `/subjects/${subjectId}/exams`,
       { method: "POST", body: form }

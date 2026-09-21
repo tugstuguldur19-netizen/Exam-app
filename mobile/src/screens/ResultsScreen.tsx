@@ -49,9 +49,9 @@ export default function ResultsScreen({ route, navigation }: Props) {
           </Text>
           {r.type === "MULTIPLE_CHOICE" ? (
             <>
-              <Text style={styles.answerLine}>Your answer: {r.yourChoiceId ?? "(none)"}</Text>
+              <Text style={styles.answerLine}>Your answer: {r.yourChoiceLabel ?? "(none)"}</Text>
               {r.isCorrect === false && (
-                <Text style={styles.correctLine}>Correct: {r.correctChoiceId}</Text>
+                <Text style={styles.correctLine}>Correct: {r.correctChoiceLabel}</Text>
               )}
             </>
           ) : (

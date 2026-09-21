@@ -7,6 +7,7 @@ import {
   StyleSheet,
   ActivityIndicator,
   Alert,
+  Modal,
   RefreshControl,
 } from "react-native";
 import { useFocusEffect } from "@react-navigation/native";
@@ -23,6 +24,7 @@ export default function SubjectsScreen({ navigation }: Props) {
   const [subjects, setSubjects] = useState<Subject[]>([]);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
+  const [planPickerSubject, setPlanPickerSubject] = useState<Subject | null>(null);
   const [purchasingPlanId, setPurchasingPlanId] = useState<string | null>(null);
 
   const load = useCallback(async () => {
@@ -42,25 +44,11 @@ export default function SubjectsScreen({ navigation }: Props) {
     }, [load])
   );
 
-  const onSubscribe = (subject: Subject) => {
-    Alert.alert(
-      `Subscribe to ${subject.name}`,
-      "Choose a plan",
-      [
-        ...subject.plans.map((plan) => ({
-          text: `${plan.name} — $${(plan.priceCents / 100).toFixed(2)}`,
-          onPress: () => purchase(subject.id, plan.id),
-        })),
-        { text: "Cancel", style: "cancel" as const },
-      ],
-      { cancelable: true }
-    );
-  };
-
   const purchase = async (subjectId: string, planId: string) => {
     setPurchasingPlanId(planId);
     try {
       await api.subscribe(subjectId, planId);
+      setPlanPickerSubject(null);
       await load();
     } catch (err) {
       Alert.alert("Purchase failed", err instanceof ApiError ? err.message : "Something went wrong");
@@ -109,17 +97,44 @@ export default function SubjectsScreen({ navigation }: Props) {
                 </Pressable>
               </>
             ) : (
-              <Pressable
-                style={styles.secondaryButton}
-                onPress={() => onSubscribe(item)}
-                disabled={purchasingPlanId !== null}
-              >
+              <Pressable style={styles.secondaryButton} onPress={() => setPlanPickerSubject(item)}>
                 <Text style={styles.secondaryButtonText}>Subscribe</Text>
               </Pressable>
             )}
           </View>
         )}
       />
+
+      <Modal
+        visible={planPickerSubject !== null}
+        transparent
+        animationType="fade"
+        onRequestClose={() => setPlanPickerSubject(null)}
+      >
+        <Pressable style={styles.modalBackdrop} onPress={() => setPlanPickerSubject(null)}>
+          <Pressable style={styles.modalCard} onPress={() => {}}>
+            <Text style={styles.modalTitle}>Subscribe to {planPickerSubject?.name}</Text>
+            {planPickerSubject?.plans.map((plan) => (
+              <Pressable
+                key={plan.id}
+                style={styles.planRow}
+                onPress={() => purchase(planPickerSubject.id, plan.id)}
+                disabled={purchasingPlanId !== null}
+              >
+                <Text style={styles.planName}>{plan.name}</Text>
+                {purchasingPlanId === plan.id ? (
+                  <ActivityIndicator />
+                ) : (
+                  <Text style={styles.planPrice}>${(plan.priceCents / 100).toFixed(2)}</Text>
+                )}
+              </Pressable>
+            ))}
+            <Pressable style={styles.modalCancel} onPress={() => setPlanPickerSubject(null)}>
+              <Text style={styles.modalCancelText}>Cancel</Text>
+            </Pressable>
+          </Pressable>
+        </Pressable>
+      </Modal>
     </View>
   );
 }
@@ -145,4 +160,19 @@ const styles = StyleSheet.create({
   primaryButtonText: { color: "#fff", fontWeight: "600" },
   secondaryButton: { backgroundColor: "#eef2ff", borderRadius: 8, padding: 10, alignItems: "center" },
   secondaryButtonText: { color: "#2563eb", fontWeight: "600" },
+  modalBackdrop: { flex: 1, backgroundColor: "rgba(0,0,0,0.4)", justifyContent: "center", padding: 24 },
+  modalCard: { backgroundColor: "#fff", borderRadius: 16, padding: 20 },
+  modalTitle: { fontSize: 18, fontWeight: "700", marginBottom: 16 },
+  planRow: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    paddingVertical: 14,
+    borderBottomWidth: 1,
+    borderBottomColor: "#e5e7eb",
+  },
+  planName: { fontSize: 16 },
+  planPrice: { fontSize: 16, fontWeight: "600", color: "#2563eb" },
+  modalCancel: { alignItems: "center", paddingVertical: 14, marginTop: 4 },
+  modalCancelText: { color: "#667085", fontWeight: "500" },
 });

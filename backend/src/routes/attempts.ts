@@ -132,19 +132,26 @@ attemptsRouter.get("/attempts/:attemptId", async (req: AuthedRequest, res) => {
     status: attempt.status,
     scorePoints: attempt.scorePoints,
     totalPoints: attempt.totalPoints,
-    responses: attempt.responses.map((r) => ({
-      questionId: r.questionId,
-      prompt: r.question.prompt,
-      type: r.question.type,
-      yourChoiceId: r.choiceId,
-      yourAnswerText: r.answerText,
-      isCorrect: r.isCorrect,
-      ...(revealAnswers
-        ? {
-            correctChoiceId: r.question.choices.find((c) => c.isCorrect)?.id ?? null,
-            correctText: r.question.correctText,
-          }
-        : {}),
-    })),
+    responses: attempt.responses.map((r) => {
+      const yourChoice = r.choiceId ? r.question.choices.find((c) => c.id === r.choiceId) : null;
+      const correctChoice = r.question.choices.find((c) => c.isCorrect);
+      return {
+        questionId: r.questionId,
+        prompt: r.question.prompt,
+        type: r.question.type,
+        choices: r.question.choices.map((c) => ({ id: c.id, label: c.label, text: c.text })),
+        yourChoiceId: r.choiceId,
+        yourChoiceLabel: yourChoice ? `${yourChoice.label}. ${yourChoice.text}` : null,
+        yourAnswerText: r.answerText,
+        isCorrect: r.isCorrect,
+        ...(revealAnswers
+          ? {
+              correctChoiceId: correctChoice?.id ?? null,
+              correctChoiceLabel: correctChoice ? `${correctChoice.label}. ${correctChoice.text}` : null,
+              correctText: r.question.correctText,
+            }
+          : {}),
+      };
+    }),
   });
 });

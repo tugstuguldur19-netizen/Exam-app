@@ -43,10 +43,13 @@ export type AttemptResultResponse = {
   questionId: string;
   prompt: string;
   type: "MULTIPLE_CHOICE" | "SHORT_ANSWER";
+  choices: Choice[];
   yourChoiceId: string | null;
+  yourChoiceLabel: string | null;
   yourAnswerText: string | null;
   isCorrect: boolean | null;
   correctChoiceId?: string | null;
+  correctChoiceLabel?: string | null;
   correctText?: string | null;
 };
 

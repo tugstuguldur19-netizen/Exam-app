@@ -45,6 +45,7 @@ export default function SubjectDetailScreen({ route, navigation }: Props) {
         uri: file.uri,
         name: file.name,
         mimeType: file.mimeType,
+        webFile: file.file,
       });
       if (res.warnings.length > 0) {
         Alert.alert(
