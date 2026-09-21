@@ -1,11 +1,23 @@
 import { Router } from "express";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+import { rateLimit } from "express-rate-limit";
 import { z } from "zod";
 import { prisma } from "../lib/prisma";
 import { env } from "../lib/env";
 
 export const authRouter = Router();
+
+// Credential stuffing / signup-spam guard. Keyed by IP (express-rate-limit's
+// default), so it won't stop a targeted attack on one account from a botnet,
+// but it kills the common case of a single client hammering the endpoint.
+const authLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  limit: 20,
+  standardHeaders: true,
+  legacyHeaders: false,
+});
+authRouter.use(authLimiter);
 
 const registerSchema = z.object({
   email: z.string().email(),

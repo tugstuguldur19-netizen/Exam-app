@@ -54,11 +54,10 @@ picked and why, so you can correct any of it:
   "accounts are time based subscriptions for each subject" literally. If you
   actually want bundle pricing (all 3 for less than buying separately), that's
   a straightforward addition to the plan model.
-- **Exam grading**: multiple-choice is exact-match; short-answer is a
-  normalized (case/punctuation-insensitive) exact-text match, not fuzzy or
-  AI-graded. Literal matching will mark near-correct free-text answers wrong —
-  flagging this as the thing most likely to need a follow-up pass (semantic
-  grading via an LLM would be the natural upgrade).
+- **Exam grading**: multiple-choice is exact-match. Short-answer tries an
+  exact normalized match first, then falls back to Claude judging whether
+  the answer is substantively correct if that fails — but only when
+  `ANTHROPIC_API_KEY` is set; without a key it's exact-match only.
 - **Docx parsing** handles the common exam layout (numbered questions,
   `A)/B)/C)/D)` options, inline `Answer:` lines or a trailing answer key) via
   regex, with an optional Claude-based fallback for messier documents if

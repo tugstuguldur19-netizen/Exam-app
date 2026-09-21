@@ -52,10 +52,13 @@ Demo login: `demo@example.com` / `password123`
    as ungraded (excluded from the attempt's `totalPoints`) and surfaced in
    `parseWarnings` on the exam.
 
-Grading is deterministic: multiple-choice is exact choice-id match,
-short-answer is a normalized (lowercased, punctuation-stripped) exact-text
-match. Swap `shortAnswerMatches` in `src/services/grading.ts` for
-semantic/AI grading later if literal matching is too strict.
+Grading: multiple-choice is exact choice-id match. Short-answer first tries
+a normalized (lowercased, punctuation-stripped) exact-text match; if that
+fails and `ANTHROPIC_API_KEY` is set, `shortAnswerMatchesSemantically` in
+`src/services/grading.ts` asks Claude to judge whether the answer is
+substantively correct even if worded differently. Without a key, or if the
+call fails, it just keeps the exact-match verdict — no crash, just less
+lenient grading.
 
 ## ⚠️ Not production-ready yet
 
@@ -69,4 +72,6 @@ semantic/AI grading later if literal matching is too strict.
 - **Uploaded files aren't persisted** beyond parsing (memory storage only) —
   fine for the current synchronous pipeline, but move to a queue + object
   storage (S3) if exam files need to be re-processed or audited later.
-- No rate limiting, password reset, or email verification yet.
+- **Auth rate limiting is IP-based and coarse** (20 requests/15min on
+  `/auth/*`) — enough to stop naive scripted abuse, not a targeted botnet.
+  No password reset or email verification yet.

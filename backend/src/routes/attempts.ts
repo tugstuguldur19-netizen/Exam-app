@@ -2,7 +2,7 @@ import { Router } from "express";
 import { z } from "zod";
 import { prisma } from "../lib/prisma";
 import { requireAuth, AuthedRequest } from "../middleware/auth";
-import { shortAnswerMatches } from "../services/grading";
+import { shortAnswerMatches, shortAnswerMatchesSemantically } from "../services/grading";
 
 export const attemptsRouter = Router();
 attemptsRouter.use(requireAuth);
@@ -96,6 +96,24 @@ attemptsRouter.post("/attempts/:attemptId/submit", async (req: AuthedRequest, re
       pointsAwarded,
     };
   }).filter((r): r is NonNullable<typeof r> => r !== null);
+
+  // Second pass: short answers that failed the literal match get a semantic
+  // check (only runs — and only costs anything — when ANTHROPIC_API_KEY is
+  // configured; falls back to the exact-match verdict otherwise).
+  await Promise.all(
+    responseRows.map(async (row) => {
+      const question = questionsById.get(row.questionId)!;
+      if (question.type !== "SHORT_ANSWER" || row.isCorrect !== false || !question.correctText || !row.answerText) {
+        return;
+      }
+      const verdict = await shortAnswerMatchesSemantically(question.prompt, row.answerText, question.correctText);
+      if (verdict === true) {
+        row.isCorrect = true;
+        row.pointsAwarded = question.points;
+        scorePoints += question.points;
+      }
+    })
+  );
 
   await prisma.$transaction([
     prisma.answerResponse.deleteMany({ where: { attemptId } }),
