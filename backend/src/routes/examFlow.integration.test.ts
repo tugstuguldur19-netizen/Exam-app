@@ -148,6 +148,14 @@ describe("exam flow: register -> subscribe -> upload -> take -> grade", () => {
     examId = res.body.examId;
   });
 
+  it("lists the exam with its parse warnings (empty for a clean fixture)", async () => {
+    const res = await request(app).get(`/subjects/${subjectId}/exams`).set("Authorization", `Bearer ${token}`);
+    expect(res.status).toBe(200);
+    const listed = res.body.find((e: any) => e.id === examId);
+    expect(listed).toBeTruthy();
+    expect(listed.warnings).toEqual([]);
+  });
+
   it("serves exam questions without leaking correct answers", async () => {
     const res = await request(app).get(`/exams/${examId}`).set("Authorization", `Bearer ${token}`);
     expect(res.status).toBe(200);

@@ -149,6 +149,14 @@ export default function SubjectDetailScreen({ route, navigation }: Props) {
             <View style={styles.cardText}>
               <Text style={styles.cardTitle}>{item.title}</Text>
               <Text style={styles.cardMeta}>{item.questionCount} questions</Text>
+              {item.warnings.length > 0 && (
+                <View style={styles.warningRow}>
+                  <Ionicons name="alert-circle" size={13} color="#C2540A" />
+                  <Text style={styles.warningText}>
+                    {item.warnings.length} question{item.warnings.length > 1 ? "s" : ""} need review
+                  </Text>
+                </View>
+              )}
             </View>
             <Ionicons name="chevron-forward" size={18} color={colors.textMuted} />
           </Pressable>
@@ -211,4 +219,6 @@ const styles = StyleSheet.create({
   cardText: { flex: 1 },
   cardTitle: { ...type.bodyStrong, color: colors.textPrimary },
   cardMeta: { ...type.small, color: colors.textSecondary, marginTop: 2, fontWeight: "400" },
+  warningRow: { flexDirection: "row", alignItems: "center", marginTop: 3, gap: 4 },
+  warningText: { ...type.small, color: "#C2540A", fontWeight: "500" },
 });

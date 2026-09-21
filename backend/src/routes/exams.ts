@@ -145,6 +145,7 @@ examsRouter.get("/subjects/:subjectId/exams", requireActiveSubscription, async (
       title: e.title,
       questionCount: e._count.questions,
       createdAt: e.createdAt,
+      warnings: e.parseWarnings ? (JSON.parse(e.parseWarnings) as string[]) : [],
     }))
   );
 });

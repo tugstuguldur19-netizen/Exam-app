@@ -21,6 +21,7 @@ export type ExamSummary = {
   title: string;
   questionCount: number;
   createdAt: string;
+  warnings: string[];
 };
 
 export type Choice = { id: string; label: string; text: string };
