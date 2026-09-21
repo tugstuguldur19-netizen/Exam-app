@@ -1,0 +1,145 @@
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  name         String
+  createdAt    DateTime @default(now())
+
+  subscriptions Subscription[]
+  uploadedExams Exam[]
+  attempts      ExamAttempt[]
+}
+
+// A subject is a gated content area (e.g. "Biology"). The starter catalog
+// ships with 3; more can be added later without code changes.
+model Subject {
+  id          String  @id @default(cuid())
+  slug        String  @unique
+  name        String
+  description String
+  isStarter   Boolean @default(true)
+  sortOrder   Int     @default(0)
+
+  plans         SubscriptionPlan[]
+  subscriptions Subscription[]
+  exams         Exam[]
+}
+
+// A purchasable duration for a subject, e.g. 30 days / 90 days / 365 days.
+model SubscriptionPlan {
+  id            String  @id @default(cuid())
+  subjectId     String
+  subject       Subject @relation(fields: [subjectId], references: [id])
+  name          String
+  durationDays  Int
+  priceCents    Int
+  currency      String  @default("USD")
+
+  subscriptions Subscription[]
+}
+
+// A user's time-boxed access to one subject. Access is granted while
+// now() is between startAt and endAt (see subscriptionGate middleware).
+model Subscription {
+  id        String            @id @default(cuid())
+  userId    String
+  user      User              @relation(fields: [userId], references: [id])
+  subjectId String
+  subject   Subject           @relation(fields: [subjectId], references: [id])
+  planId    String
+  plan      SubscriptionPlan  @relation(fields: [planId], references: [id])
+  startAt   DateTime          @default(now())
+  endAt     DateTime
+  status    String            @default("active") // active | canceled | expired
+  createdAt DateTime          @default(now())
+
+  @@index([userId, subjectId])
+}
+
+// An exam generated from an uploaded .docx file.
+// status: PROCESSING | READY | FAILED (SQLite has no native enum support)
+model Exam {
+  id             String     @id @default(cuid())
+  subjectId      String
+  subject        Subject    @relation(fields: [subjectId], references: [id])
+  uploadedById   String
+  uploadedBy     User       @relation(fields: [uploadedById], references: [id])
+  title          String
+  sourceFileName String
+  status         String     @default("PROCESSING")
+  parseWarnings  String? // JSON-encoded string[] surfaced to the uploader
+  extractionMode String? // "heuristic" | "ai" | "hybrid"
+  createdAt      DateTime   @default(now())
+
+  questions Question[]
+  attempts  ExamAttempt[]
+}
+
+// type: MULTIPLE_CHOICE | SHORT_ANSWER
+model Question {
+  id           String       @id @default(cuid())
+  examId       String
+  exam         Exam         @relation(fields: [examId], references: [id], onDelete: Cascade)
+  order        Int
+  type         String
+  prompt       String
+  // For SHORT_ANSWER, the accepted answer text (graded via normalized match).
+  correctText  String?
+  points       Int          @default(1)
+
+  choices   Choice[]
+  responses AnswerResponse[]
+}
+
+model Choice {
+  id         String   @id @default(cuid())
+  questionId String
+  question   Question @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  label      String // "A", "B", "C", "D"
+  text       String
+  isCorrect  Boolean  @default(false)
+
+  responses AnswerResponse[]
+}
+
+// status: IN_PROGRESS | SUBMITTED
+model ExamAttempt {
+  id          String        @id @default(cuid())
+  examId      String
+  exam        Exam          @relation(fields: [examId], references: [id])
+  userId      String
+  user        User          @relation(fields: [userId], references: [id])
+  status      String        @default("IN_PROGRESS")
+  startedAt   DateTime      @default(now())
+  submittedAt DateTime?
+  scorePoints Int?
+  totalPoints Int?
+
+  responses AnswerResponse[]
+
+  @@index([userId, examId])
+}
+
+model AnswerResponse {
+  id           String       @id @default(cuid())
+  attemptId    String
+  attempt      ExamAttempt  @relation(fields: [attemptId], references: [id], onDelete: Cascade)
+  questionId   String
+  question     Question     @relation(fields: [questionId], references: [id])
+  choiceId     String?
+  choice       Choice?      @relation(fields: [choiceId], references: [id])
+  answerText   String?
+  isCorrect    Boolean?
+  pointsAwarded Int         @default(0)
+
+  @@unique([attemptId, questionId])
+}
