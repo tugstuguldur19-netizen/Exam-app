@@ -15,6 +15,20 @@ npm run dev        # http://localhost:4000
 
 Demo login: `demo@example.com` / `password123`
 
+## Tests
+
+```bash
+npm test
+```
+
+Unit tests for the docx parser (`src/services/docxParser.test.ts`) and
+grading logic (`src/services/grading.test.ts`) — no database or running
+server required. Coverage is deliberately narrow: the parsing heuristics
+and grading rules, which are the parts most likely to silently misbehave on
+input the developer didn't think to try, not the Express routes themselves
+(those are exercised by hand against a live server; see the git history for
+the curl/Playwright walkthroughs used to verify them).
+
 ## Core model
 
 - **Subject**: a gated content area. Starter catalog = 3 subjects (seeded).
