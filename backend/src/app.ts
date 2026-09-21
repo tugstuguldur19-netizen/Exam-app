@@ -1,5 +1,6 @@
 import express from "express";
 import cors from "cors";
+import helmet from "helmet";
 import { authRouter } from "./routes/auth";
 import { subjectsRouter } from "./routes/subjects";
 import { examsRouter } from "./routes/exams";
@@ -7,6 +8,9 @@ import { attemptsRouter } from "./routes/attempts";
 
 export function createApp() {
   const app = express();
+  // Pure JSON API (no HTML served), so helmet's defaults — including CSP —
+  // are safe to apply as-is; nothing here renders a browser-executed page.
+  app.use(helmet());
   app.use(cors());
   app.use(express.json());
 

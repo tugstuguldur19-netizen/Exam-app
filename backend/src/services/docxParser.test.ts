@@ -164,4 +164,35 @@ describe("parseExamText", () => {
     const { questions } = parseExamText(text);
     expect(questions[0].type).toBe("SHORT_ANSWER");
   });
+
+  it("handles Windows-style CRLF line endings the same as LF", () => {
+    // mammoth's extracted text isn't guaranteed to use \n only — trim()
+    // strips the trailing \r, so this should parse identically to LF input.
+    const text = [
+      "1. What is 2 + 2?",
+      "A) 3",
+      "B) 4",
+      "Answer: B",
+    ].join("\r\n");
+    const { questions, warnings } = parseExamText(text);
+    expect(warnings).toEqual([]);
+    expect(questions).toHaveLength(1);
+    expect(questions[0].choices.find((c) => c.label === "B")?.isCorrect).toBe(true);
+  });
+
+  it("keeps the last entry when the answer key lists the same question number twice", () => {
+    // Not a format anyone should produce, but the map-based lookup means
+    // "last write wins" rather than crashing or silently picking the first.
+    const text = `
+      1. Pick one.
+      A) First
+      B) Second
+
+      Answers
+      1. A
+      1. B
+    `;
+    const { questions } = parseExamText(text);
+    expect(questions[0].choices.find((c) => c.isCorrect)?.label).toBe("B");
+  });
 });

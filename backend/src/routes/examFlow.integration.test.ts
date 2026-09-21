@@ -68,6 +68,20 @@ describe("exam flow: register -> subscribe -> upload -> take -> grade", () => {
     otherToken = res.body.token;
   });
 
+  it("rejects registration with a too-short password", async () => {
+    const res = await request(app)
+      .post("/auth/register")
+      .send({ email: `it-${runId}-shortpw@example.com`, password: "short", name: "Nope" });
+    expect(res.status).toBe(400);
+  });
+
+  it("rejects registering the same email twice", async () => {
+    const res = await request(app)
+      .post("/auth/register")
+      .send({ email: `it-${runId}@example.com`, password: "password123", name: "Duplicate" });
+    expect(res.status).toBe(409);
+  });
+
   it("rejects a wrong password on login", async () => {
     const res = await request(app)
       .post("/auth/login")
