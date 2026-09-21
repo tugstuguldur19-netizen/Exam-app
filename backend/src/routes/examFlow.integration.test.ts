@@ -120,6 +120,23 @@ describe("exam flow: register -> subscribe -> upload -> take -> grade", () => {
     expect(new Date(res.body.endAt).getTime()).toBeGreaterThan(Date.now());
   });
 
+  it("rejects a non-docx upload with a specific 400, not a generic 500", async () => {
+    const res = await request(app)
+      .post(`/subjects/${subjectId}/exams`)
+      .set("Authorization", `Bearer ${token}`)
+      .attach("file", Buffer.from("not a docx"), "notes.txt");
+    expect(res.status).toBe(400);
+    expect(res.body.error).toBe("Only .docx files are accepted");
+  });
+
+  it("rejects an oversized upload with 413, not a generic 500", async () => {
+    const res = await request(app)
+      .post(`/subjects/${subjectId}/exams`)
+      .set("Authorization", `Bearer ${token}`)
+      .attach("file", Buffer.alloc(16 * 1024 * 1024), "huge.docx");
+    expect(res.status).toBe(413);
+  });
+
   it("uploads and parses the docx exam", async () => {
     const res = await request(app)
       .post(`/subjects/${subjectId}/exams`)

@@ -1,4 +1,4 @@
-import { Router } from "express";
+import { NextFunction, Request, Response, Router } from "express";
 import multer from "multer";
 import mammoth from "mammoth";
 import { prisma } from "../lib/prisma";
@@ -10,9 +10,11 @@ import { extractQuestionsWithAI } from "../services/aiQuestionExtractor";
 export const examsRouter = Router();
 examsRouter.use(requireAuth);
 
+const MAX_UPLOAD_BYTES = 15 * 1024 * 1024;
+
 const upload = multer({
   storage: multer.memoryStorage(),
-  limits: { fileSize: 15 * 1024 * 1024 },
+  limits: { fileSize: MAX_UPLOAD_BYTES },
   fileFilter: (_req, file, cb) => {
     const ok =
       file.mimetype === "application/vnd.openxmlformats-officedocument.wordprocessingml.document" ||
@@ -22,13 +24,29 @@ const upload = multer({
   },
 });
 
+// multer reports fileFilter/size-limit failures via next(err), which would
+// otherwise fall through to the app's generic 500 handler — turn them into
+// the specific 400/413 the client can actually show the user.
+function uploadSingleDocx(req: Request, res: Response, next: NextFunction) {
+  upload.single("file")(req, res, (err: unknown) => {
+    if (!err) return next();
+    if (err instanceof multer.MulterError && err.code === "LIMIT_FILE_SIZE") {
+      return res.status(413).json({ error: `File too large — the limit is ${MAX_UPLOAD_BYTES / 1024 / 1024}MB` });
+    }
+    if (err instanceof Error) {
+      return res.status(400).json({ error: err.message });
+    }
+    next(err);
+  });
+}
+
 // Upload a .docx exam for a subject the caller is subscribed to. The file
 // is parsed synchronously (docx text extraction + question parsing is fast);
 // a queue-backed background job would replace this at real-world scale.
 examsRouter.post(
   "/subjects/:subjectId/exams",
   requireActiveSubscription,
-  upload.single("file"),
+  uploadSingleDocx,
   async (req: AuthedRequest, res) => {
     const { subjectId } = req.params;
     const userId = req.userId!;
