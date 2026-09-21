@@ -1,11 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { View, Text, ScrollView, Pressable, StyleSheet, ActivityIndicator, Alert } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
 import type { NativeStackScreenProps } from "@react-navigation/native-stack";
 import type { RootStackParamList } from "../navigation/types";
 import { api, ApiError } from "../api/client";
 import type { AttemptResult } from "../types";
+import { colors, radius, spacing, type, shadow } from "../theme";
 
 type Props = NativeStackScreenProps<RootStackParamList, "Results">;
+
+function scoreColor(pct: number) {
+  if (pct >= 70) return colors.success;
+  if (pct >= 40) return "#C2540A";
+  return colors.danger;
+}
 
 export default function ResultsScreen({ route, navigation }: Props) {
   const { attemptId } = route.params;
@@ -23,7 +31,7 @@ export default function ResultsScreen({ route, navigation }: Props) {
   if (loading || !result) {
     return (
       <View style={styles.center}>
-        <ActivityIndicator />
+        <ActivityIndicator color={colors.primary} />
       </View>
     );
   }
@@ -31,41 +39,81 @@ export default function ResultsScreen({ route, navigation }: Props) {
   const pct =
     result.totalPoints && result.totalPoints > 0
       ? Math.round(((result.scorePoints ?? 0) / result.totalPoints) * 100)
-      : null;
+      : 0;
+  const ringColor = scoreColor(pct);
 
   return (
-    <ScrollView style={styles.container} contentContainerStyle={{ padding: 16 }}>
-      <Text style={styles.title}>{result.examTitle}</Text>
+    <ScrollView style={styles.container} contentContainerStyle={{ padding: spacing.lg }}>
+      <Text style={styles.eyebrow}>{result.examTitle}</Text>
+      <Text style={styles.title}>Results</Text>
+
       <View style={styles.scoreCard}>
-        <Text style={styles.scoreText}>
-          {result.scorePoints} / {result.totalPoints} {pct !== null ? `(${pct}%)` : ""}
+        <View style={[styles.scoreCircle, { borderColor: ringColor }]}>
+          <Text style={[styles.scorePct, { color: ringColor }]}>{pct}%</Text>
+        </View>
+        <Text style={styles.scoreFraction}>
+          {result.scorePoints} of {result.totalPoints} correct
         </Text>
         <Text style={styles.scoreSub}>Graded questions only — ungraded questions aren't counted.</Text>
       </View>
-      {result.responses.map((r, idx) => (
-        <View key={r.questionId} style={[styles.card, r.isCorrect === false && styles.cardWrong, r.isCorrect === true && styles.cardRight]}>
-          <Text style={styles.prompt}>
-            {idx + 1}. {r.prompt}
-          </Text>
-          {r.type === "MULTIPLE_CHOICE" ? (
-            <>
-              <Text style={styles.answerLine}>Your answer: {r.yourChoiceLabel ?? "(none)"}</Text>
-              {r.isCorrect === false && (
-                <Text style={styles.correctLine}>Correct: {r.correctChoiceLabel}</Text>
+
+      {result.responses.map((r, idx) => {
+        const isUngraded = r.isCorrect === null;
+        const isCorrect = r.isCorrect === true;
+        return (
+          <View
+            key={r.questionId}
+            style={[
+              styles.card,
+              isCorrect && styles.cardCorrect,
+              r.isCorrect === false && styles.cardWrong,
+            ]}
+          >
+            <View style={styles.cardHeader}>
+              <Text style={styles.prompt}>
+                {idx + 1}. {r.prompt}
+              </Text>
+              {isUngraded ? (
+                <View style={[styles.verdictBadge, { backgroundColor: colors.background }]}>
+                  <Ionicons name="help-circle" size={14} color={colors.textMuted} />
+                </View>
+              ) : (
+                <View style={[styles.verdictBadge, { backgroundColor: isCorrect ? colors.successSoft : colors.dangerSoft }]}>
+                  <Ionicons
+                    name={isCorrect ? "checkmark" : "close"}
+                    size={14}
+                    color={isCorrect ? colors.success : colors.danger}
+                  />
+                </View>
               )}
-            </>
-          ) : (
-            <>
-              <Text style={styles.answerLine}>Your answer: {r.yourAnswerText || "(none)"}</Text>
-              {r.isCorrect === false && <Text style={styles.correctLine}>Expected: {r.correctText}</Text>}
-            </>
-          )}
-          <Text style={styles.verdict}>
-            {r.isCorrect === null ? "Ungraded" : r.isCorrect ? "Correct" : "Incorrect"}
-          </Text>
-        </View>
-      ))}
-      <Pressable style={styles.doneButton} onPress={() => navigation.popToTop()}>
+            </View>
+
+            {r.type === "MULTIPLE_CHOICE" ? (
+              <>
+                <Text style={styles.answerLine}>Your answer: {r.yourChoiceLabel ?? "(none)"}</Text>
+                {r.isCorrect === false && <Text style={styles.correctLine}>Correct: {r.correctChoiceLabel}</Text>}
+              </>
+            ) : (
+              <>
+                <Text style={styles.answerLine}>Your answer: {r.yourAnswerText || "(none)"}</Text>
+                {r.isCorrect === false && <Text style={styles.correctLine}>Expected: {r.correctText}</Text>}
+              </>
+            )}
+            <Text
+              style={[
+                styles.verdictText,
+                isCorrect && { color: colors.success },
+                r.isCorrect === false && { color: colors.danger },
+                isUngraded && { color: colors.textMuted },
+              ]}
+            >
+              {isUngraded ? "Ungraded" : isCorrect ? "Correct" : "Incorrect"}
+            </Text>
+          </View>
+        );
+      })}
+
+      <Pressable style={({ pressed }) => [styles.doneButton, pressed && styles.doneButtonPressed]} onPress={() => navigation.popToTop()}>
         <Text style={styles.doneButtonText}>Back to subjects</Text>
       </Pressable>
     </ScrollView>
@@ -73,26 +121,47 @@ export default function ResultsScreen({ route, navigation }: Props) {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: "#f7f8fa" },
-  center: { flex: 1, justifyContent: "center", alignItems: "center" },
-  title: { fontSize: 22, fontWeight: "700", marginBottom: 12 },
-  scoreCard: { backgroundColor: "#fff", borderRadius: 12, padding: 16, marginBottom: 16, alignItems: "center" },
-  scoreText: { fontSize: 28, fontWeight: "700" },
-  scoreSub: { color: "#667085", marginTop: 4, fontSize: 12, textAlign: "center" },
-  card: {
-    backgroundColor: "#fff",
-    borderRadius: 12,
-    padding: 16,
-    marginBottom: 12,
-    borderWidth: 1,
-    borderColor: "#e5e7eb",
+  container: { flex: 1, backgroundColor: colors.background },
+  center: { flex: 1, justifyContent: "center", alignItems: "center", backgroundColor: colors.background },
+  eyebrow: { ...type.small, color: colors.textMuted, textTransform: "uppercase", letterSpacing: 0.6 },
+  title: { ...type.h1, color: colors.textPrimary, marginBottom: spacing.lg, marginTop: 2 },
+  scoreCard: { backgroundColor: colors.surface, borderRadius: radius.lg, padding: spacing.xl, marginBottom: spacing.lg, alignItems: "center", ...shadow },
+  scoreCircle: {
+    width: 104,
+    height: 104,
+    borderRadius: radius.pill,
+    borderWidth: 6,
+    alignItems: "center",
+    justifyContent: "center",
+    marginBottom: spacing.md,
   },
-  cardRight: { borderColor: "#86efac" },
-  cardWrong: { borderColor: "#fca5a5" },
-  prompt: { fontSize: 15, fontWeight: "600", marginBottom: 8 },
-  answerLine: { color: "#344054", marginBottom: 4 },
-  correctLine: { color: "#15803d", marginBottom: 4 },
-  verdict: { fontWeight: "600", marginTop: 4 },
-  doneButton: { backgroundColor: "#2563eb", borderRadius: 8, padding: 14, alignItems: "center", marginVertical: 24 },
-  doneButtonText: { color: "#fff", fontWeight: "700" },
+  scorePct: { fontSize: 26, fontWeight: "800" },
+  scoreFraction: { ...type.bodyStrong, color: colors.textPrimary },
+  scoreSub: { ...type.small, color: colors.textMuted, marginTop: spacing.xs, fontWeight: "400", textAlign: "center" },
+  card: {
+    backgroundColor: colors.surface,
+    borderRadius: radius.lg,
+    padding: spacing.lg,
+    marginBottom: spacing.md,
+    borderWidth: 1,
+    borderColor: colors.border,
+  },
+  cardCorrect: { borderColor: "#BEEBDA" },
+  cardWrong: { borderColor: "#F6C6C8" },
+  cardHeader: { flexDirection: "row", justifyContent: "space-between", alignItems: "flex-start", marginBottom: spacing.sm },
+  verdictBadge: {
+    width: 24,
+    height: 24,
+    borderRadius: radius.pill,
+    alignItems: "center",
+    justifyContent: "center",
+    marginLeft: spacing.sm,
+  },
+  prompt: { ...type.bodyStrong, color: colors.textPrimary, flex: 1, lineHeight: 20 },
+  answerLine: { ...type.body, color: colors.textSecondary, marginBottom: 4 },
+  correctLine: { ...type.body, color: colors.success, marginBottom: 4, fontWeight: "600" },
+  verdictText: { ...type.small, marginTop: spacing.xs },
+  doneButton: { backgroundColor: colors.primary, borderRadius: radius.md, padding: spacing.md, alignItems: "center", marginVertical: spacing.xxl, ...shadow },
+  doneButtonPressed: { backgroundColor: colors.primaryDark },
+  doneButtonText: { color: colors.white, fontWeight: "700", fontSize: 16 },
 });

@@ -10,12 +10,14 @@ import {
   Modal,
   RefreshControl,
 } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
 import { useFocusEffect } from "@react-navigation/native";
 import type { NativeStackScreenProps } from "@react-navigation/native-stack";
 import type { RootStackParamList } from "../navigation/types";
 import { api, ApiError } from "../api/client";
 import type { Subject } from "../types";
 import { useAuth } from "../context/AuthContext";
+import { colors, radius, spacing, type, shadow, shadowStrong, accentForSubject } from "../theme";
 
 type Props = NativeStackScreenProps<RootStackParamList, "Subjects">;
 
@@ -60,7 +62,7 @@ export default function SubjectsScreen({ navigation }: Props) {
   if (loading) {
     return (
       <View style={styles.center}>
-        <ActivityIndicator />
+        <ActivityIndicator color={colors.primary} />
       </View>
     );
   }
@@ -70,39 +72,77 @@ export default function SubjectsScreen({ navigation }: Props) {
       <FlatList
         data={subjects}
         keyExtractor={(s) => s.id}
-        refreshControl={<RefreshControl refreshing={refreshing} onRefresh={() => { setRefreshing(true); load(); }} />}
-        contentContainerStyle={{ padding: 16 }}
+        refreshControl={
+          <RefreshControl
+            refreshing={refreshing}
+            onRefresh={() => {
+              setRefreshing(true);
+              load();
+            }}
+            tintColor={colors.primary}
+          />
+        }
+        contentContainerStyle={{ padding: spacing.lg }}
         ListHeaderComponent={
           <View style={styles.header}>
-            <Text style={styles.title}>Subjects</Text>
-            <Pressable onPress={logout}>
-              <Text style={styles.logout}>Log out</Text>
+            <View>
+              <Text style={styles.eyebrow}>Welcome back</Text>
+              <Text style={styles.title}>Your subjects</Text>
+            </View>
+            <Pressable onPress={logout} hitSlop={8} style={styles.logoutButton}>
+              <Ionicons name="log-out-outline" size={22} color={colors.danger} />
             </Pressable>
           </View>
         }
-        renderItem={({ item }) => (
-          <View style={styles.card}>
-            <Text style={styles.cardTitle}>{item.name}</Text>
-            <Text style={styles.cardDesc}>{item.description}</Text>
-            {item.subscription.active ? (
-              <>
-                <Text style={styles.activeBadge}>
-                  Active until {new Date(item.subscription.endAt!).toLocaleDateString()}
-                </Text>
-                <Pressable
-                  style={styles.primaryButton}
-                  onPress={() => navigation.navigate("SubjectDetail", { subjectId: item.id, subjectName: item.name })}
-                >
-                  <Text style={styles.primaryButtonText}>Open</Text>
-                </Pressable>
-              </>
-            ) : (
-              <Pressable style={styles.secondaryButton} onPress={() => setPlanPickerSubject(item)}>
-                <Text style={styles.secondaryButtonText}>Subscribe</Text>
-              </Pressable>
-            )}
-          </View>
-        )}
+        renderItem={({ item, index }) => {
+          const accent = accentForSubject(index);
+          return (
+            <View style={styles.card}>
+              <View style={styles.cardTop}>
+                <View style={[styles.iconBadge, { backgroundColor: accent.bg }]}>
+                  <Ionicons name={accent.icon} size={22} color={accent.fg} />
+                </View>
+                <View style={styles.cardHeaderText}>
+                  <Text style={styles.cardTitle}>{item.name}</Text>
+                  <Text style={styles.cardDesc} numberOfLines={2}>
+                    {item.description}
+                  </Text>
+                </View>
+              </View>
+
+              {item.subscription.active ? (
+                <>
+                  <View style={styles.activePill}>
+                    <Ionicons name="checkmark-circle" size={14} color={colors.success} />
+                    <Text style={styles.activePillText}>
+                      Active until {new Date(item.subscription.endAt!).toLocaleDateString()}
+                    </Text>
+                  </View>
+                  <Pressable
+                    style={({ pressed }) => [styles.primaryButton, pressed && styles.primaryButtonPressed]}
+                    onPress={() => navigation.navigate("SubjectDetail", { subjectId: item.id, subjectName: item.name })}
+                  >
+                    <Text style={styles.primaryButtonText}>Open</Text>
+                    <Ionicons name="arrow-forward" size={16} color={colors.white} />
+                  </Pressable>
+                </>
+              ) : (
+                <>
+                  <View style={styles.lockedPill}>
+                    <Ionicons name="lock-closed" size={12} color={colors.textMuted} />
+                    <Text style={styles.lockedPillText}>Locked</Text>
+                  </View>
+                  <Pressable
+                    style={({ pressed }) => [styles.secondaryButton, pressed && styles.secondaryButtonPressed]}
+                    onPress={() => setPlanPickerSubject(item)}
+                  >
+                    <Text style={styles.secondaryButtonText}>Subscribe</Text>
+                  </Pressable>
+                </>
+              )}
+            </View>
+          );
+        }}
       />
 
       <Modal
@@ -113,17 +153,19 @@ export default function SubjectsScreen({ navigation }: Props) {
       >
         <Pressable style={styles.modalBackdrop} onPress={() => setPlanPickerSubject(null)}>
           <Pressable style={styles.modalCard} onPress={() => {}}>
+            <View style={styles.modalHandle} />
             <Text style={styles.modalTitle}>Subscribe to {planPickerSubject?.name}</Text>
+            <Text style={styles.modalSubtitle}>Choose how long you want access for</Text>
             {planPickerSubject?.plans.map((plan) => (
               <Pressable
                 key={plan.id}
-                style={styles.planRow}
+                style={({ pressed }) => [styles.planRow, pressed && styles.planRowPressed]}
                 onPress={() => purchase(planPickerSubject.id, plan.id)}
                 disabled={purchasingPlanId !== null}
               >
                 <Text style={styles.planName}>{plan.name}</Text>
                 {purchasingPlanId === plan.id ? (
-                  <ActivityIndicator />
+                  <ActivityIndicator color={colors.primary} />
                 ) : (
                   <Text style={styles.planPrice}>${(plan.priceCents / 100).toFixed(2)}</Text>
                 )}
@@ -140,39 +182,117 @@ export default function SubjectsScreen({ navigation }: Props) {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: "#f7f8fa" },
-  center: { flex: 1, justifyContent: "center", alignItems: "center" },
-  header: { flexDirection: "row", justifyContent: "space-between", alignItems: "center", marginBottom: 16 },
-  title: { fontSize: 26, fontWeight: "700" },
-  logout: { color: "#dc2626" },
-  card: {
-    backgroundColor: "#fff",
-    borderRadius: 12,
-    padding: 16,
-    marginBottom: 12,
-    borderWidth: 1,
-    borderColor: "#e5e7eb",
+  container: { flex: 1, backgroundColor: colors.background },
+  center: { flex: 1, justifyContent: "center", alignItems: "center", backgroundColor: colors.background },
+  header: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginBottom: spacing.lg,
+    paddingTop: spacing.xs,
   },
-  cardTitle: { fontSize: 18, fontWeight: "600" },
-  cardDesc: { color: "#667085", marginTop: 4, marginBottom: 12 },
-  activeBadge: { color: "#15803d", fontWeight: "500", marginBottom: 10 },
-  primaryButton: { backgroundColor: "#2563eb", borderRadius: 8, padding: 10, alignItems: "center" },
-  primaryButtonText: { color: "#fff", fontWeight: "600" },
-  secondaryButton: { backgroundColor: "#eef2ff", borderRadius: 8, padding: 10, alignItems: "center" },
-  secondaryButtonText: { color: "#2563eb", fontWeight: "600" },
-  modalBackdrop: { flex: 1, backgroundColor: "rgba(0,0,0,0.4)", justifyContent: "center", padding: 24 },
-  modalCard: { backgroundColor: "#fff", borderRadius: 16, padding: 20 },
-  modalTitle: { fontSize: 18, fontWeight: "700", marginBottom: 16 },
+  eyebrow: { ...type.small, color: colors.textMuted, textTransform: "uppercase", letterSpacing: 0.6 },
+  title: { ...type.display, color: colors.textPrimary, marginTop: 2 },
+  logoutButton: {
+    width: 40,
+    height: 40,
+    borderRadius: radius.pill,
+    backgroundColor: colors.dangerSoft,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  card: {
+    backgroundColor: colors.surface,
+    borderRadius: radius.lg,
+    padding: spacing.lg,
+    marginBottom: spacing.md,
+    ...shadow,
+  },
+  cardTop: { flexDirection: "row", marginBottom: spacing.md },
+  iconBadge: {
+    width: 48,
+    height: 48,
+    borderRadius: radius.md,
+    alignItems: "center",
+    justifyContent: "center",
+    marginRight: spacing.md,
+  },
+  cardHeaderText: { flex: 1 },
+  cardTitle: { ...type.h2, color: colors.textPrimary },
+  cardDesc: { ...type.small, color: colors.textSecondary, marginTop: 2, fontWeight: "400" },
+  activePill: {
+    flexDirection: "row",
+    alignItems: "center",
+    alignSelf: "flex-start",
+    backgroundColor: colors.successSoft,
+    borderRadius: radius.pill,
+    paddingVertical: 5,
+    paddingHorizontal: spacing.sm,
+    marginBottom: spacing.md,
+    gap: 5,
+  },
+  activePillText: { ...type.small, color: colors.success },
+  lockedPill: {
+    flexDirection: "row",
+    alignItems: "center",
+    alignSelf: "flex-start",
+    backgroundColor: colors.background,
+    borderRadius: radius.pill,
+    paddingVertical: 5,
+    paddingHorizontal: spacing.sm,
+    marginBottom: spacing.md,
+    gap: 5,
+  },
+  lockedPillText: { ...type.small, color: colors.textMuted },
+  primaryButton: {
+    flexDirection: "row",
+    backgroundColor: colors.primary,
+    borderRadius: radius.md,
+    paddingVertical: 12,
+    alignItems: "center",
+    justifyContent: "center",
+    gap: 6,
+  },
+  primaryButtonPressed: { backgroundColor: colors.primaryDark },
+  primaryButtonText: { color: colors.white, fontWeight: "700" },
+  secondaryButton: {
+    backgroundColor: colors.primarySoft,
+    borderRadius: radius.md,
+    paddingVertical: 12,
+    alignItems: "center",
+  },
+  secondaryButtonPressed: { backgroundColor: "#E0E4FB" },
+  secondaryButtonText: { color: colors.primary, fontWeight: "700" },
+  modalBackdrop: { flex: 1, backgroundColor: "rgba(15,15,35,0.45)", justifyContent: "flex-end" },
+  modalCard: {
+    backgroundColor: colors.surface,
+    borderTopLeftRadius: radius.lg,
+    borderTopRightRadius: radius.lg,
+    padding: spacing.xl,
+    paddingBottom: spacing.xxl,
+    ...shadowStrong,
+  },
+  modalHandle: {
+    width: 36,
+    height: 4,
+    borderRadius: 2,
+    backgroundColor: colors.border,
+    alignSelf: "center",
+    marginBottom: spacing.lg,
+  },
+  modalTitle: { ...type.h1, color: colors.textPrimary },
+  modalSubtitle: { ...type.body, color: colors.textSecondary, marginTop: 2, marginBottom: spacing.md },
   planRow: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    paddingVertical: 14,
+    paddingVertical: spacing.md,
     borderBottomWidth: 1,
-    borderBottomColor: "#e5e7eb",
+    borderBottomColor: colors.border,
   },
-  planName: { fontSize: 16 },
-  planPrice: { fontSize: 16, fontWeight: "600", color: "#2563eb" },
-  modalCancel: { alignItems: "center", paddingVertical: 14, marginTop: 4 },
-  modalCancelText: { color: "#667085", fontWeight: "500" },
+  planRowPressed: { backgroundColor: colors.background },
+  planName: { ...type.bodyStrong, color: colors.textPrimary },
+  planPrice: { ...type.bodyStrong, color: colors.primary },
+  modalCancel: { alignItems: "center", paddingVertical: spacing.md, marginTop: spacing.xs },
+  modalCancelText: { color: colors.textSecondary, fontWeight: "600" },
 });

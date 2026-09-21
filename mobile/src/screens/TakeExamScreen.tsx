@@ -9,10 +9,12 @@ import {
   ActivityIndicator,
   Alert,
 } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
 import type { NativeStackScreenProps } from "@react-navigation/native-stack";
 import type { RootStackParamList } from "../navigation/types";
 import { api, ApiError } from "../api/client";
 import type { ExamDetail } from "../types";
+import { colors, radius, spacing, type, shadow } from "../theme";
 
 type Props = NativeStackScreenProps<RootStackParamList, "TakeExam">;
 
@@ -31,6 +33,11 @@ export default function TakeExamScreen({ route, navigation }: Props) {
       .catch((err) => Alert.alert("Couldn't load exam", err instanceof ApiError ? err.message : "Error"))
       .finally(() => setLoading(false));
   }, [examId]);
+
+  const answeredCount = exam
+    ? exam.questions.filter((q) => choiceAnswers[q.id] || textAnswers[q.id]?.trim()).length
+    : 0;
+  const progress = exam && exam.questions.length > 0 ? answeredCount / exam.questions.length : 0;
 
   const onSubmit = async () => {
     if (!exam) return;
@@ -71,48 +78,76 @@ export default function TakeExamScreen({ route, navigation }: Props) {
   if (loading || !exam) {
     return (
       <View style={styles.center}>
-        <ActivityIndicator />
+        <ActivityIndicator color={colors.primary} />
       </View>
     );
   }
 
   return (
     <View style={styles.container}>
-      <ScrollView contentContainerStyle={{ padding: 16 }}>
-        <Text style={styles.title}>{exam.title}</Text>
-        {exam.questions.map((q, idx) => (
-          <View key={q.id} style={styles.card}>
-            <Text style={styles.prompt}>
-              {idx + 1}. {q.prompt}
+      <View style={styles.progressBar}>
+        <View style={[styles.progressFill, { width: `${progress * 100}%` }]} />
+      </View>
+      <ScrollView contentContainerStyle={{ padding: spacing.lg }}>
+        <View style={styles.headerRow}>
+          <Text style={styles.title}>{exam.title}</Text>
+          <View style={styles.progressPill}>
+            <Text style={styles.progressPillText}>
+              {answeredCount}/{exam.questions.length}
             </Text>
-            {q.type === "MULTIPLE_CHOICE" ? (
-              q.choices.map((c) => {
-                const selected = choiceAnswers[q.id] === c.id;
-                return (
-                  <Pressable
-                    key={c.id}
-                    style={[styles.choice, selected && styles.choiceSelected]}
-                    onPress={() => setChoiceAnswers((prev) => ({ ...prev, [q.id]: c.id }))}
-                  >
-                    <Text style={[styles.choiceText, selected && styles.choiceTextSelected]}>
-                      {c.label}. {c.text}
-                    </Text>
-                  </Pressable>
-                );
-              })
-            ) : (
-              <TextInput
-                style={styles.textInput}
-                placeholder="Your answer"
-                multiline
-                value={textAnswers[q.id] ?? ""}
-                onChangeText={(text) => setTextAnswers((prev) => ({ ...prev, [q.id]: text }))}
-              />
-            )}
           </View>
-        ))}
-        <Pressable style={styles.submitButton} onPress={onSubmit} disabled={submitting}>
-          {submitting ? <ActivityIndicator color="#fff" /> : <Text style={styles.submitButtonText}>Submit exam</Text>}
+        </View>
+
+        {exam.questions.map((q, idx) => {
+          const answered = Boolean(choiceAnswers[q.id] || textAnswers[q.id]?.trim());
+          return (
+            <View key={q.id} style={styles.card}>
+              <View style={styles.promptRow}>
+                <View style={[styles.numberBadge, answered && styles.numberBadgeDone]}>
+                  {answered ? (
+                    <Ionicons name="checkmark" size={14} color={colors.white} />
+                  ) : (
+                    <Text style={styles.numberBadgeText}>{idx + 1}</Text>
+                  )}
+                </View>
+                <Text style={styles.prompt}>{q.prompt}</Text>
+              </View>
+
+              {q.type === "MULTIPLE_CHOICE" ? (
+                <View style={{ gap: spacing.sm }}>
+                  {q.choices.map((c) => {
+                    const selected = choiceAnswers[q.id] === c.id;
+                    return (
+                      <Pressable
+                        key={c.id}
+                        style={[styles.choice, selected && styles.choiceSelected]}
+                        onPress={() => setChoiceAnswers((prev) => ({ ...prev, [q.id]: c.id }))}
+                      >
+                        <View style={[styles.radio, selected && styles.radioSelected]}>
+                          {selected && <View style={styles.radioDot} />}
+                        </View>
+                        <Text style={styles.choiceLabel}>{c.label}</Text>
+                        <Text style={[styles.choiceText, selected && styles.choiceTextSelected]}>{c.text}</Text>
+                      </Pressable>
+                    );
+                  })}
+                </View>
+              ) : (
+                <TextInput
+                  style={styles.textInput}
+                  placeholder="Your answer"
+                  placeholderTextColor={colors.textMuted}
+                  multiline
+                  value={textAnswers[q.id] ?? ""}
+                  onChangeText={(text) => setTextAnswers((prev) => ({ ...prev, [q.id]: text }))}
+                />
+              )}
+            </View>
+          );
+        })}
+
+        <Pressable style={({ pressed }) => [styles.submitButton, pressed && styles.submitButtonPressed]} onPress={onSubmit} disabled={submitting}>
+          {submitting ? <ActivityIndicator color={colors.white} /> : <Text style={styles.submitButtonText}>Submit exam</Text>}
         </Pressable>
       </ScrollView>
     </View>
@@ -120,37 +155,80 @@ export default function TakeExamScreen({ route, navigation }: Props) {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: "#f7f8fa" },
-  center: { flex: 1, justifyContent: "center", alignItems: "center" },
-  title: { fontSize: 22, fontWeight: "700", marginBottom: 16 },
+  container: { flex: 1, backgroundColor: colors.background },
+  center: { flex: 1, justifyContent: "center", alignItems: "center", backgroundColor: colors.background },
+  progressBar: { height: 4, backgroundColor: colors.border },
+  progressFill: { height: 4, backgroundColor: colors.primary },
+  headerRow: { flexDirection: "row", justifyContent: "space-between", alignItems: "center", marginBottom: spacing.lg },
+  title: { ...type.h1, color: colors.textPrimary, flex: 1, marginRight: spacing.sm },
+  progressPill: { backgroundColor: colors.primarySoft, borderRadius: radius.pill, paddingVertical: 5, paddingHorizontal: spacing.md },
+  progressPillText: { ...type.small, color: colors.primary },
   card: {
-    backgroundColor: "#fff",
-    borderRadius: 12,
-    padding: 16,
-    marginBottom: 12,
-    borderWidth: 1,
-    borderColor: "#e5e7eb",
+    backgroundColor: colors.surface,
+    borderRadius: radius.lg,
+    padding: spacing.lg,
+    marginBottom: spacing.md,
+    ...shadow,
   },
-  prompt: { fontSize: 16, fontWeight: "600", marginBottom: 12 },
-  choice: { borderWidth: 1, borderColor: "#d0d5dd", borderRadius: 8, padding: 10, marginBottom: 8 },
-  choiceSelected: { backgroundColor: "#eef2ff", borderColor: "#2563eb" },
-  choiceText: { fontSize: 15 },
-  choiceTextSelected: { color: "#2563eb", fontWeight: "600" },
+  promptRow: { flexDirection: "row", marginBottom: spacing.md },
+  numberBadge: {
+    width: 24,
+    height: 24,
+    borderRadius: radius.pill,
+    backgroundColor: colors.background,
+    borderWidth: 1,
+    borderColor: colors.border,
+    alignItems: "center",
+    justifyContent: "center",
+    marginRight: spacing.sm,
+    marginTop: 1,
+  },
+  numberBadgeDone: { backgroundColor: colors.success, borderColor: colors.success },
+  numberBadgeText: { ...type.tiny, color: colors.textSecondary },
+  prompt: { ...type.bodyStrong, color: colors.textPrimary, flex: 1, lineHeight: 21 },
+  choice: {
+    flexDirection: "row",
+    alignItems: "center",
+    borderWidth: 1,
+    borderColor: colors.border,
+    borderRadius: radius.md,
+    padding: spacing.md,
+  },
+  choiceSelected: { backgroundColor: colors.primarySoft, borderColor: colors.primary },
+  radio: {
+    width: 18,
+    height: 18,
+    borderRadius: radius.pill,
+    borderWidth: 2,
+    borderColor: colors.border,
+    alignItems: "center",
+    justifyContent: "center",
+    marginRight: spacing.sm,
+  },
+  radioSelected: { borderColor: colors.primary },
+  radioDot: { width: 9, height: 9, borderRadius: radius.pill, backgroundColor: colors.primary },
+  choiceLabel: { ...type.small, color: colors.textMuted, marginRight: spacing.sm },
+  choiceText: { ...type.body, color: colors.textPrimary, flex: 1 },
+  choiceTextSelected: { color: colors.primaryDark, fontWeight: "600" },
   textInput: {
     borderWidth: 1,
-    borderColor: "#d0d5dd",
-    borderRadius: 8,
-    padding: 10,
-    minHeight: 80,
+    borderColor: colors.border,
+    borderRadius: radius.md,
+    padding: spacing.md,
+    minHeight: 88,
     textAlignVertical: "top",
+    fontSize: 15,
+    color: colors.textPrimary,
   },
   submitButton: {
-    backgroundColor: "#2563eb",
-    borderRadius: 8,
-    padding: 14,
+    backgroundColor: colors.primary,
+    borderRadius: radius.md,
+    padding: spacing.md,
     alignItems: "center",
-    marginTop: 8,
-    marginBottom: 40,
+    marginTop: spacing.sm,
+    marginBottom: spacing.xxxl,
+    ...shadow,
   },
-  submitButtonText: { color: "#fff", fontWeight: "700", fontSize: 16 },
+  submitButtonPressed: { backgroundColor: colors.primaryDark },
+  submitButtonText: { color: colors.white, fontWeight: "700", fontSize: 16 },
 });

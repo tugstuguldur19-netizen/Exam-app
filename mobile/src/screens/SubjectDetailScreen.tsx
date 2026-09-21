@@ -1,11 +1,13 @@
 import React, { useCallback, useState } from "react";
 import { View, Text, FlatList, Pressable, StyleSheet, ActivityIndicator, Alert } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
 import { useFocusEffect } from "@react-navigation/native";
 import type { NativeStackScreenProps } from "@react-navigation/native-stack";
 import * as DocumentPicker from "expo-document-picker";
 import type { RootStackParamList } from "../navigation/types";
 import { api, ApiError } from "../api/client";
 import type { ExamSummary } from "../types";
+import { colors, radius, spacing, type, shadow } from "../theme";
 
 type Props = NativeStackScreenProps<RootStackParamList, "SubjectDetail">;
 
@@ -78,7 +80,7 @@ export default function SubjectDetailScreen({ route, navigation }: Props) {
   if (loading) {
     return (
       <View style={styles.center}>
-        <ActivityIndicator />
+        <ActivityIndicator color={colors.primary} />
       </View>
     );
   }
@@ -88,24 +90,46 @@ export default function SubjectDetailScreen({ route, navigation }: Props) {
       <FlatList
         data={exams}
         keyExtractor={(e) => e.id}
-        contentContainerStyle={{ padding: 16 }}
+        contentContainerStyle={{ padding: spacing.lg }}
         ListHeaderComponent={
-          <View style={{ marginBottom: 16 }}>
-            <Text style={styles.title}>{subjectName}</Text>
-            <Pressable style={styles.uploadButton} onPress={onUpload} disabled={uploading}>
+          <View style={{ marginBottom: spacing.lg }}>
+            <Text style={styles.eyebrow}>{subjectName}</Text>
+            <Text style={styles.title}>Exams</Text>
+            <Pressable
+              style={({ pressed }) => [styles.uploadButton, pressed && styles.uploadButtonPressed]}
+              onPress={onUpload}
+              disabled={uploading}
+            >
               {uploading ? (
-                <ActivityIndicator color="#fff" />
+                <ActivityIndicator color={colors.white} />
               ) : (
-                <Text style={styles.uploadButtonText}>Upload .docx exam</Text>
+                <>
+                  <Ionicons name="cloud-upload-outline" size={18} color={colors.white} />
+                  <Text style={styles.uploadButtonText}>Upload .docx exam</Text>
+                </>
               )}
             </Pressable>
           </View>
         }
-        ListEmptyComponent={<Text style={styles.empty}>No exams yet. Upload a .docx file to get started.</Text>}
+        ListEmptyComponent={
+          <View style={styles.empty}>
+            <View style={styles.emptyIcon}>
+              <Ionicons name="document-text-outline" size={28} color={colors.textMuted} />
+            </View>
+            <Text style={styles.emptyTitle}>No exams yet</Text>
+            <Text style={styles.emptyBody}>Upload a .docx file above to turn it into a gradable exam.</Text>
+          </View>
+        }
         renderItem={({ item }) => (
-          <Pressable style={styles.card} onPress={() => onTakeExam(item)}>
-            <Text style={styles.cardTitle}>{item.title}</Text>
-            <Text style={styles.cardMeta}>{item.questionCount} questions</Text>
+          <Pressable style={({ pressed }) => [styles.card, pressed && styles.cardPressed]} onPress={() => onTakeExam(item)}>
+            <View style={styles.cardIcon}>
+              <Ionicons name="document-text" size={20} color={colors.primary} />
+            </View>
+            <View style={styles.cardText}>
+              <Text style={styles.cardTitle}>{item.title}</Text>
+              <Text style={styles.cardMeta}>{item.questionCount} questions</Text>
+            </View>
+            <Ionicons name="chevron-forward" size={18} color={colors.textMuted} />
           </Pressable>
         )}
       />
@@ -114,20 +138,56 @@ export default function SubjectDetailScreen({ route, navigation }: Props) {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: "#f7f8fa" },
-  center: { flex: 1, justifyContent: "center", alignItems: "center" },
-  title: { fontSize: 24, fontWeight: "700", marginBottom: 12 },
-  uploadButton: { backgroundColor: "#2563eb", borderRadius: 8, padding: 12, alignItems: "center" },
-  uploadButtonText: { color: "#fff", fontWeight: "600" },
-  empty: { textAlign: "center", color: "#667085", marginTop: 40 },
-  card: {
-    backgroundColor: "#fff",
-    borderRadius: 12,
-    padding: 16,
-    marginBottom: 12,
-    borderWidth: 1,
-    borderColor: "#e5e7eb",
+  container: { flex: 1, backgroundColor: colors.background },
+  center: { flex: 1, justifyContent: "center", alignItems: "center", backgroundColor: colors.background },
+  eyebrow: { ...type.small, color: colors.textMuted, textTransform: "uppercase", letterSpacing: 0.6 },
+  title: { ...type.h1, color: colors.textPrimary, marginBottom: spacing.lg, marginTop: 2 },
+  uploadButton: {
+    flexDirection: "row",
+    backgroundColor: colors.primary,
+    borderRadius: radius.md,
+    paddingVertical: 14,
+    alignItems: "center",
+    justifyContent: "center",
+    gap: 8,
+    ...shadow,
   },
-  cardTitle: { fontSize: 16, fontWeight: "600" },
-  cardMeta: { color: "#667085", marginTop: 4 },
+  uploadButtonPressed: { backgroundColor: colors.primaryDark },
+  uploadButtonText: { color: colors.white, fontWeight: "700", fontSize: 15 },
+  empty: { alignItems: "center", paddingTop: spacing.xxxl },
+  emptyIcon: {
+    width: 56,
+    height: 56,
+    borderRadius: radius.pill,
+    backgroundColor: colors.surface,
+    alignItems: "center",
+    justifyContent: "center",
+    marginBottom: spacing.md,
+    borderWidth: 1,
+    borderColor: colors.border,
+  },
+  emptyTitle: { ...type.h2, color: colors.textPrimary, marginBottom: spacing.xs },
+  emptyBody: { ...type.small, color: colors.textSecondary, fontWeight: "400", textAlign: "center", maxWidth: 240 },
+  card: {
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: colors.surface,
+    borderRadius: radius.lg,
+    padding: spacing.md,
+    marginBottom: spacing.sm,
+    ...shadow,
+  },
+  cardPressed: { backgroundColor: colors.primarySoft },
+  cardIcon: {
+    width: 40,
+    height: 40,
+    borderRadius: radius.sm,
+    backgroundColor: colors.primarySoft,
+    alignItems: "center",
+    justifyContent: "center",
+    marginRight: spacing.md,
+  },
+  cardText: { flex: 1 },
+  cardTitle: { ...type.bodyStrong, color: colors.textPrimary },
+  cardMeta: { ...type.small, color: colors.textSecondary, marginTop: 2, fontWeight: "400" },
 });
