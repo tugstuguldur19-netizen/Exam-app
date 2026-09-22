@@ -1,0 +1,72 @@
+name: Build Android APK
+
+# GitHub's hosted runners have full internet access and a preinstalled
+# Android SDK, so this builds the APK here rather than anywhere sandboxed —
+# no Expo/EAS account or local Android SDK setup needed.
+on:
+  push:
+    branches: [main, master]
+    paths:
+      - "mobile/**"
+      - ".github/workflows/build-apk.yml"
+  workflow_dispatch:
+    inputs:
+      api_url:
+        description: >
+          Backend URL the built app will call (baked in at build time — the
+          app can't be pointed elsewhere after this). Must be reachable from
+          the phone, so a deployed backend, or your computer's LAN IP with
+          the phone on the same Wi-Fi — not localhost/10.0.2.2, which only
+          resolve inside an emulator.
+        required: false
+        default: ""
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: mobile
+    env:
+      # Only set when this run came from workflow_dispatch with a value —
+      # an empty string here would override config.ts's own fallback logic.
+      EXPO_PUBLIC_API_URL: ${{ github.event.inputs.api_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: mobile/package-lock.json
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - uses: android-actions/setup-android@v3
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate native Android project
+        run: npx expo prebuild --platform android --no-install
+
+      - name: Cache Gradle
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: gradle-${{ hashFiles('mobile/android/gradle/wrapper/gradle-wrapper.properties') }}
+
+      - name: Build debug APK
+        working-directory: mobile/android
+        run: ./gradlew assembleDebug --no-daemon
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: exam-prep-debug-apk
+          path: mobile/android/app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error

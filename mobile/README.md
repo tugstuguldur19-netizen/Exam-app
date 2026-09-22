@@ -28,6 +28,33 @@ computer's LAN IP instead of localhost.
 - **Results** — score, and per-question correct/incorrect with the right
   answer revealed (only after submission).
 
+## Getting an installable APK
+
+This project can't build an Android APK from inside a sandboxed Claude Code
+session — neither a local Android SDK download nor EAS Build's cloud
+service is reachable from there. `.github/workflows/build-apk.yml` solves
+this by building on GitHub's own runners instead, which have full internet
+access and a preinstalled Android SDK:
+
+1. Push this repo to GitHub.
+2. Go to the **Actions** tab → **Build Android APK** → **Run workflow**.
+   Fill in `api_url` with a backend address your phone can actually reach
+   (a deployed backend, or your computer's LAN IP with the phone on the
+   same Wi-Fi — not `localhost`/`10.0.2.2`, which only resolve inside an
+   emulator/simulator, not on a real device). Leave it blank and the app
+   falls back to the emulator defaults instead.
+3. When the run finishes, download the `exam-prep-debug-apk` artifact and
+   install it on your phone (you'll need to allow installs from unknown
+   sources — this isn't a Play Store build).
+4. It also runs automatically on every push to `main`/`master` that
+   touches `mobile/`, using the emulator-default API URL — trigger it
+   manually (step 2) whenever you need a build pointed at a real backend.
+
+This is a **debug build**: signed with Android's auto-generated debug
+keystore, fine for installing on your own device, not for Play Store
+distribution (that needs a real release signing key — EAS Build's managed
+credentials are the easiest way to get one when you're ready).
+
 ## Design
 
 `src/theme.ts` is the single source of colors, spacing, radii, typography,
