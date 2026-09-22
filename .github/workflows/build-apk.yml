@@ -45,7 +45,12 @@ jobs:
           distribution: temurin
           java-version: "17"
 
-      - uses: android-actions/setup-android@v3
+      # ubuntu-latest ships a working Android SDK preinstalled (ANDROID_HOME
+      # etc. already set) — no separate SDK setup action needed. Only ensure
+      # licenses are accepted, since a runner-image update occasionally ships
+      # with a newer SDK component whose license hasn't been pre-accepted.
+      - name: Accept Android SDK licenses
+        run: yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses > /dev/null || true
 
       - name: Install dependencies
         run: npm ci
