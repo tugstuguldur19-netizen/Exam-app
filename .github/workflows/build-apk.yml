@@ -69,14 +69,25 @@ jobs:
             ~/.gradle/wrapper
           key: gradle-${{ hashFiles('mobile/android/gradle/wrapper/gradle-wrapper.properties') }}
 
-      - name: Build debug APK
+      - name: Build release APK (arm64 only, minified)
         working-directory: mobile/android
-        run: ./gradlew assembleDebug --no-daemon
+        # A debug, all-ABI build of this app is ~160MB (147MB of that is
+        # native .so libraries duplicated across armeabi-v7a/arm64-v8a/x86/
+        # x86_64). arm64-v8a alone covers effectively every real Android
+        # phone from the last ~8 years, and this app's own release build
+        # type already points its signingConfig at the debug key (Expo's
+        # default template), so this stays installable without a real
+        # signing key — just not a Play-Store-distributable build.
+        run: |
+          ./gradlew assembleRelease --no-daemon \
+            -PreactNativeArchitectures=arm64-v8a \
+            -Pandroid.enableMinifyInReleaseBuilds=true \
+            -Pandroid.enableShrinkResourcesInReleaseBuilds=true
 
       - uses: actions/upload-artifact@v4
         with:
-          name: exam-prep-debug-apk
-          path: mobile/android/app/build/outputs/apk/debug/app-debug.apk
+          name: exam-prep-apk
+          path: mobile/android/app/build/outputs/apk/release/app-release.apk
           if-no-files-found: error
 
       # Actions artifacts are stored on Azure blob storage, which isn't
@@ -89,7 +100,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           gh release create "apk-run${{ github.run_number }}" \
-            android/app/build/outputs/apk/debug/app-debug.apk \
-            --title "Debug APK (run ${{ github.run_number }})" \
-            --notes "Automated debug build from commit ${{ github.sha }}." \
+            android/app/build/outputs/apk/release/app-release.apk \
+            --title "APK (run ${{ github.run_number }})" \
+            --notes "Automated arm64 release build (debug-signed) from commit ${{ github.sha }}." \
             --repo "${{ github.repository }}"
