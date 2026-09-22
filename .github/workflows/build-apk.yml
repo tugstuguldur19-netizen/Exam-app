@@ -21,6 +21,9 @@ on:
         required: false
         default: ""
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -75,3 +78,18 @@ jobs:
           name: exam-prep-debug-apk
           path: mobile/android/app/build/outputs/apk/debug/app-debug.apk
           if-no-files-found: error
+
+      # Actions artifacts are stored on Azure blob storage, which isn't
+      # reachable everywhere GitHub itself is (some networks that allow
+      # github.com block *.blob.core.windows.net) — a GitHub Release asset
+      # is served from GitHub's own CDN instead, so it's a more universally
+      # downloadable copy of the same APK.
+      - name: Publish as a release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "apk-run${{ github.run_number }}" \
+            android/app/build/outputs/apk/debug/app-debug.apk \
+            --title "Debug APK (run ${{ github.run_number }})" \
+            --notes "Automated debug build from commit ${{ github.sha }}." \
+            --repo "${{ github.repository }}"
