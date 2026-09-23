@@ -43,17 +43,23 @@ access and a preinstalled Android SDK:
    same Wi-Fi — not `localhost`/`10.0.2.2`, which only resolve inside an
    emulator/simulator, not on a real device). Leave it blank and the app
    falls back to the emulator defaults instead.
-3. When the run finishes, download the `exam-prep-debug-apk` artifact and
-   install it on your phone (you'll need to allow installs from unknown
-   sources — this isn't a Play Store build).
+3. When the run finishes, open it and scroll to **Artifacts** → download
+   `exam-prep-apk` (a zip containing `app-release.apk`) → unzip → install
+   the APK on your phone (allow installs from unknown sources — this isn't
+   a Play Store build). You need to be logged into GitHub in the browser
+   you download from; a sandboxed Claude Code session can't download this
+   for you — Actions artifacts live on Azure blob storage, which such a
+   session's network policy blocks, but your own browser has no such
+   restriction.
 4. It also runs automatically on every push to `main`/`master` that
    touches `mobile/`, using the emulator-default API URL — trigger it
    manually (step 2) whenever you need a build pointed at a real backend.
 
-This is a **debug build**: signed with Android's auto-generated debug
-keystore, fine for installing on your own device, not for Play Store
-distribution (that needs a real release signing key — EAS Build's managed
-credentials are the easiest way to get one when you're ready).
+This is a **release build** (arm64-only, R8-minified — see the workflow
+for why) signed with Android's auto-generated debug keystore: fine for
+installing on your own device, not for Play Store distribution (that needs
+a real release signing key — EAS Build's managed credentials are the
+easiest way to get one when you're ready).
 
 ## Design
 

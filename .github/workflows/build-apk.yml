@@ -21,15 +21,9 @@ on:
         required: false
         default: ""
 
-permissions:
-  contents: write
-
-# Two runs racing to create/upload releases on the same repo appears to be
-# how run 6 and run 7 (a push-triggered run and a manual dispatch landing
-# within seconds of each other) both finished green with the release
-# object created but its APK asset silently missing. Serialize instead of
-# letting runs overlap — a genuinely rare case, but a queued extra minute
-# is cheap insurance against a repeat.
+# Avoids two runs landing close together and doing redundant work — not
+# load-bearing for correctness (see the note by upload-artifact below for
+# what that turned out to actually be about), just tidy.
 concurrency:
   group: build-apk
   cancel-in-progress: false
@@ -94,32 +88,19 @@ jobs:
             -Pandroid.enableMinifyInReleaseBuilds=true \
             -Pandroid.enableShrinkResourcesInReleaseBuilds=true
 
+      # This is the reliable way to get the APK out of CI: it has succeeded
+      # on every single run. (An earlier version of this workflow also
+      # tried publishing a GitHub Release with the APK attached, as a
+      # second retrieval path — both a hand-rolled `gh release` script and
+      # the well-established softprops/action-gh-release silently failed to
+      # attach the asset, on both solo and concurrent runs, while the
+      # release object itself was created fine. Two independent mechanisms
+      # failing the same way, plus an explicit 403 hit earlier trying to
+      # delete a release ("not permitted for this session type"), points at
+      # a policy restriction rather than a bug in either tool — dropped
+      # rather than keep trying to route around it.)
       - uses: actions/upload-artifact@v4
         with:
           name: exam-prep-apk
           path: mobile/android/app/build/outputs/apk/release/app-release.apk
           if-no-files-found: error
-
-      # Actions artifacts are stored on Azure blob storage, which isn't
-      # reachable everywhere GitHub itself is (some networks that allow
-      # github.com block *.blob.core.windows.net) — a GitHub Release asset
-      # is served from GitHub's own CDN instead, so it's a more universally
-      # downloadable copy of the same APK.
-      #
-      # Hand-rolled `gh release create` + `gh release upload` repeatedly
-      # reported success (including an explicit post-upload verification
-      # step) while the asset silently never attached, across both solo and
-      # concurrent runs. Switched to a well-established third-party action
-      # built specifically for this, to isolate whether that was a `gh` CLI
-      # issue or something failing regardless of mechanism.
-      - name: Publish as a release
-        uses: softprops/action-gh-release@v2
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: apk-run${{ github.run_number }}
-          name: APK (run ${{ github.run_number }})
-          body: Automated arm64 release build (debug-signed) from commit ${{ github.sha }}.
-          # uses: steps don't inherit defaults.run.working-directory (mobile/)
-          # — that only applies to run: steps — so this needs the full path.
-          files: mobile/android/app/build/outputs/apk/release/app-release.apk
