@@ -105,25 +105,21 @@ jobs:
       # github.com block *.blob.core.windows.net) — a GitHub Release asset
       # is served from GitHub's own CDN instead, so it's a more universally
       # downloadable copy of the same APK.
+      #
+      # Hand-rolled `gh release create` + `gh release upload` repeatedly
+      # reported success (including an explicit post-upload verification
+      # step) while the asset silently never attached, across both solo and
+      # concurrent runs. Switched to a well-established third-party action
+      # built specifically for this, to isolate whether that was a `gh` CLI
+      # issue or something failing regardless of mechanism.
       - name: Publish as a release
+        uses: softprops/action-gh-release@v2
         env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          set -euo pipefail
-          TAG="apk-run${{ github.run_number }}"
-          REPO="${{ github.repository }}"
-          gh release create "$TAG" \
-            --title "APK (run ${{ github.run_number }})" \
-            --notes "Automated arm64 release build (debug-signed) from commit ${{ github.sha }}." \
-            --repo "$REPO"
-          gh release upload "$TAG" \
-            android/app/build/outputs/apk/release/app-release.apk \
-            --repo "$REPO" --clobber
-          # `gh release create <tag> <file>` reported success once with the
-          # asset silently missing — verify it actually attached instead of
-          # trusting the exit code alone.
-          count=$(gh release view "$TAG" --repo "$REPO" --json assets --jq '.assets | length')
-          if [ "$count" -lt 1 ]; then
-            echo "::error::Release $TAG has no assets attached"
-            exit 1
-          fi
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: apk-run${{ github.run_number }}
+          name: APK (run ${{ github.run_number }})
+          body: Automated arm64 release build (debug-signed) from commit ${{ github.sha }}.
+          # uses: steps don't inherit defaults.run.working-directory (mobile/)
+          # — that only applies to run: steps — so this needs the full path.
+          files: mobile/android/app/build/outputs/apk/release/app-release.apk
