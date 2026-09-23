@@ -24,6 +24,16 @@ on:
 permissions:
   contents: write
 
+# Two runs racing to create/upload releases on the same repo appears to be
+# how run 6 and run 7 (a push-triggered run and a manual dispatch landing
+# within seconds of each other) both finished green with the release
+# object created but its APK asset silently missing. Serialize instead of
+# letting runs overlap — a genuinely rare case, but a queued extra minute
+# is cheap insurance against a repeat.
+concurrency:
+  group: build-apk
+  cancel-in-progress: false
+
 jobs:
   build:
     runs-on: ubuntu-latest
