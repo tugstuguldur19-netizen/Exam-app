@@ -99,8 +99,21 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh release create "apk-run${{ github.run_number }}" \
-            android/app/build/outputs/apk/release/app-release.apk \
+          set -euo pipefail
+          TAG="apk-run${{ github.run_number }}"
+          REPO="${{ github.repository }}"
+          gh release create "$TAG" \
             --title "APK (run ${{ github.run_number }})" \
             --notes "Automated arm64 release build (debug-signed) from commit ${{ github.sha }}." \
-            --repo "${{ github.repository }}"
+            --repo "$REPO"
+          gh release upload "$TAG" \
+            android/app/build/outputs/apk/release/app-release.apk \
+            --repo "$REPO" --clobber
+          # `gh release create <tag> <file>` reported success once with the
+          # asset silently missing — verify it actually attached instead of
+          # trusting the exit code alone.
+          count=$(gh release view "$TAG" --repo "$REPO" --json assets --jq '.assets | length')
+          if [ "$count" -lt 1 ]; then
+            echo "::error::Release $TAG has no assets attached"
+            exit 1
+          fi
