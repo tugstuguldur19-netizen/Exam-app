@@ -12,7 +12,7 @@ import {
 import { Ionicons } from "@expo/vector-icons";
 import type { NativeStackScreenProps } from "@react-navigation/native-stack";
 import type { RootStackParamList } from "../navigation/types";
-import { api, ApiError } from "../api/client";
+import { api, describeError } from "../api/client";
 import type { ExamDetail } from "../types";
 import { colors, radius, spacing, type, shadow } from "../theme";
 
@@ -30,7 +30,7 @@ export default function TakeExamScreen({ route, navigation }: Props) {
     api
       .getExam(examId)
       .then(setExam)
-      .catch((err) => Alert.alert("Couldn't load exam", err instanceof ApiError ? err.message : "Error"))
+      .catch((err) => Alert.alert("Couldn't load exam", describeError(err)))
       .finally(() => setLoading(false));
   }, [examId]);
 
@@ -69,7 +69,7 @@ export default function TakeExamScreen({ route, navigation }: Props) {
       await api.submitAttempt(attempt.attemptId, answers);
       navigation.replace("Results", { attemptId: attempt.attemptId });
     } catch (err) {
-      Alert.alert("Couldn't submit", err instanceof ApiError ? err.message : "Something went wrong");
+      Alert.alert("Couldn't submit", describeError(err));
     } finally {
       setSubmitting(false);
     }

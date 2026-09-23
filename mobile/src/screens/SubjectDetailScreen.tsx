@@ -5,7 +5,7 @@ import { useFocusEffect } from "@react-navigation/native";
 import type { NativeStackScreenProps } from "@react-navigation/native-stack";
 import * as DocumentPicker from "expo-document-picker";
 import type { RootStackParamList } from "../navigation/types";
-import { api, ApiError } from "../api/client";
+import { api, ApiError, describeError } from "../api/client";
 import type { ExamSummary } from "../types";
 import { colors, radius, spacing, type, shadow } from "../theme";
 
@@ -23,7 +23,7 @@ export default function SubjectDetailScreen({ route, navigation }: Props) {
     try {
       setExams(await api.listExams(subjectId));
     } catch (err) {
-      Alert.alert("Couldn't load exams", err instanceof ApiError ? err.message : "Check your connection");
+      Alert.alert("Couldn't load exams", describeError(err));
     } finally {
       setLoading(false);
     }
@@ -74,7 +74,7 @@ export default function SubjectDetailScreen({ route, navigation }: Props) {
     } catch (err) {
       Alert.alert(
         "Upload failed",
-        err instanceof ApiError ? err.message + (err.body?.warnings ? `\n${err.body.warnings.join("\n")}` : "") : "Something went wrong"
+        describeError(err) + (err instanceof ApiError && err.body?.warnings ? `\n${err.body.warnings.join("\n")}` : "")
       );
     } finally {
       setUploading(false);
@@ -86,7 +86,7 @@ export default function SubjectDetailScreen({ route, navigation }: Props) {
       await api.startAttempt(exam.id);
       navigation.navigate("TakeExam", { examId: exam.id, examTitle: exam.title });
     } catch (err) {
-      Alert.alert("Couldn't start exam", err instanceof ApiError ? err.message : "Something went wrong");
+      Alert.alert("Couldn't start exam", describeError(err));
     }
   };
 

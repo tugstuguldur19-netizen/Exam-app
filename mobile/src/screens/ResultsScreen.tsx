@@ -3,7 +3,7 @@ import { View, Text, ScrollView, Pressable, StyleSheet, ActivityIndicator, Alert
 import { Ionicons } from "@expo/vector-icons";
 import type { NativeStackScreenProps } from "@react-navigation/native-stack";
 import type { RootStackParamList } from "../navigation/types";
-import { api, ApiError } from "../api/client";
+import { api, describeError } from "../api/client";
 import type { AttemptResult } from "../types";
 import { colors, radius, spacing, type, shadow } from "../theme";
 
@@ -24,7 +24,7 @@ export default function ResultsScreen({ route, navigation }: Props) {
     api
       .getAttempt(attemptId)
       .then(setResult)
-      .catch((err) => Alert.alert("Couldn't load results", err instanceof ApiError ? err.message : "Error"))
+      .catch((err) => Alert.alert("Couldn't load results", describeError(err)))
       .finally(() => setLoading(false));
   }, [attemptId]);
 

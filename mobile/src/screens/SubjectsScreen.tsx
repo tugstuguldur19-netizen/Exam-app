@@ -14,7 +14,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { useFocusEffect } from "@react-navigation/native";
 import type { NativeStackScreenProps } from "@react-navigation/native-stack";
 import type { RootStackParamList } from "../navigation/types";
-import { api, ApiError } from "../api/client";
+import { api, describeError } from "../api/client";
 import type { Subject } from "../types";
 import { useAuth } from "../context/AuthContext";
 import { colors, radius, spacing, type, shadow, shadowStrong, accentForSubject } from "../theme";
@@ -33,7 +33,7 @@ export default function SubjectsScreen({ navigation }: Props) {
     try {
       setSubjects(await api.listSubjects());
     } catch (err) {
-      Alert.alert("Couldn't load subjects", err instanceof ApiError ? err.message : "Check your connection");
+      Alert.alert("Couldn't load subjects", describeError(err));
     } finally {
       setLoading(false);
       setRefreshing(false);
@@ -53,7 +53,7 @@ export default function SubjectsScreen({ navigation }: Props) {
       setPlanPickerSubject(null);
       await load();
     } catch (err) {
-      Alert.alert("Purchase failed", err instanceof ApiError ? err.message : "Something went wrong");
+      Alert.alert("Purchase failed", describeError(err));
     } finally {
       setPurchasingPlanId(null);
     }

@@ -31,6 +31,22 @@ export class ApiError extends Error {
   }
 }
 
+// A generic "Something went wrong" for every non-ApiError catch (a request
+// that never got an HTTP response at all — DNS failure, connection reset,
+// timeout) throws the real cause away right when it's most needed. Screens
+// should show this instead of a hardcoded fallback string.
+export function describeError(err: unknown): string {
+  if (err instanceof ApiError) return err.message;
+  if (err instanceof Error) return err.message || "Something went wrong";
+  return "Something went wrong";
+}
+
+// Generous, but bounded — free-tier hosting cold starts can genuinely take
+// tens of seconds, and a file upload on top of that longer still. Without
+// this, a hung connection looks identical to the app doing nothing, with
+// no error ever surfacing.
+const REQUEST_TIMEOUT_MS = 45000;
+
 async function request<T>(path: string, options: RequestInit = {}): Promise<T> {
   // A failed token read (e.g. no entry yet, or an unsupported storage backend)
   // should not block the request — treat it as unauthenticated rather than throwing.
@@ -41,7 +57,21 @@ async function request<T>(path: string, options: RequestInit = {}): Promise<T> {
     headers["Content-Type"] = "application/json";
   }
 
-  const res = await fetch(`${API_BASE_URL}${path}`, { ...options, headers });
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
+
+  let res: Response;
+  try {
+    res = await fetch(`${API_BASE_URL}${path}`, { ...options, headers, signal: controller.signal });
+  } catch (err) {
+    if (err instanceof Error && err.name === "AbortError") {
+      throw new Error("The server didn't respond in time. If it's been idle, it may be waking up — try again in a moment.");
+    }
+    throw err;
+  } finally {
+    clearTimeout(timeoutId);
+  }
+
   const isJson = res.headers.get("content-type")?.includes("application/json");
   const body = isJson ? await res.json().catch(() => null) : null;
 

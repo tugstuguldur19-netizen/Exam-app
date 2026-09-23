@@ -4,7 +4,7 @@ import { Ionicons } from "@expo/vector-icons";
 import type { NativeStackScreenProps } from "@react-navigation/native-stack";
 import type { RootStackParamList } from "../navigation/types";
 import { useAuth } from "../context/AuthContext";
-import { ApiError } from "../api/client";
+import { describeError } from "../api/client";
 import { colors, radius, spacing, type, shadow } from "../theme";
 
 type Props = NativeStackScreenProps<RootStackParamList, "Register">;
@@ -25,7 +25,7 @@ export default function RegisterScreen({ navigation }: Props) {
     try {
       await register(email.trim(), password, name.trim());
     } catch (err) {
-      Alert.alert("Registration failed", err instanceof ApiError ? err.message : "Something went wrong");
+      Alert.alert("Registration failed", describeError(err));
     } finally {
       setSubmitting(false);
     }

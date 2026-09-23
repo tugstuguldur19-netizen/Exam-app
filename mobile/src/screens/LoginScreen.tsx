@@ -4,7 +4,7 @@ import { Ionicons } from "@expo/vector-icons";
 import type { NativeStackScreenProps } from "@react-navigation/native-stack";
 import type { RootStackParamList } from "../navigation/types";
 import { useAuth } from "../context/AuthContext";
-import { ApiError } from "../api/client";
+import { describeError } from "../api/client";
 import { colors, radius, spacing, type, shadow } from "../theme";
 
 type Props = NativeStackScreenProps<RootStackParamList, "Login">;
@@ -20,7 +20,7 @@ export default function LoginScreen({ navigation }: Props) {
     try {
       await login(email.trim(), password);
     } catch (err) {
-      Alert.alert("Login failed", err instanceof ApiError ? err.message : "Something went wrong");
+      Alert.alert("Login failed", describeError(err));
     } finally {
       setSubmitting(false);
     }
