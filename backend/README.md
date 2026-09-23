@@ -15,6 +15,32 @@ npm run dev        # http://localhost:4000
 
 Demo login: `demo@example.com` / `password123`
 
+## Deploying for real-device testing
+
+`render.yaml` at the repo root is a [Render](https://render.com) Blueprint —
+enough to get a real, internet-reachable URL for testing the mobile app on
+an actual phone, without a credit card:
+
+1. On [render.com](https://render.com), sign up (or log in) and connect
+   your GitHub account.
+2. **New** → **Blueprint** → pick this repo. Render reads `render.yaml`
+   and proposes one service (`exam-prep-backend`); click **Apply**.
+3. Wait for the first deploy to finish, then copy the service's URL
+   (`https://exam-prep-backend-xxxx.onrender.com`).
+4. Use that URL as the `api_url` input when manually triggering the
+   `Build Android APK` GitHub Actions workflow (see `mobile/README.md`) —
+   that's what makes the installed app able to actually reach this backend.
+
+**This is a testing setup, not production**: Render's free tier has no
+persistent disk, so the SQLite database resets on every redeploy and every
+time the service spins back up from being idle (free services sleep after
+15 minutes of no traffic, and cold-start on the next request — expect the
+first request after a while to be slow). `npm run seed` reruns on every
+start specifically so the 3 starter subjects and demo login always come
+back; anything else you created (extra accounts, uploaded exams,
+subscriptions) won't survive a restart. Good enough to click through the
+app for real; not where you'd point a real user's install.
+
 ## Tests
 
 ```bash
