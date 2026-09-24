@@ -4,6 +4,7 @@ import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 import type { RootStackParamList, TabParamList } from "./types";
 import { useAuth } from "../context/AuthContext";
 import LoginScreen from "../screens/LoginScreen";
@@ -38,6 +39,9 @@ const TAB_ICONS: Record<keyof TabParamList, [IconName, IconName]> = {
 };
 
 function Tabs() {
+  // Explicit height: the default (49pt) squeezes the label under the icon so
+  // Cyrillic descenders get clipped.
+  const insets = useSafeAreaInsets();
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
@@ -45,7 +49,13 @@ function Tabs() {
         tabBarActiveTintColor: colors.primary,
         tabBarInactiveTintColor: colors.textMuted,
         tabBarLabelStyle: { fontSize: 11, fontWeight: "600", lineHeight: 15 },
-        tabBarStyle: { backgroundColor: colors.surface, borderTopColor: colors.border },
+        tabBarStyle: {
+          backgroundColor: colors.surface,
+          borderTopColor: colors.border,
+          height: 64 + insets.bottom,
+          paddingTop: 4,
+          paddingBottom: 4 + insets.bottom,
+        },
         tabBarIcon: ({ focused, color, size }) => (
           <Ionicons name={TAB_ICONS[route.name][focused ? 0 : 1]} size={size} color={color} />
         ),
