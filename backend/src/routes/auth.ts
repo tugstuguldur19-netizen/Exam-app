@@ -1,10 +1,11 @@
 import { Router } from "express";
 import bcrypt from "bcryptjs";
-import jwt from "jsonwebtoken";
 import { rateLimit } from "express-rate-limit";
 import { z } from "zod";
 import { prisma } from "../lib/prisma";
-import { env } from "../lib/env";
+import { HttpError, zodMessage } from "../lib/http";
+import { AuthedRequest, issueToken, requireAuth } from "../middleware/auth";
+import { activeSubscriptions } from "../services/access";
 
 export const authRouter = Router();
 
@@ -16,61 +17,110 @@ const authLimiter = rateLimit({
   limit: 20,
   standardHeaders: true,
   legacyHeaders: false,
+  message: { error: "Хэт олон оролдлого хийлээ. Түр хүлээгээд дахин оролдоно уу.", code: "RATE_LIMITED" },
 });
-authRouter.use(authLimiter);
+
+const email = z
+  .string({ required_error: "И-мэйл хаягаа оруулна уу." })
+  .trim()
+  .toLowerCase()
+  .email("И-мэйл хаяг буруу байна.");
 
 const registerSchema = z.object({
-  email: z.string().email(),
-  password: z.string().min(8),
-  name: z.string().min(1),
-});
-
-authRouter.post("/register", async (req, res) => {
-  const parsed = registerSchema.safeParse(req.body);
-  if (!parsed.success) {
-    return res.status(400).json({ error: parsed.error.flatten() });
-  }
-  const { email, password, name } = parsed.data;
-
-  const existing = await prisma.user.findUnique({ where: { email } });
-  if (existing) {
-    return res.status(409).json({ error: "Email already registered" });
-  }
-
-  const passwordHash = await bcrypt.hash(password, 10);
-  const user = await prisma.user.create({
-    data: { email, passwordHash, name },
-  });
-
-  const token = issueToken(user.id);
-  res.status(201).json({ token, user: { id: user.id, email: user.email, name: user.name } });
+  email,
+  password: z
+    .string({ required_error: "Нууц үгээ оруулна уу." })
+    .min(8, "Нууц үг хамгийн багадаа 8 тэмдэгт байна.")
+    .max(200, "Нууц үг хэт урт байна."),
+  name: z
+    .string({ required_error: "Нэрээ оруулна уу." })
+    .trim()
+    .min(1, "Нэрээ оруулна уу.")
+    .max(80, "Нэр хэт урт байна."),
 });
 
 const loginSchema = z.object({
-  email: z.string().email(),
-  password: z.string().min(1),
+  email,
+  password: z.string({ required_error: "Нууц үгээ оруулна уу." }).min(1, "Нууц үгээ оруулна уу."),
 });
 
-authRouter.post("/login", async (req, res) => {
-  const parsed = loginSchema.safeParse(req.body);
-  if (!parsed.success) {
-    return res.status(400).json({ error: parsed.error.flatten() });
+const publicUser = (u: { id: string; email: string; name: string; createdAt: Date }) => ({
+  id: u.id,
+  email: u.email,
+  name: u.name,
+  createdAt: u.createdAt,
+});
+
+authRouter.post("/register", authLimiter, async (req, res) => {
+  const parsed = registerSchema.safeParse(req.body);
+  if (!parsed.success) throw new HttpError(400, zodMessage(parsed.error), "VALIDATION");
+  const { email, password, name } = parsed.data;
+
+  if (await prisma.user.findUnique({ where: { email } })) {
+    throw new HttpError(409, "Энэ и-мэйл хаягаар бүртгэл үүссэн байна.", "EMAIL_TAKEN");
   }
+  const user = await prisma.user.create({
+    data: { email, name, passwordHash: await bcrypt.hash(password, 10) },
+  });
+  res.status(201).json({ token: issueToken(user.id), user: publicUser(user) });
+});
+
+authRouter.post("/login", authLimiter, async (req, res) => {
+  const parsed = loginSchema.safeParse(req.body);
+  if (!parsed.success) throw new HttpError(400, zodMessage(parsed.error), "VALIDATION");
   const { email, password } = parsed.data;
 
   const user = await prisma.user.findUnique({ where: { email } });
-  if (!user) {
-    return res.status(401).json({ error: "Invalid email or password" });
+  if (!user || !(await bcrypt.compare(password, user.passwordHash))) {
+    throw new HttpError(401, "И-мэйл эсвэл нууц үг буруу байна.", "INVALID_CREDENTIALS");
   }
-  const valid = await bcrypt.compare(password, user.passwordHash);
-  if (!valid) {
-    return res.status(401).json({ error: "Invalid email or password" });
-  }
-
-  const token = issueToken(user.id);
-  res.json({ token, user: { id: user.id, email: user.email, name: user.name } });
+  res.json({ token: issueToken(user.id), user: publicUser(user) });
 });
 
-function issueToken(userId: string): string {
-  return jwt.sign({ sub: userId }, env.jwtSecret, { expiresIn: "30d" });
-}
+authRouter.get("/me", requireAuth, async (req: AuthedRequest, res) => {
+  const user = await prisma.user.findUniqueOrThrow({ where: { id: req.userId! } });
+  const subs = await activeSubscriptions(user.id);
+  const subjects = await prisma.subject.findMany({
+    where: { id: { in: [...subs.keys()] } },
+    select: { id: true, name: true, slug: true },
+    orderBy: { sortOrder: "asc" },
+  });
+  res.json({
+    user: publicUser(user),
+    subscriptions: subjects.map((s) => ({
+      subjectId: s.id,
+      subjectName: s.name,
+      subjectSlug: s.slug,
+      planName: subs.get(s.id)!.planName,
+      endAt: subs.get(s.id)!.endAt,
+    })),
+  });
+});
+
+const updateSchema = z.object({ name: registerSchema.shape.name });
+
+authRouter.patch("/me", requireAuth, async (req: AuthedRequest, res) => {
+  const parsed = updateSchema.safeParse(req.body);
+  if (!parsed.success) throw new HttpError(400, zodMessage(parsed.error), "VALIDATION");
+  const user = await prisma.user.update({ where: { id: req.userId! }, data: { name: parsed.data.name } });
+  res.json({ user: publicUser(user) });
+});
+
+const passwordSchema = z.object({
+  currentPassword: z.string({ required_error: "Одоогийн нууц үгээ оруулна уу." }).min(1, "Одоогийн нууц үгээ оруулна уу."),
+  newPassword: registerSchema.shape.password,
+});
+
+authRouter.post("/change-password", authLimiter, requireAuth, async (req: AuthedRequest, res) => {
+  const parsed = passwordSchema.safeParse(req.body);
+  if (!parsed.success) throw new HttpError(400, zodMessage(parsed.error), "VALIDATION");
+  const user = await prisma.user.findUniqueOrThrow({ where: { id: req.userId! } });
+  if (!(await bcrypt.compare(parsed.data.currentPassword, user.passwordHash))) {
+    throw new HttpError(400, "Одоогийн нууц үг буруу байна.", "INVALID_CREDENTIALS");
+  }
+  await prisma.user.update({
+    where: { id: user.id },
+    data: { passwordHash: await bcrypt.hash(parsed.data.newPassword, 10) },
+  });
+  res.json({ ok: true });
+});

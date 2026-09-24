@@ -8,6 +8,10 @@ if (env.jwtSecret === "dev-secret-change-me") {
   );
 }
 
+// Log instead of crashing the process on a stray rejection — one bad request
+// shouldn't take the whole server (and every in-flight upload) down with it.
+process.on("unhandledRejection", (reason) => console.error("Unhandled rejection:", reason));
+
 createApp().listen(env.port, () => {
   console.log(`exam-prep backend listening on :${env.port}`);
 });

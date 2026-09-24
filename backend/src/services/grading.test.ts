@@ -14,6 +14,10 @@ describe("normalizeAnswer", () => {
     expect(normalizeAnswer("Café Résumé")).toBe("café résumé");
   });
 
+  it("lowercases Mongolian Cyrillic, including Ө and Ү", () => {
+    expect(normalizeAnswer("  ӨВӨЛ, Үүр! ")).toBe("өвөл үүр");
+  });
+
   it("keeps digits", () => {
     expect(normalizeAnswer("Answer: 42!")).toBe("answer 42");
   });

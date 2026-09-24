@@ -3,7 +3,7 @@ import { env } from "../lib/env";
 
 export function normalizeAnswer(text: string): string {
   return text
-    .toLowerCase()
+    .toLocaleLowerCase("mn")
     .trim()
     .replace(/[^\p{L}\p{N}\s]/gu, "")
     .replace(/\s+/g, " ");
@@ -36,12 +36,13 @@ export async function shortAnswerMatchesSemantically(
 
   try {
     const message = await anthropic.messages.create({
-      model: "claude-sonnet-5",
-      max_tokens: 16,
+      model: "claude-opus-5",
+      max_tokens: 2048,
       system:
         "You grade a single short-answer exam response. Judge whether the student's " +
         'answer is substantively correct compared to the reference answer — reward the ' +
-        "same meaning in different words, don't require exact phrasing. " +
+        "same meaning in different words, don't require exact phrasing. The exam may be " +
+        "in Mongolian or English. " +
         'Respond with ONLY "true" or "false", nothing else.',
       messages: [
         {
@@ -52,7 +53,7 @@ export async function shortAnswerMatchesSemantically(
     });
     const textBlock = message.content.find((b) => b.type === "text");
     if (!textBlock || textBlock.type !== "text") return null;
-    const verdict = textBlock.text.trim().toLowerCase();
+    const verdict = textBlock.text.trim().toLocaleLowerCase("mn");
     if (verdict.startsWith("true")) return true;
     if (verdict.startsWith("false")) return false;
     return null;

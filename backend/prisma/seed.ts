@@ -1,53 +1,81 @@
 import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcryptjs";
+import { PLAN_TEMPLATES, SUBJECTS } from "./seedData";
 
 const prisma = new PrismaClient();
-
-const STARTER_SUBJECTS = [
-  { slug: "math", name: "Mathematics", description: "Algebra, geometry, and calculus fundamentals." },
-  { slug: "biology", name: "Biology", description: "Cell biology, genetics, and ecology." },
-  { slug: "english", name: "English", description: "Reading comprehension, grammar, and writing." },
-];
-
-const PLAN_TEMPLATES = [
-  { name: "1 Month", durationDays: 30, priceCents: 499 },
-  { name: "3 Months", durationDays: 90, priceCents: 1299 },
-  { name: "1 Year", durationDays: 365, priceCents: 3999 },
-];
+const LABELS = ["A", "B", "C", "D"];
 
 async function main() {
-  for (let i = 0; i < STARTER_SUBJECTS.length; i++) {
-    const s = STARTER_SUBJECTS[i];
-    const subject = await prisma.subject.upsert({
-      where: { slug: s.slug },
-      update: {},
-      create: { ...s, isStarter: true, sortOrder: i },
+  let questionCount = 0;
+
+  for (const [si, s] of SUBJECTS.entries()) {
+    const subjectId = `subj_${s.key}`;
+    await prisma.subject.upsert({
+      where: { id: subjectId },
+      update: { name: s.name, description: s.description, sortOrder: si, slug: s.key },
+      create: { id: subjectId, slug: s.key, name: s.name, description: s.description, sortOrder: si },
     });
 
-    for (const plan of PLAN_TEMPLATES) {
-      const existing = await prisma.subscriptionPlan.findFirst({
-        where: { subjectId: subject.id, name: plan.name },
+    for (const p of PLAN_TEMPLATES) {
+      const planId = `plan_${s.key}_${p.key}`;
+      await prisma.subscriptionPlan.upsert({
+        where: { id: planId },
+        update: { name: p.name, durationDays: p.durationDays, price: p.price },
+        create: { id: planId, subjectId, name: p.name, durationDays: p.durationDays, price: p.price },
       });
-      if (!existing) {
-        await prisma.subscriptionPlan.create({ data: { ...plan, subjectId: subject.id } });
+    }
+
+    for (const [li, l] of s.lessons.entries()) {
+      const lessonId = `les_${s.key}_${l.key}`;
+      await prisma.lesson.upsert({
+        where: { id: lessonId },
+        update: { name: l.name, description: l.description, sortOrder: li },
+        create: { id: lessonId, subjectId, name: l.name, description: l.description, sortOrder: li },
+      });
+
+      for (const [qi, q] of l.questions.entries()) {
+        const questionId = `q_${s.key}_${l.key}_${String(qi + 1).padStart(2, "0")}`;
+        const fields = {
+          lessonId,
+          order: qi,
+          type: "MULTIPLE_CHOICE" as const,
+          prompt: q.q,
+          explanation: q.explanation,
+          isTrial: Boolean(q.trial),
+        };
+        await prisma.question.upsert({
+          where: { id: questionId },
+          update: fields,
+          create: { id: questionId, ...fields },
+        });
+
+        for (const [ci, text] of q.choices.entries()) {
+          const choiceId = `${questionId}_${LABELS[ci]}`;
+          const choice = { order: ci, label: LABELS[ci], text, isCorrect: ci === q.answer };
+          await prisma.choice.upsert({
+            where: { id: choiceId },
+            update: choice,
+            create: { id: choiceId, questionId, ...choice },
+          });
+        }
+        questionCount++;
       }
     }
   }
 
   const demoEmail = "demo@example.com";
-  const existingUser = await prisma.user.findUnique({ where: { email: demoEmail } });
-  if (!existingUser) {
-    await prisma.user.create({
-      data: {
-        email: demoEmail,
-        name: "Demo Student",
-        passwordHash: await bcrypt.hash("password123", 10),
-      },
-    });
-    console.log(`Seeded demo user: ${demoEmail} / password123`);
-  }
+  await prisma.user.upsert({
+    where: { email: demoEmail },
+    update: {},
+    create: {
+      id: "user_demo",
+      email: demoEmail,
+      name: "Туршилтын хэрэглэгч",
+      passwordHash: await bcrypt.hash("password123", 10),
+    },
+  });
 
-  console.log("Seed complete: 3 starter subjects with 3 plans each.");
+  console.log(`Seed complete: ${SUBJECTS.length} subjects, ${questionCount} bank questions, demo user ${demoEmail}.`);
 }
 
 main()

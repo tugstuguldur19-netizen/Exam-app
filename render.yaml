@@ -1,13 +1,29 @@
+# Render Blueprint: one free web service + one free PostgreSQL database.
+# Note: Render's free Postgres expires 30 days after creation — upgrade the
+# database plan (or recreate it) to keep data longer.
+databases:
+  - name: exam-prep-db
+    plan: free
+    databaseName: examprep
+    user: examprep
+
 services:
   - type: web
     name: exam-prep-backend
     runtime: node
     plan: free
     rootDir: backend
-    buildCommand: npm install && npx prisma generate && npx prisma migrate deploy && npm run build
-    startCommand: npm run seed && npm start
+    healthCheckPath: /health
+    buildCommand: npm install && npx prisma generate && npm run build
+    # Migrations run at start (the database is always reachable then), and the
+    # seed is idempotent — it upserts the curated subjects/lessons/questions.
+    startCommand: npx prisma migrate deploy && npm run seed && npm start
     envVars:
       - key: JWT_SECRET
         generateValue: true
       - key: DATABASE_URL
-        value: file:./prisma/prod.db
+        fromDatabase:
+          name: exam-prep-db
+          property: connectionString
+      - key: ANTHROPIC_API_KEY
+        sync: false

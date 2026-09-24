@@ -1,5 +1,5 @@
 datasource db {
-  provider = "sqlite"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
@@ -15,131 +15,186 @@ model User {
   createdAt    DateTime @default(now())
 
   subscriptions Subscription[]
-  uploadedExams Exam[]
-  attempts      ExamAttempt[]
+  uploads       Upload[]
+  sessions      TestSession[]
 }
 
-// A subject is a gated content area (e.g. "Biology"). The starter catalog
-// ships with 3; more can be added later without code changes.
+// Curated content (subjects, lessons, bank questions) uses fixed ids set by
+// the seed script, so reseeding never changes an id a client may hold.
 model Subject {
-  id          String  @id @default(cuid())
-  slug        String  @unique
+  id          String @id
+  slug        String @unique
   name        String
   description String
-  isStarter   Boolean @default(true)
-  sortOrder   Int     @default(0)
+  sortOrder   Int    @default(0)
 
+  lessons       Lesson[]
   plans         SubscriptionPlan[]
   subscriptions Subscription[]
-  exams         Exam[]
+  sessions      TestSession[]
 }
 
-// A purchasable duration for a subject, e.g. 30 days / 90 days / 365 days.
+model Lesson {
+  id          String  @id
+  subjectId   String
+  subject     Subject @relation(fields: [subjectId], references: [id], onDelete: Cascade)
+  name        String
+  description String?
+  sortOrder   Int     @default(0)
+
+  questions Question[]
+  sessions  TestSession[]
+
+  @@index([subjectId])
+}
+
 model SubscriptionPlan {
-  id            String  @id @default(cuid())
-  subjectId     String
-  subject       Subject @relation(fields: [subjectId], references: [id])
-  name          String
-  durationDays  Int
-  priceCents    Int
-  currency      String  @default("USD")
+  id           String  @id
+  subjectId    String
+  subject      Subject @relation(fields: [subjectId], references: [id], onDelete: Cascade)
+  name         String
+  durationDays Int
+  // Whole currency units (MNT has no minor unit in everyday pricing).
+  price        Int
+  currency     String  @default("MNT")
 
   subscriptions Subscription[]
 }
 
-// A user's time-boxed access to one subject. Access is granted while
-// now() is between startAt and endAt (see subscriptionGate middleware).
+// Time-boxed access to one subject's paid tests (lesson, mixed, mistakes).
+// Any active subscription also lifts the free weekly upload limit.
 model Subscription {
-  id        String            @id @default(cuid())
+  id        String           @id @default(cuid())
   userId    String
-  user      User              @relation(fields: [userId], references: [id])
+  user      User             @relation(fields: [userId], references: [id], onDelete: Cascade)
   subjectId String
-  subject   Subject           @relation(fields: [subjectId], references: [id])
+  subject   Subject          @relation(fields: [subjectId], references: [id], onDelete: Cascade)
   planId    String
-  plan      SubscriptionPlan  @relation(fields: [planId], references: [id])
-  startAt   DateTime          @default(now())
+  plan      SubscriptionPlan @relation(fields: [planId], references: [id], onDelete: Cascade)
+  startAt   DateTime         @default(now())
   endAt     DateTime
-  status    String            @default("active") // active | canceled | expired
-  createdAt DateTime          @default(now())
+  createdAt DateTime         @default(now())
 
   @@index([userId, subjectId])
 }
 
-// An exam generated from an uploaded .docx file.
-// status: PROCESSING | READY | FAILED (SQLite has no native enum support)
-model Exam {
-  id             String     @id @default(cuid())
-  subjectId      String
-  subject        Subject    @relation(fields: [subjectId], references: [id])
-  uploadedById   String
-  uploadedBy     User       @relation(fields: [uploadedById], references: [id])
+// A .docx test a user uploaded — private to them, independent of subjects.
+model Upload {
+  id             String   @id @default(cuid())
+  userId         String
+  user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   title          String
   sourceFileName String
-  status         String     @default("PROCESSING")
-  parseWarnings  String? // JSON-encoded string[] surfaced to the uploader
-  extractionMode String? // "heuristic" | "ai" | "hybrid"
-  createdAt      DateTime   @default(now())
+  parseWarnings  String[]
+  extractionMode String
+  createdAt      DateTime @default(now())
+  // Soft delete: deleted uploads disappear from the list but still count
+  // toward the free weekly upload limit.
+  deletedAt      DateTime?
 
   questions Question[]
-  attempts  ExamAttempt[]
+  sessions  TestSession[]
+
+  @@index([userId, createdAt])
 }
 
-// type: MULTIPLE_CHOICE | SHORT_ANSWER
-model Question {
-  id           String       @id @default(cuid())
-  examId       String
-  exam         Exam         @relation(fields: [examId], references: [id], onDelete: Cascade)
-  order        Int
-  type         String
-  prompt       String
-  // For SHORT_ANSWER, the accepted answer text (graded via normalized match).
-  correctText  String?
-  points       Int          @default(1)
+enum QuestionType {
+  MULTIPLE_CHOICE
+  SHORT_ANSWER
+}
 
-  choices   Choice[]
-  responses AnswerResponse[]
+// Exactly one of lessonId (curated bank) / uploadId (user upload) is set.
+model Question {
+  id          String       @id @default(cuid())
+  lessonId    String?
+  lesson      Lesson?      @relation(fields: [lessonId], references: [id], onDelete: Cascade)
+  uploadId    String?
+  upload      Upload?      @relation(fields: [uploadId], references: [id], onDelete: Cascade)
+  order       Int          @default(0)
+  type        QuestionType
+  prompt      String
+  // SHORT_ANSWER only: the accepted answer (normalized exact match, then
+  // optional semantic check).
+  correctText String?
+  explanation String?
+  // Included in the subject's free trial test.
+  isTrial     Boolean      @default(false)
+  points      Int          @default(1)
+
+  choices Choice[]
+  answers Answer[]
+
+  @@index([lessonId])
+  @@index([uploadId])
 }
 
 model Choice {
   id         String   @id @default(cuid())
   questionId String
   question   Question @relation(fields: [questionId], references: [id], onDelete: Cascade)
-  label      String // "A", "B", "C", "D"
+  order      Int      @default(0)
+  label      String
   text       String
   isCorrect  Boolean  @default(false)
 
-  responses AnswerResponse[]
+  answers Answer[]
+
+  @@index([questionId])
 }
 
-// status: IN_PROGRESS | SUBMITTED
-model ExamAttempt {
+enum TestMode {
+  TRIAL
+  LESSON
+  MIXED
+  MISTAKES
+  UPLOAD
+}
+
+enum SessionStatus {
+  IN_PROGRESS
+  SUBMITTED
+}
+
+// One generated test instance. questionIds fixes which questions (and in
+// what order) this session contains, since lesson/mixed/mistakes tests are
+// randomly drawn at creation time.
+model TestSession {
   id          String        @id @default(cuid())
-  examId      String
-  exam        Exam          @relation(fields: [examId], references: [id])
   userId      String
-  user        User          @relation(fields: [userId], references: [id])
-  status      String        @default("IN_PROGRESS")
+  user        User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  mode        TestMode
+  title       String
+  subjectId   String?
+  subject     Subject?      @relation(fields: [subjectId], references: [id], onDelete: Cascade)
+  lessonId    String?
+  lesson      Lesson?       @relation(fields: [lessonId], references: [id], onDelete: Cascade)
+  uploadId    String?
+  upload      Upload?       @relation(fields: [uploadId], references: [id], onDelete: Cascade)
+  questionIds String[]
+  status      SessionStatus @default(IN_PROGRESS)
   startedAt   DateTime      @default(now())
   submittedAt DateTime?
+  durationSec Int?
   scorePoints Int?
   totalPoints Int?
 
-  responses AnswerResponse[]
+  answers Answer[]
 
-  @@index([userId, examId])
+  @@index([userId, submittedAt])
 }
 
-model AnswerResponse {
-  id           String       @id @default(cuid())
-  attemptId    String
-  attempt      ExamAttempt  @relation(fields: [attemptId], references: [id], onDelete: Cascade)
-  questionId   String
-  question     Question     @relation(fields: [questionId], references: [id])
-  choiceId     String?
-  choice       Choice?      @relation(fields: [choiceId], references: [id])
-  answerText   String?
-  isCorrect    Boolean?
+model Answer {
+  id            String      @id @default(cuid())
+  sessionId     String
+  session       TestSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  questionId    String
+  question      Question    @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  choiceId      String?
+  choice        Choice?     @relation(fields: [choiceId], references: [id], onDelete: SetNull)
+  answerText    String?
+  isCorrect     Boolean?
   pointsAwarded Int         @default(0)
 
-  @@unique([attemptId, questionId])
+  @@unique([sessionId, questionId])
+  @@index([questionId])
 }
