@@ -1,6 +1,7 @@
 import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcryptjs";
 import { PLAN_TEMPLATES, SUBJECTS } from "./seedData";
+import { EXTRA_QUESTIONS } from "./seedDataExtra";
 
 const prisma = new PrismaClient();
 // Displayed labels are Mongolian (А Б В Г); ids keep Latin suffixes so they
@@ -36,7 +37,8 @@ async function main() {
         create: { id: lessonId, subjectId, name: l.name, description: l.description, sortOrder: li },
       });
 
-      for (const [qi, q] of l.questions.entries()) {
+      const questions = [...l.questions, ...(EXTRA_QUESTIONS[`${s.key}/${l.key}`] ?? [])];
+      for (const [qi, q] of questions.entries()) {
         const questionId = `q_${s.key}_${l.key}_${String(qi + 1).padStart(2, "0")}`;
         const fields = {
           lessonId,
