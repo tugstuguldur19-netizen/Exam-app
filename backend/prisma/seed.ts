@@ -3,7 +3,10 @@ import bcrypt from "bcryptjs";
 import { PLAN_TEMPLATES, SUBJECTS } from "./seedData";
 
 const prisma = new PrismaClient();
-const LABELS = ["A", "B", "C", "D"];
+// Displayed labels are Mongolian (А Б В Г); ids keep Latin suffixes so they
+// stay stable and ASCII.
+const LABELS = ["А", "Б", "В", "Г"];
+const ID_SUFFIX = ["A", "B", "C", "D"];
 
 async function main() {
   let questionCount = 0;
@@ -50,7 +53,7 @@ async function main() {
         });
 
         for (const [ci, text] of q.choices.entries()) {
-          const choiceId = `${questionId}_${LABELS[ci]}`;
+          const choiceId = `${questionId}_${ID_SUFFIX[ci]}`;
           const choice = { order: ci, label: LABELS[ci], text, isCorrect: ci === q.answer };
           await prisma.choice.upsert({
             where: { id: choiceId },

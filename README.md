@@ -1,22 +1,34 @@
-# Exam Prep
+# Сорил — exam prep app
 
-A mobile exam-prep app: subjects are time-based subscriptions, and users can
-upload a `.docx` exam file to have the app turn it into an interactive,
-auto-graded exam.
+A Mongolian-language mobile app for exam preparation.
 
-- **`backend/`** — Node/TypeScript/Express/Prisma API. See `backend/README.md`
-  for setup, the data model, and the docx→exam parsing pipeline.
-- **`mobile/`** — Expo (React Native/TypeScript) app. See `mobile/README.md`
-  for setup and a screen-by-screen tour.
+- **Subjects → lessons → tests.** Three starter subjects (Математик, Биологи,
+  Англи хэл), each split into lessons with a curated question bank and an
+  explanation for every answer.
+- **Free trial test** in every subject. Everything else in a subject (lesson
+  tests with a chosen number of questions, mixed tests with a per-lesson
+  count, "fix my mistakes" review) needs a time-based subscription to that
+  subject (1 month / 3 months / 1 year, priced in ₮).
+- **Upload your own .docx test** — independent of subjects. Free accounts get
+  one upload per rolling week; any active subscription makes it unlimited.
+  The parser understands Mongolian layouts (А) Б) В) Г) options,
+  `Хариулт:` / `Тайлбар:` lines, answer keys like `1-Б 2-В`).
+- **Progress**: streak, last-7-days activity, accuracy per subject and lesson,
+  weakest lesson hint, full test history with per-question review and retake.
+
+| | |
+|---|---|
+| `backend/` | Node/TypeScript, Express 5, Prisma, PostgreSQL — see `backend/README.md` |
+| `mobile/` | Expo (React Native/TypeScript) — see `mobile/README.md` |
 
 ## Quick start
 
 ```bash
-# Terminal 1 — backend
+# Terminal 1 — backend (needs a local PostgreSQL, see backend/README.md)
 cd backend
 npm install
 cp .env.example .env
-npx prisma migrate dev --name init
+npx prisma migrate deploy
 npm run seed
 npm run dev
 
@@ -28,38 +40,9 @@ npm start
 
 Demo login: `demo@example.com` / `password123`.
 
-## What's here vs. what's still a placeholder
+## Still a placeholder
 
-**Working end to end** (verified against a running backend): register/login,
-subscribing to a subject (time-boxed access), uploading a `.docx` exam,
-parsing it into multiple-choice/short-answer questions, taking the exam, and
-auto-grading on submit with results revealed after.
-
-**Placeholder, called out in `backend/README.md`**: subscription "purchase"
-is mocked (grants access with no real payment) — wire up RevenueCat or native
-StoreKit/Play Billing before charging real money. SQLite is for local dev;
-switch to Postgres for production. No password reset/email verification yet.
-
-## Product decisions made without checking back
-
-Since you said to fill in the rest and give feedback later, here's what I
-picked and why, so you can correct any of it:
-
-- **3 starter subjects**: Mathematics, Biology, English — generic placeholders,
-  easy to rename/replace/add to in `backend/prisma/seed.ts` (just data, no
-  code changes needed for more subjects later).
-- **Subscription plans**: 1/3/12 months per subject, priced $4.99/$12.99/$39.99,
-  as a starting point — trivial to change in the same seed file.
-- **Subscriptions are per-subject**, not a single account-wide plan — matches
-  "accounts are time based subscriptions for each subject" literally. If you
-  actually want bundle pricing (all 3 for less than buying separately), that's
-  a straightforward addition to the plan model.
-- **Exam grading**: multiple-choice is exact-match. Short-answer tries an
-  exact normalized match first, then falls back to Claude judging whether
-  the answer is substantively correct if that fails — but only when
-  `ANTHROPIC_API_KEY` is set; without a key it's exact-match only.
-- **Docx parsing** handles the common exam layout (numbered questions,
-  `A)/B)/C)/D)` options, inline `Answer:` lines or a trailing answer key) via
-  regex, with an optional Claude-based fallback for messier documents if
-  `ANTHROPIC_API_KEY` is set. Anything it can't confidently grade is kept but
-  marked ungraded rather than guessed at.
+**Payments are mocked**: "buying" a plan activates it immediately (the app
+says so). Hook up QPay / a card processor and create subscriptions from its
+webhook before charging real money. No password reset or email verification
+yet.

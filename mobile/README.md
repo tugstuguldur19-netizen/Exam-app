@@ -1,4 +1,4 @@
-# Exam Prep Mobile App
+# Сорил mobile app
 
 Expo (React Native + TypeScript) client for the exam-prep backend.
 
@@ -17,16 +17,21 @@ computer's LAN IP instead of localhost.
 
 ## Screens
 
-- **Login / Register** — email + password, JWT stored in `expo-secure-store`.
-- **Subjects** — the 3 starter subjects, each showing subscription status
-  (locked/"Subscribe" vs. active-until-date/"Open"). Subscribing shows a plan
-  picker (1/3/12 months) and calls the mock purchase endpoint.
-- **Subject detail** — lists exams generated for that subject and an
-  "Upload .docx exam" button (`expo-document-picker` → multipart upload).
-- **Take exam** — renders multiple-choice and short-answer questions, collects
-  answers, submits for grading.
-- **Results** — score, and per-question correct/incorrect with the right
-  answer revealed (only after submission).
+The whole UI is in Mongolian. Bottom tabs:
+
+- **Нүүр (Home)** — greeting, streak, this week's activity, upload shortcut,
+  subject cards with subscription status and accuracy.
+- **Миний тест (My tests)** — upload a .docx test (weekly free quota shown),
+  list of uploaded tests with last score, delete, and a format guide.
+- **Ахиц (Progress)** — totals, 7-day chart, per-subject/lesson accuracy with
+  the weakest lesson highlighted, recent tests.
+- **Профайл (Profile)** — subscriptions with days left, change name/password,
+  history, log out.
+
+Other screens: subject detail (free trial test, mixed test, fix-mistakes,
+lessons with a question-count picker), mixed test builder (per-lesson
+steppers), plans, test taking (timer, flag questions, question grid),
+result (score, per-question review with explanations, retake), history.
 
 ## Getting an installable APK
 

@@ -1,224 +1,258 @@
-import React, { useCallback, useState } from "react";
-import { View, Text, FlatList, Pressable, StyleSheet, ActivityIndicator, Alert } from "react-native";
+import React, { useState } from "react";
+import { View, Text, StyleSheet, ScrollView, RefreshControl, Modal, Pressable } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import { useFocusEffect } from "@react-navigation/native";
 import type { NativeStackScreenProps } from "@react-navigation/native-stack";
-import * as DocumentPicker from "expo-document-picker";
 import type { RootStackParamList } from "../navigation/types";
-import { api, ApiError, describeError } from "../api/client";
-import type { ExamSummary } from "../types";
-import { colors, radius, spacing, type, shadow } from "../theme";
-
-const MAX_UPLOAD_BYTES = 15 * 1024 * 1024;
+import { api } from "../api/client";
+import { useLoad } from "../hooks/useLoad";
+import { useStartTest } from "../hooks/useStartTest";
+import { Badge, Button, Card, Chip, ErrorState, IconBubble, Loader, ProgressBar, SectionTitle } from "../components/ui";
+import { daysLeft, formatDate, formatMNT } from "../format";
+import { accentForSlug, accuracyColor, colors, IconName, radius, spacing, type } from "../theme";
+import type { Lesson } from "../types";
 
 type Props = NativeStackScreenProps<RootStackParamList, "SubjectDetail">;
 
 export default function SubjectDetailScreen({ route, navigation }: Props) {
   const { subjectId, subjectName } = route.params;
-  const [exams, setExams] = useState<ExamSummary[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [uploading, setUploading] = useState(false);
+  const { data: subject, error, loading, refreshing, refresh, retry } = useLoad(() => api.subject(subjectId), [subjectId]);
+  const { start, starting } = useStartTest({ id: subjectId, name: subjectName });
+  const [lessonPick, setLessonPick] = useState<Lesson | null>(null);
 
-  const load = useCallback(async () => {
-    try {
-      setExams(await api.listExams(subjectId));
-    } catch (err) {
-      Alert.alert("Couldn't load exams", describeError(err));
-    } finally {
-      setLoading(false);
-    }
-  }, [subjectId]);
+  if (loading) return <Loader />;
+  if (error || !subject) return <ErrorState message={error ?? ""} onRetry={retry} />;
 
-  useFocusEffect(
-    useCallback(() => {
-      load();
-    }, [load])
-  );
-
-  const onUpload = async () => {
-    const result = await DocumentPicker.getDocumentAsync({
-      type: "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-      copyToCacheDirectory: true,
-    });
-    if (result.canceled) return;
-
-    const file = result.assets[0];
-    // Matches the backend's multer limit (see backend/src/routes/exams.ts) —
-    // catch it here so a large file fails instantly instead of after a
-    // full upload the server was always going to reject.
-    if (file.size !== undefined && file.size > MAX_UPLOAD_BYTES) {
-      Alert.alert(
-        "File too large",
-        `"${file.name}" is ${(file.size / 1024 / 1024).toFixed(1)} MB. The limit is ${MAX_UPLOAD_BYTES / 1024 / 1024} MB.`
-      );
-      return;
-    }
-
-    setUploading(true);
-    try {
-      const res = await api.uploadExam(subjectId, {
-        uri: file.uri,
-        name: file.name,
-        mimeType: file.mimeType,
-        webFile: file.file,
-      });
-      if (res.warnings.length > 0) {
-        Alert.alert(
-          "Exam uploaded with warnings",
-          `${res.questionCount} question(s) extracted.\n\n${res.warnings.join("\n")}`
-        );
-      } else {
-        Alert.alert("Exam ready", `${res.questionCount} question(s) extracted.`);
-      }
-      await load();
-    } catch (err) {
-      Alert.alert(
-        "Upload failed",
-        describeError(err) + (err instanceof ApiError && err.body?.warnings ? `\n${err.body.warnings.join("\n")}` : "")
-      );
-    } finally {
-      setUploading(false);
-    }
-  };
-
-  const onTakeExam = async (exam: ExamSummary) => {
-    try {
-      await api.startAttempt(exam.id);
-      navigation.navigate("TakeExam", { examId: exam.id, examTitle: exam.title });
-    } catch (err) {
-      Alert.alert("Couldn't start exam", describeError(err));
-    }
-  };
-
-  if (loading) {
-    return (
-      <View style={styles.center}>
-        <ActivityIndicator color={colors.primary} />
-      </View>
-    );
-  }
+  const accent = accentForSlug(subject.slug);
+  const subscribed = Boolean(subject.subscription);
+  const cheapest = [...subject.plans].sort((a, b) => a.price - b.price)[0];
+  const openPlans = () => navigation.navigate("Plans", { subjectId, subjectName: subject.name });
 
   return (
-    <View style={styles.container}>
-      <FlatList
-        data={exams}
-        keyExtractor={(e) => e.id}
-        contentContainerStyle={{ padding: spacing.lg }}
-        ListHeaderComponent={
-          <View style={{ marginBottom: spacing.lg }}>
-            <Text style={styles.eyebrow}>{subjectName}</Text>
-            <Text style={styles.title}>Exams</Text>
-            <Pressable
-              style={({ pressed }) => [styles.uploadButton, pressed && styles.uploadButtonPressed]}
-              onPress={onUpload}
-              disabled={uploading}
-              accessibilityRole="button"
-              accessibilityLabel="Upload .docx exam"
-              accessibilityState={{ disabled: uploading, busy: uploading }}
-            >
-              {uploading ? (
-                <ActivityIndicator color={colors.white} />
-              ) : (
-                <>
-                  <Ionicons name="cloud-upload-outline" size={18} color={colors.white} />
-                  <Text style={styles.uploadButtonText}>Upload .docx exam</Text>
-                </>
-              )}
-            </Pressable>
+    <View style={{ flex: 1 }}>
+      <ScrollView
+        contentContainerStyle={styles.content}
+        refreshControl={<RefreshControl refreshing={refreshing} onRefresh={refresh} tintColor={colors.primary} />}
+      >
+        <View style={[styles.hero, { backgroundColor: accent.bg }]}>
+          <IconBubble icon={accent.icon} fg={colors.white} bg={accent.fg} size={56} />
+          <Text style={styles.heroTitle}>{subject.name}</Text>
+          <Text style={styles.heroText}>{subject.description}</Text>
+          <View style={styles.heroStats}>
+            <HeroStat value={String(subject.lessonCount)} label="сэдэв" />
+            <HeroStat value={String(subject.questionCount)} label="асуулт" />
+            <HeroStat value={subject.stats.accuracy === null ? "—" : `${subject.stats.accuracy}%`} label="зөв" />
           </View>
-        }
-        ListEmptyComponent={
-          <View style={styles.empty}>
-            <View style={styles.emptyIcon}>
-              <Ionicons name="document-text-outline" size={28} color={colors.textMuted} />
+          {subject.subscription ? (
+            <Badge
+              icon="checkmark-circle"
+              text={`${subject.subscription.planName} эрх · ${formatDate(subject.subscription.endAt)} хүртэл (${daysLeft(subject.subscription.endAt)} хоног)`}
+              color={colors.success}
+              bg={colors.white}
+            />
+          ) : (
+            <Badge icon="lock-closed" text="Туршилтын тест үнэгүй · бусад нь эрхтэй" color={colors.warning} bg={colors.white} />
+          )}
+        </View>
+
+        <SectionTitle title="Тест өгөх" />
+        <ModeCard
+          icon="gift"
+          color={colors.warning}
+          bg={colors.warningSoft}
+          title="Туршилтын тест"
+          text={`${subject.trialQuestionCount} асуулт · сэдэв бүрээс · үнэгүй`}
+          loading={starting === "TRIAL"}
+          onPress={() => start({ mode: "TRIAL", subjectId })}
+        />
+        <ModeCard
+          icon="shuffle"
+          color={colors.primary}
+          bg={colors.primarySoft}
+          title="Холимог тест"
+          text="Бүх сэдвээс өөрөө тоогоо сонгож холимог тест үүсгэнэ"
+          locked={!subscribed}
+          onPress={() => (subscribed ? navigation.navigate("MixedBuilder", { subjectId, subjectName: subject.name }) : openPlans())}
+        />
+        <ModeCard
+          icon="refresh-circle"
+          color={colors.danger}
+          bg={colors.dangerSoft}
+          title="Алдаагаа засах"
+          text={subject.mistakeCount > 0 ? `${subject.mistakeCount} алдсан асуултаа дахин ажиллана` : "Одоогоор алдсан асуулт алга"}
+          locked={!subscribed}
+          disabled={subscribed && subject.mistakeCount === 0}
+          loading={starting === "MISTAKES"}
+          onPress={() => (subscribed ? start({ mode: "MISTAKES", subjectId }) : openPlans())}
+        />
+
+        <SectionTitle title="Сэдвүүд" />
+        {subject.lessons.map((l, i) => (
+          <Card key={l.id} style={styles.lesson} onPress={() => (subscribed ? setLessonPick(l) : openPlans())}>
+            <View style={styles.lessonNum}>
+              <Text style={styles.lessonNumText}>{i + 1}</Text>
             </View>
-            <Text style={styles.emptyTitle}>No exams yet</Text>
-            <Text style={styles.emptyBody}>Upload a .docx file above to turn it into a gradable exam.</Text>
-          </View>
-        }
-        renderItem={({ item }) => (
-          <Pressable
-            style={({ pressed }) => [styles.card, pressed && styles.cardPressed]}
-            onPress={() => onTakeExam(item)}
-            accessibilityRole="button"
-            accessibilityLabel={`${item.title}, ${item.questionCount} questions`}
-          >
-            <View style={styles.cardIcon}>
-              <Ionicons name="document-text" size={20} color={colors.primary} />
-            </View>
-            <View style={styles.cardText}>
-              <Text style={styles.cardTitle}>{item.title}</Text>
-              <Text style={styles.cardMeta}>{item.questionCount} questions</Text>
-              {item.warnings.length > 0 && (
-                <View style={styles.warningRow}>
-                  <Ionicons name="alert-circle" size={13} color="#C2540A" />
-                  <Text style={styles.warningText}>
-                    {item.warnings.length} question{item.warnings.length > 1 ? "s" : ""} need review
-                  </Text>
+            <View style={{ flex: 1 }}>
+              <Text style={styles.lessonName}>{l.name}</Text>
+              <Text style={styles.lessonMeta} numberOfLines={2}>
+                {l.questionCount} асуулт{l.description ? ` · ${l.description}` : ""}
+              </Text>
+              {l.stats.attempted > 0 && (
+                <View style={styles.lessonProgress}>
+                  <View style={{ flex: 1 }}>
+                    <ProgressBar value={l.stats.accuracy ?? 0} color={accuracyColor(l.stats.accuracy)} height={5} />
+                  </View>
+                  <Text style={[styles.lessonPct, { color: accuracyColor(l.stats.accuracy) }]}>{l.stats.accuracy}%</Text>
                 </View>
               )}
             </View>
-            <Ionicons name="chevron-forward" size={18} color={colors.textMuted} />
-          </Pressable>
+            <Ionicons
+              name={subscribed ? "play-circle" : "lock-closed"}
+              size={subscribed ? 30 : 20}
+              color={subscribed ? colors.primary : colors.textMuted}
+            />
+          </Card>
+        ))}
+
+        {!subscribed && cheapest && (
+          <Card style={styles.cta}>
+            <Text style={styles.ctaTitle}>Бүх тестийг нээх</Text>
+            <Text style={styles.ctaText}>
+              Сэдвийн тест, холимог тест, алдаа засах горим болон файлаа хязгааргүй оруулах эрх.
+            </Text>
+            <Button title={`${formatMNT(cheapest.price)}-с эхэлнэ`} icon="sparkles" onPress={openPlans} style={{ marginTop: spacing.md }} />
+          </Card>
         )}
+      </ScrollView>
+
+      <LessonSheet
+        lesson={lessonPick}
+        loading={starting === "LESSON"}
+        onClose={() => setLessonPick(null)}
+        onStart={async (count) => {
+          const lesson = lessonPick!;
+          setLessonPick(null);
+          await start({ mode: "LESSON", lessonId: lesson.id, count }, "LESSON");
+        }}
       />
     </View>
   );
 }
 
+function HeroStat({ value, label }: { value: string; label: string }) {
+  return (
+    <View style={styles.heroStat}>
+      <Text style={styles.heroStatValue}>{value}</Text>
+      <Text style={styles.heroStatLabel}>{label}</Text>
+    </View>
+  );
+}
+
+function ModeCard(props: {
+  icon: IconName;
+  color: string;
+  bg: string;
+  title: string;
+  text: string;
+  locked?: boolean;
+  disabled?: boolean;
+  loading?: boolean;
+  onPress: () => void;
+}) {
+  return (
+    <Card style={[styles.mode, props.disabled && { opacity: 0.55 }]} onPress={props.disabled || props.loading ? undefined : props.onPress}>
+      <IconBubble icon={props.icon} fg={props.color} bg={props.bg} />
+      <View style={{ flex: 1 }}>
+        <Text style={styles.modeTitle}>{props.title}</Text>
+        <Text style={styles.modeText}>{props.text}</Text>
+      </View>
+      {props.loading ? (
+        <Text style={styles.modeLoading}>…</Text>
+      ) : (
+        <Ionicons name={props.locked ? "lock-closed" : "chevron-forward"} size={20} color={colors.textMuted} />
+      )}
+    </Card>
+  );
+}
+
+function LessonSheet({
+  lesson,
+  loading,
+  onClose,
+  onStart,
+}: {
+  lesson: Lesson | null;
+  loading: boolean;
+  onClose: () => void;
+  onStart: (count: number | undefined) => void;
+}) {
+  const [count, setCount] = useState<number | undefined>(10);
+  if (!lesson) return null;
+  const options = [5, 10, 20].filter((n) => n < lesson.questionCount);
+  const selected = count !== undefined && count < lesson.questionCount ? count : undefined;
+  return (
+    <Modal transparent animationType="fade" visible onRequestClose={onClose}>
+      <Pressable style={styles.overlay} onPress={onClose}>
+        <Pressable style={styles.sheet} onPress={() => {}}>
+          <View style={styles.sheetHandle} />
+          <Text style={styles.sheetTitle}>{lesson.name}</Text>
+          <Text style={styles.sheetText}>Хэдэн асуулт ажиллах вэ? Асуултууд санамсаргүй дарааллаар гарна.</Text>
+          <View style={styles.chips}>
+            {options.map((n) => (
+              <Chip key={n} label={`${n} асуулт`} selected={selected === n} onPress={() => setCount(n)} />
+            ))}
+            <Chip label={`Бүгд (${lesson.questionCount})`} selected={selected === undefined} onPress={() => setCount(undefined)} />
+          </View>
+          <Button title="Тест эхлүүлэх" icon="play" loading={loading} onPress={() => onStart(selected)} style={{ marginTop: spacing.xl }} />
+          <Button title="Болих" variant="ghost" onPress={onClose} style={{ marginTop: spacing.sm }} />
+        </Pressable>
+      </Pressable>
+    </Modal>
+  );
+}
+
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: colors.background },
-  center: { flex: 1, justifyContent: "center", alignItems: "center", backgroundColor: colors.background },
-  eyebrow: { ...type.small, color: colors.textMuted, textTransform: "uppercase", letterSpacing: 0.6 },
-  title: { ...type.h1, color: colors.textPrimary, marginBottom: spacing.lg, marginTop: 2 },
-  uploadButton: {
-    flexDirection: "row",
-    backgroundColor: colors.primary,
-    borderRadius: radius.md,
-    paddingVertical: 14,
-    alignItems: "center",
-    justifyContent: "center",
-    gap: 8,
-    ...shadow,
-  },
-  uploadButtonPressed: { backgroundColor: colors.primaryDark },
-  uploadButtonText: { color: colors.white, fontWeight: "700", fontSize: 15 },
-  empty: { alignItems: "center", paddingTop: spacing.xxxl },
-  emptyIcon: {
-    width: 56,
-    height: 56,
-    borderRadius: radius.pill,
-    backgroundColor: colors.surface,
-    alignItems: "center",
-    justifyContent: "center",
-    marginBottom: spacing.md,
-    borderWidth: 1,
-    borderColor: colors.border,
-  },
-  emptyTitle: { ...type.h2, color: colors.textPrimary, marginBottom: spacing.xs },
-  emptyBody: { ...type.small, color: colors.textSecondary, fontWeight: "400", textAlign: "center", maxWidth: 240 },
-  card: {
-    flexDirection: "row",
-    alignItems: "center",
-    backgroundColor: colors.surface,
-    borderRadius: radius.lg,
-    padding: spacing.md,
-    marginBottom: spacing.sm,
-    ...shadow,
-  },
-  cardPressed: { backgroundColor: colors.primarySoft },
-  cardIcon: {
-    width: 40,
-    height: 40,
-    borderRadius: radius.sm,
+  content: { padding: spacing.xl, paddingBottom: spacing.xxxl, maxWidth: 720, width: "100%", alignSelf: "center" },
+  hero: { borderRadius: radius.lg, padding: spacing.xl, gap: spacing.sm },
+  heroTitle: { ...type.h1, color: colors.textPrimary, marginTop: spacing.sm },
+  heroText: { ...type.body, color: colors.textSecondary, lineHeight: 21 },
+  heroStats: { flexDirection: "row", gap: spacing.sm, marginVertical: spacing.sm },
+  heroStat: { flex: 1, backgroundColor: "rgba(255,255,255,0.75)", borderRadius: radius.sm, padding: spacing.sm, alignItems: "center" },
+  heroStatValue: { ...type.h2, color: colors.textPrimary },
+  heroStatLabel: { ...type.small, color: colors.textSecondary },
+  mode: { flexDirection: "row", alignItems: "center", gap: spacing.md, marginBottom: spacing.md },
+  modeTitle: { ...type.bodyStrong, color: colors.textPrimary },
+  modeText: { ...type.small, color: colors.textSecondary, marginTop: 2 },
+  modeLoading: { ...type.h2, color: colors.primary },
+  lesson: { flexDirection: "row", alignItems: "center", gap: spacing.md, marginBottom: spacing.md, padding: spacing.md },
+  lessonNum: {
+    width: 36,
+    height: 36,
+    borderRadius: 18,
     backgroundColor: colors.primarySoft,
     alignItems: "center",
     justifyContent: "center",
-    marginRight: spacing.md,
   },
-  cardText: { flex: 1 },
-  cardTitle: { ...type.bodyStrong, color: colors.textPrimary },
-  cardMeta: { ...type.small, color: colors.textSecondary, marginTop: 2, fontWeight: "400" },
-  warningRow: { flexDirection: "row", alignItems: "center", marginTop: 3, gap: 4 },
-  warningText: { ...type.small, color: "#C2540A", fontWeight: "500" },
+  lessonNumText: { ...type.bodyStrong, color: colors.primary },
+  lessonName: { ...type.bodyStrong, color: colors.textPrimary },
+  lessonMeta: { ...type.small, color: colors.textSecondary, marginTop: 2 },
+  lessonProgress: { flexDirection: "row", alignItems: "center", gap: spacing.sm, marginTop: spacing.sm },
+  lessonPct: { ...type.tiny, minWidth: 32, textAlign: "right" },
+  cta: { marginTop: spacing.lg, backgroundColor: colors.primarySoft, borderColor: colors.primarySoft },
+  ctaTitle: { ...type.h2, color: colors.textPrimary },
+  ctaText: { ...type.body, color: colors.textSecondary, marginTop: spacing.xs, lineHeight: 21 },
+  overlay: { flex: 1, backgroundColor: colors.overlay, justifyContent: "flex-end" },
+  sheet: {
+    backgroundColor: colors.surface,
+    borderTopLeftRadius: radius.lg,
+    borderTopRightRadius: radius.lg,
+    padding: spacing.xl,
+    paddingBottom: spacing.xxxl,
+    width: "100%",
+    maxWidth: 720,
+    alignSelf: "center",
+  },
+  sheetHandle: { width: 40, height: 4, borderRadius: 2, backgroundColor: colors.border, alignSelf: "center", marginBottom: spacing.lg },
+  sheetTitle: { ...type.h1, color: colors.textPrimary },
+  sheetText: { ...type.body, color: colors.textSecondary, marginTop: spacing.xs, lineHeight: 21 },
+  chips: { flexDirection: "row", flexWrap: "wrap", gap: spacing.sm, marginTop: spacing.lg },
 });

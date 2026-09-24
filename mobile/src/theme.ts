@@ -1,4 +1,9 @@
+import type { ComponentProps } from "react";
 import { Platform } from "react-native";
+import type { Ionicons } from "@expo/vector-icons";
+
+export type IconName = ComponentProps<typeof Ionicons>["name"];
+type Accent = { icon: IconName; bg: string; fg: string };
 
 // Single source of truth for the app's look. Screens should pull from here
 // instead of hardcoding hex values / spacing numbers, so a palette or
@@ -18,20 +23,42 @@ export const colors = {
   successSoft: "#E4F7F0",
   danger: "#DC3D43",
   dangerSoft: "#FCEAEA",
+  warning: "#C2540A",
   warningSoft: "#FFF6E5",
+  gold: "#F59E0B",
+  goldSoft: "#FEF3C7",
   white: "#FFFFFF",
+  overlay: "rgba(22, 23, 43, 0.45)",
 } as const;
 
-export const subjectAccents = [
-  { icon: "calculator" as const, bg: "#EEF2FF", fg: "#4F46E5" },
-  { icon: "leaf" as const, bg: "#E4F7F0", fg: "#12946F" },
-  { icon: "book" as const, bg: "#FFF1E6", fg: "#C2540A" },
-  { icon: "flask" as const, bg: "#FCEAEA", fg: "#DC3D43" },
-  { icon: "globe" as const, bg: "#F1EAFC", fg: "#7C3AED" },
+export const subjectAccents: Accent[] = [
+  { icon: "calculator", bg: "#EEF2FF", fg: "#4F46E5" },
+  { icon: "leaf", bg: "#E4F7F0", fg: "#12946F" },
+  { icon: "book", bg: "#FFF1E6", fg: "#C2540A" },
+  { icon: "flask", bg: "#FCEAEA", fg: "#DC3D43" },
+  { icon: "globe", bg: "#F1EAFC", fg: "#7C3AED" },
 ];
 
 export function accentForSubject(index: number) {
   return subjectAccents[index % subjectAccents.length];
+}
+
+const accentBySlug: Record<string, Accent> = {
+  math: subjectAccents[0],
+  biology: subjectAccents[1],
+  english: { icon: "language", bg: "#FFF1E6", fg: "#C2540A" },
+};
+
+export function accentForSlug(slug: string | null | undefined, fallbackIndex = 0) {
+  return (slug && accentBySlug[slug]) || accentForSubject(fallbackIndex);
+}
+
+// Green / amber / red for an accuracy percentage.
+export function accuracyColor(percent: number | null | undefined) {
+  if (percent === null || percent === undefined) return colors.textMuted;
+  if (percent >= 75) return colors.success;
+  if (percent >= 50) return colors.gold;
+  return colors.danger;
 }
 
 export const spacing = {

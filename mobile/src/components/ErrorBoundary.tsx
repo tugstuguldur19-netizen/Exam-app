@@ -30,17 +30,17 @@ export class ErrorBoundary extends React.Component<Props, State> {
           <View style={styles.badge}>
             <Ionicons name="warning" size={28} color={colors.white} />
           </View>
-          <Text style={styles.title}>Something went wrong</Text>
+          <Text style={styles.title}>Алдаа гарлаа</Text>
           <Text style={styles.body}>
-            The app hit an unexpected error. You can try again — if it keeps happening, restarting the app usually helps.
+            Апп-д гэнэтийн алдаа гарлаа. Дахин оролдоно уу — давтагдвал апп-аа хаагаад дахин нээнэ үү.
           </Text>
           <Pressable
             style={({ pressed }) => [styles.button, pressed && styles.buttonPressed]}
             onPress={this.reset}
             accessibilityRole="button"
-            accessibilityLabel="Try again"
+            accessibilityLabel="Дахин оролдох"
           >
-            <Text style={styles.buttonText}>Try again</Text>
+            <Text style={styles.buttonText}>Дахин оролдох</Text>
           </Pressable>
         </View>
       );

@@ -1,7 +1,9 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
-import { api, getToken, setToken, clearToken } from "../api/client";
+import React, { createContext, useCallback, useContext, useEffect, useState } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { api, ApiError, clearToken, getToken, setSessionExpiredHandler, setToken } from "../api/client";
+import type { User } from "../types";
 
-type User = { id: string; email: string; name: string };
+const USER_KEY = "exam_prep_user";
 
 type AuthContextValue = {
   user: User | null;
@@ -9,29 +11,62 @@ type AuthContextValue = {
   login: (email: string, password: string) => Promise<void>;
   register: (email: string, password: string, name: string) => Promise<void>;
   logout: () => Promise<void>;
+  setUser: (user: User) => void;
 };
 
 const AuthContext = createContext<AuthContextValue | null>(null);
 
-// There's no session endpoint (no /auth/me) — we only know a token exists
-// after boot, not who it belongs to. Requests still work since the backend
-// validates the JWT itself; the app just can't show the name until next login.
+async function cacheUser(user: User | null) {
+  try {
+    if (user) await AsyncStorage.setItem(USER_KEY, JSON.stringify(user));
+    else await AsyncStorage.removeItem(USER_KEY);
+  } catch {
+    // Cache only; the server is the source of truth.
+  }
+}
+
 export function AuthProvider({ children }: { children: React.ReactNode }) {
-  const [user, setUser] = useState<User | null>(null);
+  const [user, setUserState] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
+
+  const setUser = useCallback((u: User | null) => {
+    setUserState(u);
+    cacheUser(u);
+  }, []);
+
+  const logout = useCallback(async () => {
+    await clearToken().catch(() => {});
+    setUser(null);
+  }, [setUser]);
+
+  useEffect(() => {
+    setSessionExpiredHandler(() => {
+      logout();
+    });
+    return () => setSessionExpiredHandler(null);
+  }, [logout]);
 
   useEffect(() => {
     (async () => {
       try {
-        const token = await getToken();
-        if (token) setUser({ id: "", email: "", name: "" });
-      } catch {
-        // No usable stored token (e.g. unsupported storage backend) — treat as logged out.
+        const token = await getToken().catch(() => null);
+        if (!token) return;
+        // Show the cached profile immediately; refresh it from the server.
+        const cached = await AsyncStorage.getItem(USER_KEY).catch(() => null);
+        if (cached) setUserState(JSON.parse(cached));
+        try {
+          const me = await api.me();
+          setUser(me.user);
+        } catch (err) {
+          if (err instanceof ApiError && err.status === 401) await logout();
+          // Offline / server asleep: stay signed in with the cached profile.
+          else if (!cached) setUserState({ id: "", email: "", name: "" });
+        }
       } finally {
         setLoading(false);
       }
     })();
-  }, []);
+  }, [logout, setUser]);
 
   const login = async (email: string, password: string) => {
     const res = await api.login(email, password);
@@ -45,15 +80,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     setUser(res.user);
   };
 
-  const logout = async () => {
-    await clearToken();
-    setUser(null);
-  };
-
   return (
-    <AuthContext.Provider value={{ user, loading, login, register, logout }}>
-      {children}
-    </AuthContext.Provider>
+    <AuthContext.Provider value={{ user, loading, login, register, logout, setUser }}>{children}</AuthContext.Provider>
   );
 }
 
