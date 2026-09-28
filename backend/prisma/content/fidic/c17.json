@@ -1,0 +1,187 @@
+[
+  {
+    "q": "According to the Red Book 2017, for what period does the Contractor take full responsibility for care of the Works, Goods and Contractor's Documents?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "From the Base Date until completion"
+      },
+      {
+        "label": "B",
+        "text": "From the Letter of Acceptance until the Performance Certificate"
+      },
+      {
+        "label": "C",
+        "text": "From the Commencement Date until the Final Payment Certificate"
+      },
+      {
+        "label": "D",
+        "text": "From the Commencement Date until the issue (or deemed issue) of the Taking-Over Certificate for the Works"
+      }
+    ],
+    "answer": 3,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 17.1.",
+    "trial": true
+  },
+  {
+    "q": "According to the Red Book 2017, the Contractor has no liability for loss or damage to the Works caused by:",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Defects in his own workmanship"
+      },
+      {
+        "label": "B",
+        "text": "Theft by his own employees"
+      },
+      {
+        "label": "C",
+        "text": "A fault, error, defect or omission in any element of the design of the Works by the Employer or contained in the Specification and Drawings (which an experienced contractor would not have discovered)"
+      },
+      {
+        "label": "D",
+        "text": "His own method of construction"
+      }
+    ],
+    "answer": 2,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 17.2."
+  },
+  {
+    "q": "According to the Red Book 2017, after the Taking-Over Certificate, is the Contractor liable for loss or damage arising from an event that occurred before taking-over for which he was liable?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Yes"
+      },
+      {
+        "label": "B",
+        "text": "No"
+      },
+      {
+        "label": "C",
+        "text": "Only during the first 28 days"
+      },
+      {
+        "label": "D",
+        "text": "Only if insured"
+      }
+    ],
+    "answer": 0,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 17.2."
+  },
+  {
+    "q": "According to the Red Book 2017, if a Party fails to give Notice of an intellectual property infringement claim to the other Party within how many days of receiving it, it is deemed to have waived its right to indemnity?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "42 days"
+      },
+      {
+        "label": "B",
+        "text": "14 days"
+      },
+      {
+        "label": "C",
+        "text": "21 days"
+      },
+      {
+        "label": "D",
+        "text": "28 days"
+      }
+    ],
+    "answer": 3,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 17.3."
+  },
+  {
+    "q": "According to the Yellow Book 2017, the Contractor has no liability for loss or damage to the Works caused by:",
+    "choices": [
+      {
+        "label": "A",
+        "text": "A fault, error, defect or omission in any element of the design of the Works by the Employer or contained in the Employer's Requirements (which an experienced contractor would not have discovered)"
+      },
+      {
+        "label": "B",
+        "text": "Defects in his own design"
+      },
+      {
+        "label": "C",
+        "text": "Defective workmanship"
+      },
+      {
+        "label": "D",
+        "text": "Theft by his own employees"
+      }
+    ],
+    "answer": 0,
+    "explanation": "Эх сурвалж: FIDIC Yellow Book 2017, Sub-Clause 17.2."
+  },
+  {
+    "q": "According to the Silver Book, from when until when does the Contractor take full responsibility for care of the Works?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "From signing until the DNP expires"
+      },
+      {
+        "label": "B",
+        "text": "From the Performance Certificate until the Final Payment"
+      },
+      {
+        "label": "C",
+        "text": "From the Commencement Date until the Taking-Over Certificate is issued (or deemed issued)"
+      },
+      {
+        "label": "D",
+        "text": "From the Base Date until completion"
+      }
+    ],
+    "answer": 2,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 17.1."
+  },
+  {
+    "q": "According to the Silver Book, which of the following is NOT one of the events for which the Contractor is not liable under Sub-Clause 17.2?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Errors in the Contractor's own design"
+      },
+      {
+        "label": "B",
+        "text": "Any operation of the forces of nature which is Unforeseeable"
+      },
+      {
+        "label": "C",
+        "text": "Any Exceptional Event"
+      },
+      {
+        "label": "D",
+        "text": "Use or occupation by the Employer of any part of the Permanent Works except as specified"
+      }
+    ],
+    "answer": 0,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 17.2."
+  },
+  {
+    "q": "According to the Silver Book, if a Party does not give Notice of an intellectual property infringement claim to the other Party within how many days of receiving it, it is deemed to have waived its right to indemnity?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "42 days"
+      },
+      {
+        "label": "B",
+        "text": "28 days"
+      },
+      {
+        "label": "C",
+        "text": "21 days"
+      },
+      {
+        "label": "D",
+        "text": "14 days"
+      }
+    ],
+    "answer": 1,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 17.3."
+  }
+]

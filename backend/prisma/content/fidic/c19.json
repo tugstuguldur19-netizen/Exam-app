@@ -1,0 +1,49 @@
+[
+  {
+    "q": "According to the Red Book 2017, unless otherwise stated in the Contract Data, the Works must be insured for:",
+    "choices": [
+      {
+        "label": "A",
+        "text": "50% of the Contract Price"
+      },
+      {
+        "label": "B",
+        "text": "The amount of the Performance Security"
+      },
+      {
+        "label": "C",
+        "text": "Full replacement value, plus an additional 15% to cover incidental costs such as professional fees, demolition and removal of debris"
+      },
+      {
+        "label": "D",
+        "text": "The Accepted Contract Amount"
+      }
+    ],
+    "answer": 2,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 19.2.1.",
+    "trial": true
+  },
+  {
+    "q": "According to the Silver Book, for what amount must the Contractor insure the Works (unless otherwise stated in the Contract Data)?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "The Contract Price plus 10%"
+      },
+      {
+        "label": "B",
+        "text": "Full replacement value, plus an additional 15% of that value to cover costs incidental to rectification (professional fees, demolition, removal of debris)"
+      },
+      {
+        "label": "C",
+        "text": "50% of the Contract Price"
+      },
+      {
+        "label": "D",
+        "text": "The Performance Security amount"
+      }
+    ],
+    "answer": 1,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 19.2."
+  }
+]

@@ -1,0 +1,555 @@
+[
+  {
+    "q": "According to the Red Book 2017, if no percentage is stated in the Contract Data, what is the Contractor prohibited from subcontracting?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "More than 50% of the Works"
+      },
+      {
+        "label": "B",
+        "text": "Any part of the Works"
+      },
+      {
+        "label": "C",
+        "text": "The whole of the Works"
+      },
+      {
+        "label": "D",
+        "text": "Any work without a bond"
+      }
+    ],
+    "answer": 2,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 5.1.",
+    "trial": true
+  },
+  {
+    "q": "According to the Red Book 2017, how much Notice must the Contractor give the Engineer before the intended commencement of each Subcontractor's work?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Not less than 21 days"
+      },
+      {
+        "label": "B",
+        "text": "Not less than 7 days"
+      },
+      {
+        "label": "C",
+        "text": "Not less than 28 days"
+      },
+      {
+        "label": "D",
+        "text": "Not less than 14 days"
+      }
+    ],
+    "answer": 2,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 5.1."
+  },
+  {
+    "q": "According to the Red Book 2017, if the Engineer does not object within how many days after receiving the Contractor's submission of a proposed Subcontractor, he is deemed to have consented?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "14 days"
+      },
+      {
+        "label": "B",
+        "text": "21 days"
+      },
+      {
+        "label": "C",
+        "text": "28 days"
+      },
+      {
+        "label": "D",
+        "text": "7 days"
+      }
+    ],
+    "answer": 0,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 5.1."
+  },
+  {
+    "q": "According to the Red Book 2017, a \"nominated Subcontractor\" is a Subcontractor:",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Appointed by the DAAB"
+      },
+      {
+        "label": "B",
+        "text": "Chosen freely by the Contractor"
+      },
+      {
+        "label": "C",
+        "text": "Named as such in the Specification, or whom the Engineer instructs the Contractor to employ under Sub-Clause 13.4"
+      },
+      {
+        "label": "D",
+        "text": "Approved by the Contractor's bank"
+      }
+    ],
+    "answer": 2,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 5.2.1."
+  },
+  {
+    "q": "According to the Yellow Book 2017, when must the Contractor scrutinise the Employer's Requirements?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "After taking-over"
+      },
+      {
+        "label": "B",
+        "text": "Before the Base Date"
+      },
+      {
+        "label": "C",
+        "text": "Promptly after receiving a Notice under Sub-Clause 8.1 [Commencement of Works]"
+      },
+      {
+        "label": "D",
+        "text": "Only when an error is suspected"
+      }
+    ],
+    "answer": 2,
+    "explanation": "Эх сурвалж: FIDIC Yellow Book 2017, Sub-Clause 5.1."
+  },
+  {
+    "q": "According to the Yellow Book 2017, which is NOT a requirement for the Contractor's designers?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Employed directly by the Employer"
+      },
+      {
+        "label": "B",
+        "text": "Qualified and entitled under applicable Laws to design the Works"
+      },
+      {
+        "label": "C",
+        "text": "Engineers or other professionals, qualified, experienced and competent in their disciplines"
+      },
+      {
+        "label": "D",
+        "text": "Comply with the criteria (if any) stated in the Employer's Requirements"
+      }
+    ],
+    "answer": 0,
+    "explanation": "Эх сурвалж: FIDIC Yellow Book 2017, Sub-Clause 5.1."
+  },
+  {
+    "q": "According to the Yellow Book 2017, unless otherwise stated in the Employer's Requirements, the Contractor must submit each proposed designer/design Subcontractor to the Engineer for:",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Arbitration"
+      },
+      {
+        "label": "B",
+        "text": "Information only"
+      },
+      {
+        "label": "C",
+        "text": "Consent"
+      },
+      {
+        "label": "D",
+        "text": "No action"
+      }
+    ],
+    "answer": 2,
+    "explanation": "Эх сурвалж: FIDIC Yellow Book 2017, Sub-Clause 5.1."
+  },
+  {
+    "q": "According to the Yellow Book 2017, unless otherwise stated in the Employer's Requirements, the Review Period for Contractor's Documents shall not exceed:",
+    "choices": [
+      {
+        "label": "A",
+        "text": "28 days"
+      },
+      {
+        "label": "B",
+        "text": "42 days"
+      },
+      {
+        "label": "C",
+        "text": "21 days"
+      },
+      {
+        "label": "D",
+        "text": "14 days"
+      }
+    ],
+    "answer": 2,
+    "explanation": "Эх сурвалж: FIDIC Yellow Book 2017, Sub-Clause 5.2.2."
+  },
+  {
+    "q": "According to the Yellow Book 2017, if the Engineer gives no Notice within the Review Period:",
+    "choices": [
+      {
+        "label": "A",
+        "text": "The Engineer is deemed to have given a Notice of No-objection"
+      },
+      {
+        "label": "B",
+        "text": "The Review Period is doubled"
+      },
+      {
+        "label": "C",
+        "text": "The Contractor must resubmit"
+      },
+      {
+        "label": "D",
+        "text": "The document is deemed rejected"
+      }
+    ],
+    "answer": 0,
+    "explanation": "Эх сурвалж: FIDIC Yellow Book 2017, Sub-Clause 5.2.2."
+  },
+  {
+    "q": "According to the Yellow Book 2017, when may execution of a part of the Works commence?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Immediately after design starts"
+      },
+      {
+        "label": "B",
+        "text": "After the Engineer's oral approval"
+      },
+      {
+        "label": "C",
+        "text": "Only after the Engineer has given (or is deemed to have given) a Notice of No-objection to the relevant Contractor's Documents"
+      },
+      {
+        "label": "D",
+        "text": "After the Performance Certificate"
+      }
+    ],
+    "answer": 2,
+    "explanation": "Эх сурвалж: FIDIC Yellow Book 2017, Sub-Clause 5.2.3."
+  },
+  {
+    "q": "According to the Yellow Book 2017, the Contractor undertakes that the design, Contractor's Documents, execution and completed Works will comply with:",
+    "choices": [
+      {
+        "label": "A",
+        "text": "The Contractor's internal standards"
+      },
+      {
+        "label": "B",
+        "text": "International standards only"
+      },
+      {
+        "label": "C",
+        "text": "The Laws in the Country and the documents forming the Contract, as altered or modified by Variations"
+      },
+      {
+        "label": "D",
+        "text": "The Engineer's verbal instructions"
+      }
+    ],
+    "answer": 2,
+    "explanation": "Эх сурвалж: FIDIC Yellow Book 2017, Sub-Clause 5.3."
+  },
+  {
+    "q": "According to the Yellow Book 2017, the technical standards and Laws applicable to the Works are those in force when:",
+    "choices": [
+      {
+        "label": "A",
+        "text": "The Base Date occurs"
+      },
+      {
+        "label": "B",
+        "text": "The Works or Section or Part are taken over under Clause 10"
+      },
+      {
+        "label": "C",
+        "text": "The Contract Agreement is signed"
+      },
+      {
+        "label": "D",
+        "text": "The Performance Certificate is issued"
+      }
+    ],
+    "answer": 1,
+    "explanation": "Эх сурвалж: FIDIC Yellow Book 2017, Sub-Clause 5.4."
+  },
+  {
+    "q": "According to the Yellow Book 2017, references in the Contract to published standards are references to the edition applicable on:",
+    "choices": [
+      {
+        "label": "A",
+        "text": "The Base Date, unless stated otherwise"
+      },
+      {
+        "label": "B",
+        "text": "The date of taking-over"
+      },
+      {
+        "label": "C",
+        "text": "The Commencement Date"
+      },
+      {
+        "label": "D",
+        "text": "The date of the Letter of Acceptance"
+      }
+    ],
+    "answer": 0,
+    "explanation": "Эх сурвалж: FIDIC Yellow Book 2017, Sub-Clause 5.4."
+  },
+  {
+    "q": "According to the Yellow Book 2017, if changed or new applicable standards come into force in the Country after the Base Date, the Contractor shall:",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Apply them immediately at his own cost without notice"
+      },
+      {
+        "label": "B",
+        "text": "Ignore them"
+      },
+      {
+        "label": "C",
+        "text": "Suspend the Works"
+      },
+      {
+        "label": "D",
+        "text": "Promptly give a Notice to the Engineer and (if appropriate or requested) submit proposals for compliance"
+      }
+    ],
+    "answer": 3,
+    "explanation": "Эх сурвалж: FIDIC Yellow Book 2017, Sub-Clause 5.4."
+  },
+  {
+    "q": "According to the Yellow Book 2017, if training is specified before taking-over and it is not completed:",
+    "choices": [
+      {
+        "label": "A",
+        "text": "The Works may still be taken over"
+      },
+      {
+        "label": "B",
+        "text": "The Employer arranges training himself"
+      },
+      {
+        "label": "C",
+        "text": "The Contractor pays a penalty"
+      },
+      {
+        "label": "D",
+        "text": "The Works shall not be considered completed for the purposes of taking-over"
+      }
+    ],
+    "answer": 3,
+    "explanation": "Эх сурвалж: FIDIC Yellow Book 2017, Sub-Clause 5.5."
+  },
+  {
+    "q": "According to the Yellow Book 2017, when must the Contractor submit provisional O&M Manuals?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Before commencement of the Tests on Completion"
+      },
+      {
+        "label": "B",
+        "text": "With the Tender"
+      },
+      {
+        "label": "C",
+        "text": "After taking-over"
+      },
+      {
+        "label": "D",
+        "text": "Before the Performance Certificate"
+      }
+    ],
+    "answer": 0,
+    "explanation": "Эх сурвалж: FIDIC Yellow Book 2017, Sub-Clause 5.7."
+  },
+  {
+    "q": "According to the Yellow Book 2017, errors, omissions or other defects found in the Contractor's Documents shall be corrected:",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Only if they affect safety"
+      },
+      {
+        "label": "B",
+        "text": "At the Contractor's cost, notwithstanding any Notice of No-objection"
+      },
+      {
+        "label": "C",
+        "text": "As a Variation"
+      },
+      {
+        "label": "D",
+        "text": "At the Employer's cost"
+      }
+    ],
+    "answer": 1,
+    "explanation": "Эх сурвалж: FIDIC Yellow Book 2017, Sub-Clause 5.8."
+  },
+  {
+    "q": "According to the Silver Book, when is the Contractor deemed to have scrutinised the Employer's Requirements (including design criteria and calculations)?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Before taking-over"
+      },
+      {
+        "label": "B",
+        "text": "Before the Base Date"
+      },
+      {
+        "label": "C",
+        "text": "Upon receiving the Commencement notice"
+      },
+      {
+        "label": "D",
+        "text": "During the Tests on Completion"
+      }
+    ],
+    "answer": 1,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 5.1."
+  },
+  {
+    "q": "According to the Silver Book, which of the following is NOT a portion of the Employer's Requirements for which the Employer remains responsible?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "The Contractor's preliminary design submitted with the Tender"
+      },
+      {
+        "label": "B",
+        "text": "Criteria for testing and performance of the completed Works"
+      },
+      {
+        "label": "C",
+        "text": "Definitions of the intended purposes of the Works"
+      },
+      {
+        "label": "D",
+        "text": "Portions stated as immutable or the responsibility of the Employer"
+      }
+    ],
+    "answer": 0,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 5.1."
+  },
+  {
+    "q": "According to the Silver Book, who (apart from the listed exceptions) is responsible for errors in the Employer's Requirements, including design criteria and calculations?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "The Contractor"
+      },
+      {
+        "label": "B",
+        "text": "The Employer's Representative"
+      },
+      {
+        "label": "C",
+        "text": "Shared equally"
+      },
+      {
+        "label": "D",
+        "text": "The Employer"
+      }
+    ],
+    "answer": 0,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 5.1."
+  },
+  {
+    "q": "According to the Silver Book, if the Employer gives no Notice within the Review Period for a Contractor's Document submitted for review:",
+    "choices": [
+      {
+        "label": "A",
+        "text": "The document is deemed rejected"
+      },
+      {
+        "label": "B",
+        "text": "The Contractor must resubmit"
+      },
+      {
+        "label": "C",
+        "text": "The Employer is deemed to have given a Notice of No-objection"
+      },
+      {
+        "label": "D",
+        "text": "The Review Period is extended automatically"
+      }
+    ],
+    "answer": 2,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 5.2."
+  },
+  {
+    "q": "According to the Silver Book, the Works shall not be considered completed for taking-over until the Employer has received:",
+    "choices": [
+      {
+        "label": "A",
+        "text": "The discharge"
+      },
+      {
+        "label": "B",
+        "text": "The Final Statement"
+      },
+      {
+        "label": "C",
+        "text": "The as-built records required by the Contract"
+      },
+      {
+        "label": "D",
+        "text": "The Performance Certificate"
+      }
+    ],
+    "answer": 2,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 5.6."
+  },
+  {
+    "q": "According to the Silver Book, when must provisional operation and maintenance manuals be supplied?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "With the Final Statement"
+      },
+      {
+        "label": "B",
+        "text": "Before commencement of the Tests on Completion"
+      },
+      {
+        "label": "C",
+        "text": "After the Performance Certificate"
+      },
+      {
+        "label": "D",
+        "text": "Within 28 days after taking-over"
+      }
+    ],
+    "answer": 1,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 5.7."
+  },
+  {
+    "q": "According to the Silver Book, errors, omissions or ambiguities found in the Contractor's Documents shall be corrected:",
+    "choices": [
+      {
+        "label": "A",
+        "text": "At the Employer's cost"
+      },
+      {
+        "label": "B",
+        "text": "As a Variation"
+      },
+      {
+        "label": "C",
+        "text": "Only if they affect safety"
+      },
+      {
+        "label": "D",
+        "text": "At the Contractor's cost, despite any Notice of No-objection"
+      }
+    ],
+    "answer": 3,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 5.8."
+  }
+]

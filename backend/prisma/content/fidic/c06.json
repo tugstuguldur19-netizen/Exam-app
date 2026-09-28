@@ -1,0 +1,118 @@
+[
+  {
+    "q": "According to the Red Book 2017, which is NOT an exception allowing work outside normal working hours?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "The work is unavoidable or necessary for protection of life or property or safety of the Works"
+      },
+      {
+        "label": "B",
+        "text": "The Contractor wishes to recover delays he has caused"
+      },
+      {
+        "label": "C",
+        "text": "It is otherwise stated in the Contract"
+      },
+      {
+        "label": "D",
+        "text": "The Engineer gives consent"
+      }
+    ],
+    "answer": 1,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 6.5.",
+    "trial": true
+  },
+  {
+    "q": "According to the Red Book 2017, whom must the Contractor appoint to be responsible for health and safety at the Site?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "An environmental officer"
+      },
+      {
+        "label": "B",
+        "text": "A quality manager"
+      },
+      {
+        "label": "C",
+        "text": "A health and safety officer"
+      },
+      {
+        "label": "D",
+        "text": "The Engineer's Representative"
+      }
+    ],
+    "answer": 2,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 6.7."
+  },
+  {
+    "q": "According to the Red Book 2017, if the Engineer does not object within how many days to a proposed Key Personnel appointment, he is deemed to have consented?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "14 days"
+      },
+      {
+        "label": "B",
+        "text": "28 days"
+      },
+      {
+        "label": "C",
+        "text": "21 days"
+      },
+      {
+        "label": "D",
+        "text": "7 days"
+      }
+    ],
+    "answer": 0,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 6.12."
+  },
+  {
+    "q": "According to the Silver Book, whom must the Contractor appoint at the Site to be responsible for health and safety and protection against accidents?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "A design manager"
+      },
+      {
+        "label": "B",
+        "text": "A health and safety officer"
+      },
+      {
+        "label": "C",
+        "text": "The Employer's Representative"
+      },
+      {
+        "label": "D",
+        "text": "A quality auditor"
+      }
+    ],
+    "answer": 1,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 6.7."
+  },
+  {
+    "q": "According to the Silver Book, can the Contractor replace any of the Key Personnel without the Employer's consent?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "No, not without the Employer's prior consent"
+      },
+      {
+        "label": "B",
+        "text": "Yes, at any time"
+      },
+      {
+        "label": "C",
+        "text": "Yes, with 7 days' notice"
+      },
+      {
+        "label": "D",
+        "text": "Only after taking-over"
+      }
+    ],
+    "answer": 0,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 6.12."
+  }
+]

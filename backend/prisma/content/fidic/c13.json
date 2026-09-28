@@ -1,0 +1,302 @@
+[
+  {
+    "q": "According to the Red Book 2017, until when may Variations be initiated by the Engineer?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Only during the first half of the Time for Completion"
+      },
+      {
+        "label": "B",
+        "text": "Any time until the Performance Certificate"
+      },
+      {
+        "label": "C",
+        "text": "Only before the Commencement Date"
+      },
+      {
+        "label": "D",
+        "text": "Any time before the issue of the Taking-Over Certificate for the Works"
+      }
+    ],
+    "answer": 3,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 13.1.",
+    "trial": true
+  },
+  {
+    "q": "According to the Red Book 2017, unless otherwise agreed, a Variation shall not comprise:",
+    "choices": [
+      {
+        "label": "A",
+        "text": "A change in the sequence of work"
+      },
+      {
+        "label": "B",
+        "text": "Additional work"
+      },
+      {
+        "label": "C",
+        "text": "A change in levels or dimensions"
+      },
+      {
+        "label": "D",
+        "text": "The omission of any work which is to be carried out by the Employer or by others"
+      }
+    ],
+    "answer": 3,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 13.1."
+  },
+  {
+    "q": "According to the Red Book 2017, at whose cost must a value engineering proposal be prepared?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "The Contractor's"
+      },
+      {
+        "label": "B",
+        "text": "The Engineer's"
+      },
+      {
+        "label": "C",
+        "text": "The Employer's"
+      },
+      {
+        "label": "D",
+        "text": "Shared equally"
+      }
+    ],
+    "answer": 0,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 13.2."
+  },
+  {
+    "q": "According to the Red Book 2017, after a Variation is instructed, within how many days (unless otherwise agreed) must the Contractor submit detailed particulars of the varied work?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "14 days"
+      },
+      {
+        "label": "B",
+        "text": "28 days"
+      },
+      {
+        "label": "C",
+        "text": "21 days"
+      },
+      {
+        "label": "D",
+        "text": "42 days"
+      }
+    ],
+    "answer": 1,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 13.3.1."
+  },
+  {
+    "q": "According to the Red Book 2017, how may Provisional Sums be used?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Only for nominated Subcontractors"
+      },
+      {
+        "label": "B",
+        "text": "At the Contractor's discretion"
+      },
+      {
+        "label": "C",
+        "text": "Only for Daywork"
+      },
+      {
+        "label": "D",
+        "text": "Only, in whole or in part, in accordance with the Engineer's instructions"
+      }
+    ],
+    "answer": 3,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 13.4."
+  },
+  {
+    "q": "According to the Red Book 2017, the Contract Price is adjusted for changes in the Laws of the Country made:",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Only during the Tender period"
+      },
+      {
+        "label": "B",
+        "text": "Only after taking-over"
+      },
+      {
+        "label": "C",
+        "text": "Before the Base Date"
+      },
+      {
+        "label": "D",
+        "text": "After the Base Date"
+      }
+    ],
+    "answer": 3,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 13.6."
+  },
+  {
+    "q": "According to the Yellow Book 2017, which is NOT a valid ground for the Contractor to give Notice objecting to a Variation?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "The varied work was Unforeseeable having regard to the scope and nature of the Works in the Employer's Requirements"
+      },
+      {
+        "label": "B",
+        "text": "He cannot readily obtain the Goods required"
+      },
+      {
+        "label": "C",
+        "text": "It will reduce the Contractor's profit margin"
+      },
+      {
+        "label": "D",
+        "text": "It will have an adverse impact on achievement of the Schedule of Performance Guarantees"
+      }
+    ],
+    "answer": 2,
+    "explanation": "Эх сурвалж: FIDIC Yellow Book 2017, Sub-Clause 13.1."
+  },
+  {
+    "q": "According to the Yellow Book 2017, which ground for objecting to a Variation relates to Sub-Clauses 4.8 and 4.18?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "It will change the Engineer"
+      },
+      {
+        "label": "B",
+        "text": "It will adversely affect the Contractor's ability to comply with health and safety and/or environmental obligations"
+      },
+      {
+        "label": "C",
+        "text": "It will reduce the Contract Price"
+      },
+      {
+        "label": "D",
+        "text": "It will delay the Performance Certificate"
+      }
+    ],
+    "answer": 1,
+    "explanation": "Эх сурвалж: FIDIC Yellow Book 2017, Sub-Clause 13.1."
+  },
+  {
+    "q": "According to the Yellow Book 2017, a value engineering proposal is one which, in the Contractor's opinion, will:",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Accelerate completion, reduce the cost to the Employer of executing, maintaining or operating the Works, improve efficiency or value, or otherwise benefit the Employer"
+      },
+      {
+        "label": "B",
+        "text": "Reduce the Contractor's obligations"
+      },
+      {
+        "label": "C",
+        "text": "Only increase the Contract Price"
+      },
+      {
+        "label": "D",
+        "text": "Extend the Time for Completion"
+      }
+    ],
+    "answer": 0,
+    "explanation": "Эх сурвалж: FIDIC Yellow Book 2017, Sub-Clause 13.2."
+  },
+  {
+    "q": "According to the Yellow Book 2017, the Contract Price is adjusted for changes in Laws of the Country made:",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Before the Base Date"
+      },
+      {
+        "label": "B",
+        "text": "Only during the Tender period"
+      },
+      {
+        "label": "C",
+        "text": "After the Base Date"
+      },
+      {
+        "label": "D",
+        "text": "Only after taking-over"
+      }
+    ],
+    "answer": 2,
+    "explanation": "Эх сурвалж: FIDIC Yellow Book 2017, Sub-Clause 13.6."
+  },
+  {
+    "q": "According to the Silver Book, until when may the Employer initiate a Variation?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Any time before the issue of the Taking-Over Certificate for the Works"
+      },
+      {
+        "label": "B",
+        "text": "Only before the Commencement Date"
+      },
+      {
+        "label": "C",
+        "text": "Any time until the Performance Certificate"
+      },
+      {
+        "label": "D",
+        "text": "Only with the DAAB's approval"
+      }
+    ],
+    "answer": 0,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 13.1."
+  },
+  {
+    "q": "According to the Silver Book, at whose cost is a value engineering proposal prepared?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "The Employer's"
+      },
+      {
+        "label": "B",
+        "text": "The Contractor's"
+      },
+      {
+        "label": "C",
+        "text": "The Employer's Representative's"
+      },
+      {
+        "label": "D",
+        "text": "Shared equally"
+      }
+    ],
+    "answer": 1,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 13.2."
+  },
+  {
+    "q": "According to the Silver Book, the Contract Price is adjusted for changes in Laws of the Country occurring:",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Only during the Tender period"
+      },
+      {
+        "label": "B",
+        "text": "Only after taking-over"
+      },
+      {
+        "label": "C",
+        "text": "Before the Base Date"
+      },
+      {
+        "label": "D",
+        "text": "After the Base Date"
+      }
+    ],
+    "answer": 3,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 13.6."
+  }
+]

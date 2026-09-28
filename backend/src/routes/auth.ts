@@ -14,7 +14,9 @@ export const authRouter = Router();
 // but it kills the common case of a single client hammering the endpoint.
 const authLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
-  limit: 20,
+  // Overridable so the integration tests (which register many users from
+  // one IP) don't trip it.
+  limit: Number(process.env.AUTH_RATE_LIMIT) || 20,
   standardHeaders: true,
   legacyHeaders: false,
   message: { error: "Хэт олон оролдлого хийлээ. Түр хүлээгээд дахин оролдоно уу.", code: "RATE_LIMITED" },

@@ -1,0 +1,302 @@
+[
+  {
+    "q": "According to the Red Book 2017, how many days before the intended commencement of the Tests on Completion must the Contractor submit a detailed test programme?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Not less than 21 days"
+      },
+      {
+        "label": "B",
+        "text": "Not less than 42 days"
+      },
+      {
+        "label": "C",
+        "text": "Not less than 56 days"
+      },
+      {
+        "label": "D",
+        "text": "Not less than 28 days"
+      }
+    ],
+    "answer": 1,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 9.1.",
+    "trial": true
+  },
+  {
+    "q": "According to the Red Book 2017, how much Notice must the Contractor give of the date after which he will be ready to carry out each of the Tests on Completion?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Not less than 28 days"
+      },
+      {
+        "label": "B",
+        "text": "Not less than 21 days"
+      },
+      {
+        "label": "C",
+        "text": "Not less than 7 days"
+      },
+      {
+        "label": "D",
+        "text": "Not less than 14 days"
+      }
+    ],
+    "answer": 1,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 9.1."
+  },
+  {
+    "q": "According to the Red Book 2017, within how many days after the notified date must the Contractor commence the Tests on Completion (unless the Engineer instructs otherwise)?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "14 days"
+      },
+      {
+        "label": "B",
+        "text": "28 days"
+      },
+      {
+        "label": "C",
+        "text": "7 days"
+      },
+      {
+        "label": "D",
+        "text": "21 days"
+      }
+    ],
+    "answer": 0,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 9.1."
+  },
+  {
+    "q": "According to the Red Book 2017, if the Tests on Completion are unduly delayed by the Contractor, the Engineer may require the tests to be carried out within how many days after the Contractor receives the Notice?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "7 days"
+      },
+      {
+        "label": "B",
+        "text": "14 days"
+      },
+      {
+        "label": "C",
+        "text": "28 days"
+      },
+      {
+        "label": "D",
+        "text": "21 days"
+      }
+    ],
+    "answer": 3,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 9.2."
+  },
+  {
+    "q": "According to the Red Book 2017, which is NOT an option available to the Engineer when the Works fail the repeated Tests on Completion?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Instruct further repetition of the Tests"
+      },
+      {
+        "label": "B",
+        "text": "Automatically extend the Time for Completion"
+      },
+      {
+        "label": "C",
+        "text": "Issue a Taking-Over Certificate, if the Employer so requests"
+      },
+      {
+        "label": "D",
+        "text": "Reject the Works if the failure deprives the Employer of substantially the whole benefit"
+      }
+    ],
+    "answer": 1,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 9.4."
+  },
+  {
+    "q": "According to the Yellow Book 2017, unless otherwise stated in the Employer's Requirements, in what sequence are the Tests on Completion carried out?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Commissioning, pre-commissioning, trial operation"
+      },
+      {
+        "label": "B",
+        "text": "Performance tests only"
+      },
+      {
+        "label": "C",
+        "text": "Pre-commissioning tests, commissioning tests, trial operation"
+      },
+      {
+        "label": "D",
+        "text": "Trial operation, commissioning, pre-commissioning"
+      }
+    ],
+    "answer": 2,
+    "explanation": "Эх сурвалж: FIDIC Yellow Book 2017, Sub-Clause 9.1."
+  },
+  {
+    "q": "According to the Yellow Book 2017, may commissioning tests commence before the Works have passed the pre-commissioning tests?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Only with the Contractor's decision"
+      },
+      {
+        "label": "B",
+        "text": "Yes, always"
+      },
+      {
+        "label": "C",
+        "text": "Only for Sections"
+      },
+      {
+        "label": "D",
+        "text": "No, each stage shall not commence until the previous stage has been passed"
+      }
+    ],
+    "answer": 3,
+    "explanation": "Эх сурвалж: FIDIC Yellow Book 2017, Sub-Clause 9.1."
+  },
+  {
+    "q": "According to the Yellow Book 2017, how many days before the intended commencement of the Tests on Completion must the Contractor submit a detailed test programme?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "56 days"
+      },
+      {
+        "label": "B",
+        "text": "21 days"
+      },
+      {
+        "label": "C",
+        "text": "42 days"
+      },
+      {
+        "label": "D",
+        "text": "28 days"
+      }
+    ],
+    "answer": 2,
+    "explanation": "Эх сурвалж: FIDIC Yellow Book 2017, Sub-Clause 9.1."
+  },
+  {
+    "q": "According to the Yellow Book 2017, how much Notice must the Contractor give of the date after which he will be ready to carry out each Test on Completion?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Not less than 14 days"
+      },
+      {
+        "label": "B",
+        "text": "Not less than 7 days"
+      },
+      {
+        "label": "C",
+        "text": "Not less than 21 days"
+      },
+      {
+        "label": "D",
+        "text": "Not less than 28 days"
+      }
+    ],
+    "answer": 2,
+    "explanation": "Эх сурвалж: FIDIC Yellow Book 2017, Sub-Clause 9.1."
+  },
+  {
+    "q": "According to the Yellow Book 2017, if the Contractor fails to carry out the Tests on Completion within 21 days after the Engineer's Notice, what may happen?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "The Contract is terminated immediately"
+      },
+      {
+        "label": "B",
+        "text": "The Tests are cancelled"
+      },
+      {
+        "label": "C",
+        "text": "The Contractor gets 21 more days automatically"
+      },
+      {
+        "label": "D",
+        "text": "After a second Notice from the Engineer, the Employer's Personnel may proceed with the tests (the Contractor may attend and witness)"
+      }
+    ],
+    "answer": 3,
+    "explanation": "Эх сурвалж: FIDIC Yellow Book 2017, Sub-Clause 9.2."
+  },
+  {
+    "q": "According to the Silver Book, how much notice must the Contractor give of the date after which he will be ready to carry out each Test on Completion?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Not less than 14 days"
+      },
+      {
+        "label": "B",
+        "text": "Not less than 28 days"
+      },
+      {
+        "label": "C",
+        "text": "Not less than 21 days"
+      },
+      {
+        "label": "D",
+        "text": "Not less than 7 days"
+      }
+    ],
+    "answer": 2,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 9.1."
+  },
+  {
+    "q": "According to the Silver Book, the Contractor shall commence the Tests on Completion within how many days after the notified date (or on such day(s) as the Employer instructs)?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "7 days"
+      },
+      {
+        "label": "B",
+        "text": "14 days"
+      },
+      {
+        "label": "C",
+        "text": "21 days"
+      },
+      {
+        "label": "D",
+        "text": "28 days"
+      }
+    ],
+    "answer": 1,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 9.1."
+  },
+  {
+    "q": "According to the Silver Book, if the Works fail to pass the retested Tests on Completion and the failure deprives the Employer of substantially the whole benefit, the Employer may:",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Refer the matter to the Contractor's insurer"
+      },
+      {
+        "label": "B",
+        "text": "Only order more tests"
+      },
+      {
+        "label": "C",
+        "text": "Reject the Works or Section"
+      },
+      {
+        "label": "D",
+        "text": "Only reduce the Contract Price"
+      }
+    ],
+    "answer": 2,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 9.4."
+  }
+]

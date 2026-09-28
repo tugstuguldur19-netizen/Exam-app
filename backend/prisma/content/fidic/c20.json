@@ -1,0 +1,302 @@
+[
+  {
+    "q": "According to the Red Book 2017, within how many days after becoming aware (or when he should have become aware) of the event must the claiming Party give a Notice of Claim?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "28 days"
+      },
+      {
+        "label": "B",
+        "text": "42 days"
+      },
+      {
+        "label": "C",
+        "text": "14 days"
+      },
+      {
+        "label": "D",
+        "text": "21 days"
+      }
+    ],
+    "answer": 0,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 20.2.1.",
+    "trial": true
+  },
+  {
+    "q": "According to the Red Book 2017, what is the consequence of failing to give a Notice of Claim within the required period?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "The claiming Party is not entitled to additional payment/EOT and the other Party is discharged from liability for the event"
+      },
+      {
+        "label": "B",
+        "text": "The claim can still be made in the Final Statement"
+      },
+      {
+        "label": "C",
+        "text": "The claim is automatically referred to the DAAB"
+      },
+      {
+        "label": "D",
+        "text": "The claim is reduced by half"
+      }
+    ],
+    "answer": 0,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 20.2.1."
+  },
+  {
+    "q": "According to the Red Book 2017, if the Engineer considers a Notice of Claim was given late, within how many days after receiving it must he give Notice with reasons, failing which it is deemed valid?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "14 days"
+      },
+      {
+        "label": "B",
+        "text": "28 days"
+      },
+      {
+        "label": "C",
+        "text": "7 days"
+      },
+      {
+        "label": "D",
+        "text": "42 days"
+      }
+    ],
+    "answer": 0,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 20.2.2."
+  },
+  {
+    "q": "According to the Red Book 2017, within how many days after becoming aware of the event must the fully detailed Claim be submitted (unless otherwise agreed)?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "42 days"
+      },
+      {
+        "label": "B",
+        "text": "84 days"
+      },
+      {
+        "label": "C",
+        "text": "112 days"
+      },
+      {
+        "label": "D",
+        "text": "56 days"
+      }
+    ],
+    "answer": 1,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 20.2.4."
+  },
+  {
+    "q": "According to the Red Book 2017, for a Claim of continuing effect, how often are interim fully detailed Claims submitted?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "At monthly intervals"
+      },
+      {
+        "label": "B",
+        "text": "Only once at the end"
+      },
+      {
+        "label": "C",
+        "text": "Weekly"
+      },
+      {
+        "label": "D",
+        "text": "Quarterly"
+      }
+    ],
+    "answer": 0,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 20.2.6."
+  },
+  {
+    "q": "According to the Yellow Book 2017, within how many days after becoming aware of the event must the Notice of Claim be given?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "42 days"
+      },
+      {
+        "label": "B",
+        "text": "14 days"
+      },
+      {
+        "label": "C",
+        "text": "28 days"
+      },
+      {
+        "label": "D",
+        "text": "21 days"
+      }
+    ],
+    "answer": 2,
+    "explanation": "Эх сурвалж: FIDIC Yellow Book 2017, Sub-Clause 20.2.1."
+  },
+  {
+    "q": "According to the Yellow Book 2017, if the statement of the contractual and/or legal basis of the Claim is not submitted within the time limit, what happens?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "The Notice of Claim is deemed to have lapsed and is no longer a valid Notice"
+      },
+      {
+        "label": "B",
+        "text": "The DAAB decides the legal basis"
+      },
+      {
+        "label": "C",
+        "text": "The Engineer provides the legal basis"
+      },
+      {
+        "label": "D",
+        "text": "The Claim continues without it"
+      }
+    ],
+    "answer": 0,
+    "explanation": "Эх сурвалж: FIDIC Yellow Book 2017, Sub-Clause 20.2.4."
+  },
+  {
+    "q": "According to the Silver Book, within how many days after becoming aware (or when he should have become aware) of the event must the claiming Party give a Notice of Claim?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "28 days"
+      },
+      {
+        "label": "B",
+        "text": "21 days"
+      },
+      {
+        "label": "C",
+        "text": "42 days"
+      },
+      {
+        "label": "D",
+        "text": "14 days"
+      }
+    ],
+    "answer": 0,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 20.2.1."
+  },
+  {
+    "q": "According to the Silver Book, if the Notice of Claim is not given within the required period:",
+    "choices": [
+      {
+        "label": "A",
+        "text": "The claim is halved"
+      },
+      {
+        "label": "B",
+        "text": "The claiming Party is not entitled to additional payment or EOT, and the other Party is discharged from liability"
+      },
+      {
+        "label": "C",
+        "text": "The claim is still valid"
+      },
+      {
+        "label": "D",
+        "text": "The claim is automatically referred to the DAAB"
+      }
+    ],
+    "answer": 1,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 20.2.1."
+  },
+  {
+    "q": "According to the Silver Book, if the Employer's Representative considers that a Notice of Claim was not given in time, within how many days after receiving it must he give Notice to the claiming Party (with reasons)?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "42 days"
+      },
+      {
+        "label": "B",
+        "text": "7 days"
+      },
+      {
+        "label": "C",
+        "text": "14 days"
+      },
+      {
+        "label": "D",
+        "text": "28 days"
+      }
+    ],
+    "answer": 2,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 20.2.2."
+  },
+  {
+    "q": "According to the Silver Book, within how many days after becoming aware of the event must the fully detailed Claim be submitted (unless otherwise agreed)?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "56 days"
+      },
+      {
+        "label": "B",
+        "text": "84 days"
+      },
+      {
+        "label": "C",
+        "text": "42 days"
+      },
+      {
+        "label": "D",
+        "text": "112 days"
+      }
+    ],
+    "answer": 1,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 20.2.4."
+  },
+  {
+    "q": "According to the Silver Book, if the statement of the contractual and/or legal basis of the Claim is not submitted within the required period:",
+    "choices": [
+      {
+        "label": "A",
+        "text": "The DAAB decides the legal basis"
+      },
+      {
+        "label": "B",
+        "text": "The Employer must provide the legal basis"
+      },
+      {
+        "label": "C",
+        "text": "The Claim continues without it"
+      },
+      {
+        "label": "D",
+        "text": "The Notice of Claim is deemed to have lapsed and it is no longer considered a valid Notice"
+      }
+    ],
+    "answer": 3,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 20.2.4."
+  },
+  {
+    "q": "According to the Silver Book, for a Claim with continuing effect, interim fully detailed Claims are submitted at monthly intervals, and the final Claim within how many days after the end of the effects?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "28 days"
+      },
+      {
+        "label": "B",
+        "text": "42 days"
+      },
+      {
+        "label": "C",
+        "text": "84 days"
+      },
+      {
+        "label": "D",
+        "text": "14 days"
+      }
+    ],
+    "answer": 0,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 20.2.6."
+  }
+]

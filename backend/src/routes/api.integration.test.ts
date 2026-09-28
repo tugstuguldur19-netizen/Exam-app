@@ -110,15 +110,28 @@ describe("subjects", () => {
     expect(fidic.lessons[0]).toMatchObject({ name: "Ерөнхий заалтууд", description: "Clause 1 — General Provisions" });
   });
 
+  it("serves the imported FIDIC bank: 300 questions, one trial question per clause", async () => {
+    const { token } = await register();
+    const subject = await request(app).get("/subjects/subj_fidic").set(auth(token)).expect(200);
+    expect(subject.body).toMatchObject({ lessonCount: 21, questionCount: 300, trialQuestionCount: 21 });
+    const trial = await request(app).post("/tests").set(auth(token)).send({ mode: "TRIAL", subjectId: "subj_fidic" }).expect(201);
+    expect(trial.body.questions).toHaveLength(21);
+    expect(trial.body.questions[0].choices.map((c: { label: string }) => c.label)).toEqual(["A", "B", "C", "D"]);
+  });
+
   it("says a subject's tests are coming soon while it has no questions", async () => {
     const { token } = await register();
-    const trial = await request(app).post("/tests").set(auth(token)).send({ mode: "TRIAL", subjectId: "subj_fidic" });
-    expect(trial.status).toBe(400);
-    expect(trial.body).toMatchObject({ code: "NO_QUESTIONS", error: "Энэ хэсгийн асуултууд удахгүй нэмэгдэнэ." });
-    await subscribe(token, "subj_fidic");
-    const lesson = await request(app).post("/tests").set(auth(token)).send({ mode: "LESSON", lessonId: "les_fidic_c01" });
-    expect(lesson.status).toBe(400);
-    expect(lesson.body.code).toBe("NO_QUESTIONS");
+    const id = `subj_empty_${Date.now()}`;
+    await prisma.subject.create({
+      data: { id, slug: id, name: "Хоосон", description: "", sortOrder: 99, lessons: { create: { id: `les_${id}`, name: "Сэдэв" } } },
+    });
+    try {
+      const trial = await request(app).post("/tests").set(auth(token)).send({ mode: "TRIAL", subjectId: id });
+      expect(trial.status).toBe(400);
+      expect(trial.body).toMatchObject({ code: "NO_QUESTIONS", error: "Энэ хэсгийн асуултууд удахгүй нэмэгдэнэ." });
+    } finally {
+      await prisma.subject.delete({ where: { id } });
+    }
   });
 
   it("extends an active subscription instead of overlapping it", async () => {

@@ -1,0 +1,647 @@
+[
+  {
+    "q": "According to the Red Book 2017, within what period must the Contractor deliver the Performance Security?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Within 28 days after receiving the Letter of Acceptance"
+      },
+      {
+        "label": "B",
+        "text": "Within 42 days after receiving the Letter of Acceptance"
+      },
+      {
+        "label": "C",
+        "text": "Within 14 days after receiving the Letter of Acceptance"
+      },
+      {
+        "label": "D",
+        "text": "Within 21 days after receiving the Letter of Acceptance"
+      }
+    ],
+    "answer": 0,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 4.2.1.",
+    "trial": true
+  },
+  {
+    "q": "According to the Red Book 2017, the Employer may request an increase of the Performance Security when Variations and adjustments increase the Contract Price in one currency by more than what percentage of the Accepted Contract Amount in that currency?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "25%"
+      },
+      {
+        "label": "B",
+        "text": "10%"
+      },
+      {
+        "label": "C",
+        "text": "15%"
+      },
+      {
+        "label": "D",
+        "text": "20%"
+      }
+    ],
+    "answer": 3,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 4.2.1."
+  },
+  {
+    "q": "According to the Red Book 2017, when must the Employer return the Performance Security (in the normal course)?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Within 21 days after the issue of the Performance Certificate and the Contractor's compliance with Sub-Clause 11.11"
+      },
+      {
+        "label": "B",
+        "text": "Within 28 days after the Final Payment Certificate"
+      },
+      {
+        "label": "C",
+        "text": "Within 56 days after completion"
+      },
+      {
+        "label": "D",
+        "text": "Within 14 days after the Taking-Over Certificate"
+      }
+    ],
+    "answer": 0,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 4.2.3."
+  },
+  {
+    "q": "According to the Red Book 2017, if the Engineer gives no Notice within 21 days after receiving a Contractor's Document submitted for Review, what happens?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "The document is deemed rejected"
+      },
+      {
+        "label": "B",
+        "text": "The Review Period is extended"
+      },
+      {
+        "label": "C",
+        "text": "The Engineer is deemed to have given a Notice of No-objection"
+      },
+      {
+        "label": "D",
+        "text": "The Contractor must resubmit"
+      }
+    ],
+    "answer": 2,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 4.4.1."
+  },
+  {
+    "q": "According to the Red Book 2017, if the items of reference are specified on the Drawings and/or in the Specification, within what period (if not stated in the Contract Data) must the Contractor give Notice of any error in them?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "42 days from the Commencement Date"
+      },
+      {
+        "label": "B",
+        "text": "14 days from the Commencement Date"
+      },
+      {
+        "label": "C",
+        "text": "Before taking-over"
+      },
+      {
+        "label": "D",
+        "text": "28 days from the Commencement Date"
+      }
+    ],
+    "answer": 3,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 4.7.2."
+  },
+  {
+    "q": "According to the Red Book 2017, within how many days of the Commencement Date must the Contractor submit a health and safety manual to the Engineer?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "21 days"
+      },
+      {
+        "label": "B",
+        "text": "7 days"
+      },
+      {
+        "label": "C",
+        "text": "28 days"
+      },
+      {
+        "label": "D",
+        "text": "14 days"
+      }
+    ],
+    "answer": 0,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 4.8."
+  },
+  {
+    "q": "According to the Red Book 2017, in the case of an accident causing serious injury or death, when must the Contractor inform the Engineer?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "In the next monthly report"
+      },
+      {
+        "label": "B",
+        "text": "Within 28 days"
+      },
+      {
+        "label": "C",
+        "text": "Within 7 days"
+      },
+      {
+        "label": "D",
+        "text": "Immediately"
+      }
+    ],
+    "answer": 3,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 4.8."
+  },
+  {
+    "q": "According to the Red Book 2017, within how many days of the Commencement Date must the Contractor submit the QM System to the Engineer?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "21 days"
+      },
+      {
+        "label": "B",
+        "text": "14 days"
+      },
+      {
+        "label": "C",
+        "text": "42 days"
+      },
+      {
+        "label": "D",
+        "text": "28 days"
+      }
+    ],
+    "answer": 3,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 4.9.1."
+  },
+  {
+    "q": "According to the Red Book 2017, how often at minimum must the Contractor carry out internal audits of the QM System?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Every 6 months"
+      },
+      {
+        "label": "B",
+        "text": "Every year"
+      },
+      {
+        "label": "C",
+        "text": "Every 3 months"
+      },
+      {
+        "label": "D",
+        "text": "Every month"
+      }
+    ],
+    "answer": 0,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 4.9.1."
+  },
+  {
+    "q": "According to the Red Book 2017, if the Contractor encounters Unforeseeable physical conditions and complies with the notice requirements, he is entitled to:",
+    "choices": [
+      {
+        "label": "A",
+        "text": "No entitlement"
+      },
+      {
+        "label": "B",
+        "text": "EOT and/or payment of Cost"
+      },
+      {
+        "label": "C",
+        "text": "Termination of the Contract"
+      },
+      {
+        "label": "D",
+        "text": "Cost Plus Profit only"
+      }
+    ],
+    "answer": 1,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 4.12.4."
+  },
+  {
+    "q": "According to the Red Book 2017, how much Notice must the Contractor give of the date on which any Plant or a major item of other Goods will be delivered to the Site?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Not less than 28 days"
+      },
+      {
+        "label": "B",
+        "text": "Not less than 14 days"
+      },
+      {
+        "label": "C",
+        "text": "Not less than 21 days"
+      },
+      {
+        "label": "D",
+        "text": "Not less than 7 days"
+      }
+    ],
+    "answer": 2,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 4.16."
+  },
+  {
+    "q": "According to the Red Book 2017, within what period after the last day of the month must each monthly progress report be submitted?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Within 3 days"
+      },
+      {
+        "label": "B",
+        "text": "Within 28 days"
+      },
+      {
+        "label": "C",
+        "text": "Within 14 days"
+      },
+      {
+        "label": "D",
+        "text": "Within 7 days"
+      }
+    ],
+    "answer": 3,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 4.20."
+  },
+  {
+    "q": "According to the Red Book 2017, fossils, coins and items of archaeological interest found on the Site shall be placed under the care and authority of:",
+    "choices": [
+      {
+        "label": "A",
+        "text": "The Contractor"
+      },
+      {
+        "label": "B",
+        "text": "The local government"
+      },
+      {
+        "label": "C",
+        "text": "The Engineer"
+      },
+      {
+        "label": "D",
+        "text": "The Employer"
+      }
+    ],
+    "answer": 3,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 4.23."
+  },
+  {
+    "q": "According to the Yellow Book 2017, when completed, the Works shall be fit for:",
+    "choices": [
+      {
+        "label": "A",
+        "text": "The purpose(s) defined and described in the Employer's Requirements or, where none are defined, their ordinary purpose(s)"
+      },
+      {
+        "label": "B",
+        "text": "The purposes stated orally by the Employer"
+      },
+      {
+        "label": "C",
+        "text": "No particular purpose"
+      },
+      {
+        "label": "D",
+        "text": "The Contractor's preferred purposes"
+      }
+    ],
+    "answer": 0,
+    "explanation": "Эх сурвалж: FIDIC Yellow Book 2017, Sub-Clause 4.1."
+  },
+  {
+    "q": "According to the Yellow Book 2017, within how many days after receiving the Letter of Acceptance must the Contractor deliver the Performance Security?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "14 days"
+      },
+      {
+        "label": "B",
+        "text": "21 days"
+      },
+      {
+        "label": "C",
+        "text": "42 days"
+      },
+      {
+        "label": "D",
+        "text": "28 days"
+      }
+    ],
+    "answer": 3,
+    "explanation": "Эх сурвалж: FIDIC Yellow Book 2017, Sub-Clause 4.2.1."
+  },
+  {
+    "q": "According to the Yellow Book 2017, the Employer may claim under the Performance Security if the Contractor fails to remedy a default stated in a Notice to Correct within:",
+    "choices": [
+      {
+        "label": "A",
+        "text": "56 days or other time stated in the Notice"
+      },
+      {
+        "label": "B",
+        "text": "28 days or other time stated in the Notice"
+      },
+      {
+        "label": "C",
+        "text": "14 days or other time stated in the Notice"
+      },
+      {
+        "label": "D",
+        "text": "42 days or other time stated in the Notice"
+      }
+    ],
+    "answer": 3,
+    "explanation": "Эх сурвалж: FIDIC Yellow Book 2017, Sub-Clause 4.2.2."
+  },
+  {
+    "q": "According to the Yellow Book 2017, if the Engineer does not give Notice of non-compliance within how many days of submission of the QM System, he is deemed to have given a Notice of No-objection?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "14 days"
+      },
+      {
+        "label": "B",
+        "text": "42 days"
+      },
+      {
+        "label": "C",
+        "text": "28 days"
+      },
+      {
+        "label": "D",
+        "text": "21 days"
+      }
+    ],
+    "answer": 3,
+    "explanation": "Эх сурвалж: FIDIC Yellow Book 2017, Sub-Clause 4.9.1."
+  },
+  {
+    "q": "According to the Yellow Book 2017, if the Contractor encounters Unforeseeable physical conditions (having complied with the notice requirements), he is entitled to:",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Nothing, as the Yellow Book places this risk on the Contractor"
+      },
+      {
+        "label": "B",
+        "text": "Termination"
+      },
+      {
+        "label": "C",
+        "text": "EOT and/or payment of Cost"
+      },
+      {
+        "label": "D",
+        "text": "Cost Plus Profit only"
+      }
+    ],
+    "answer": 2,
+    "explanation": "Эх сурвалж: FIDIC Yellow Book 2017, Sub-Clause 4.12."
+  },
+  {
+    "q": "According to the Silver Book, when completed, the Works shall be fit for:",
+    "choices": [
+      {
+        "label": "A",
+        "text": "No particular purpose"
+      },
+      {
+        "label": "B",
+        "text": "The purposes stated by the Employer orally"
+      },
+      {
+        "label": "C",
+        "text": "The Contractor's preferred purposes"
+      },
+      {
+        "label": "D",
+        "text": "The purpose(s) defined in the Employer's Requirements or, where none are defined, their ordinary purpose(s)"
+      }
+    ],
+    "answer": 3,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 4.1."
+  },
+  {
+    "q": "According to the Silver Book, within how many days must the Contractor deliver the Performance Security to the Employer?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "21 days"
+      },
+      {
+        "label": "B",
+        "text": "42 days"
+      },
+      {
+        "label": "C",
+        "text": "28 days"
+      },
+      {
+        "label": "D",
+        "text": "14 days"
+      }
+    ],
+    "answer": 2,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 4.2."
+  },
+  {
+    "q": "According to the Silver Book, within how many days after the issue of the Performance Certificate must the Employer return the Performance Security?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "14 days"
+      },
+      {
+        "label": "B",
+        "text": "28 days"
+      },
+      {
+        "label": "C",
+        "text": "56 days"
+      },
+      {
+        "label": "D",
+        "text": "21 days"
+      }
+    ],
+    "answer": 3,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 4.2."
+  },
+  {
+    "q": "According to the Silver Book, what is the Contractor NOT permitted to subcontract (besides work stated as not to be subcontracted)?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Any design work"
+      },
+      {
+        "label": "B",
+        "text": "Works with a total accumulated value greater than the percentage stated in the Contract Data (if not stated, the whole of the Works)"
+      },
+      {
+        "label": "C",
+        "text": "Any supply of Materials"
+      },
+      {
+        "label": "D",
+        "text": "Transport of Goods"
+      }
+    ],
+    "answer": 1,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 4.4."
+  },
+  {
+    "q": "According to the Silver Book, within how many days after the Commencement Date must the Contractor submit the Quality Management System documents?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "14 days"
+      },
+      {
+        "label": "B",
+        "text": "21 days"
+      },
+      {
+        "label": "C",
+        "text": "42 days"
+      },
+      {
+        "label": "D",
+        "text": "28 days"
+      }
+    ],
+    "answer": 3,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 4.9."
+  },
+  {
+    "q": "According to the Silver Book, what is the purpose of the Contractor's Compliance Verification System?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "To track the Contractor's profit"
+      },
+      {
+        "label": "B",
+        "text": "To verify the DAAB's independence"
+      },
+      {
+        "label": "C",
+        "text": "To audit the Employer's finances"
+      },
+      {
+        "label": "D",
+        "text": "To demonstrate that the design, Materials, Plant, work and workmanship comply in all respects with the Contract"
+      }
+    ],
+    "answer": 3,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 4.9."
+  },
+  {
+    "q": "According to the Silver Book, who is responsible for interpreting all data provided by the Employer under Sub-Clause 2.5?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "The Employer"
+      },
+      {
+        "label": "B",
+        "text": "The Employer's Representative"
+      },
+      {
+        "label": "C",
+        "text": "The DAAB"
+      },
+      {
+        "label": "D",
+        "text": "The Contractor"
+      }
+    ],
+    "answer": 3,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 4.10."
+  },
+  {
+    "q": "According to the Silver Book, if the Contractor encounters unforeseen physical difficulties, is the Contract Price adjusted (except as otherwise stated)?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Only with an extension of time"
+      },
+      {
+        "label": "B",
+        "text": "No, the Contractor is deemed to have accepted responsibility for having foreseen all difficulties and Costs"
+      },
+      {
+        "label": "C",
+        "text": "Yes, Cost plus profit"
+      },
+      {
+        "label": "D",
+        "text": "Yes, for all Cost"
+      }
+    ],
+    "answer": 1,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 4.12."
+  },
+  {
+    "q": "According to the Silver Book, within how many days after the last day of the period must each monthly progress report be submitted?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "14 days"
+      },
+      {
+        "label": "B",
+        "text": "28 days"
+      },
+      {
+        "label": "C",
+        "text": "7 days"
+      },
+      {
+        "label": "D",
+        "text": "3 days"
+      }
+    ],
+    "answer": 2,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 4.20."
+  },
+  {
+    "q": "According to the Silver Book, archaeological and geological findings on the Site are placed under the care and authority of:",
+    "choices": [
+      {
+        "label": "A",
+        "text": "The DAAB"
+      },
+      {
+        "label": "B",
+        "text": "The Contractor"
+      },
+      {
+        "label": "C",
+        "text": "The Employer"
+      },
+      {
+        "label": "D",
+        "text": "The local municipality"
+      }
+    ],
+    "answer": 2,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 4.23."
+  }
+]

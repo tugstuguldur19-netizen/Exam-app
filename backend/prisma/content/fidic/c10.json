@@ -1,0 +1,256 @@
+[
+  {
+    "q": "According to the Red Book 2017, the Contractor may apply for a Taking-Over Certificate by giving a Notice not more than how many days before the Works will be complete and ready for taking over?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "21 days"
+      },
+      {
+        "label": "B",
+        "text": "28 days"
+      },
+      {
+        "label": "C",
+        "text": "7 days"
+      },
+      {
+        "label": "D",
+        "text": "14 days"
+      }
+    ],
+    "answer": 3,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 10.1.",
+    "trial": true
+  },
+  {
+    "q": "According to the Red Book 2017, within how many days after receiving the Contractor's Notice must the Engineer issue the Taking-Over Certificate or reject the application?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "28 days"
+      },
+      {
+        "label": "B",
+        "text": "21 days"
+      },
+      {
+        "label": "C",
+        "text": "42 days"
+      },
+      {
+        "label": "D",
+        "text": "14 days"
+      }
+    ],
+    "answer": 0,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 10.1."
+  },
+  {
+    "q": "According to the Red Book 2017, which of the following is NOT one of the conditions for taking over the Works?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Notice of No-objection to the as-built records (if applicable)"
+      },
+      {
+        "label": "B",
+        "text": "The Performance Certificate has been issued"
+      },
+      {
+        "label": "C",
+        "text": "The Works are completed, including passing the Tests on Completion"
+      },
+      {
+        "label": "D",
+        "text": "The training under Sub-Clause 4.5 (if applicable) has been carried out"
+      }
+    ],
+    "answer": 1,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 10.1."
+  },
+  {
+    "q": "According to the Red Book 2017, if the Contractor is prevented from carrying out the Tests on Completion for more than how many days by a cause for which the Employer is responsible, the Employer is deemed to have taken over?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "28 days"
+      },
+      {
+        "label": "B",
+        "text": "7 days"
+      },
+      {
+        "label": "C",
+        "text": "14 days"
+      },
+      {
+        "label": "D",
+        "text": "21 days"
+      }
+    ],
+    "answer": 2,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 10.3."
+  },
+  {
+    "q": "According to the Red Book 2017, after a deemed taking-over under Sub-Clause 10.3, how much Notice must the Engineer give of the date after which the Contractor may carry out the Tests on Completion?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Not less than 28 days"
+      },
+      {
+        "label": "B",
+        "text": "Not less than 21 days"
+      },
+      {
+        "label": "C",
+        "text": "Not less than 7 days"
+      },
+      {
+        "label": "D",
+        "text": "Not less than 14 days"
+      }
+    ],
+    "answer": 3,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 10.3."
+  },
+  {
+    "q": "According to the Yellow Book 2017, the Contractor may apply for a Taking-Over Certificate by giving a Notice not more than how many days before the Works will be complete and ready for taking over?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "14 days"
+      },
+      {
+        "label": "B",
+        "text": "7 days"
+      },
+      {
+        "label": "C",
+        "text": "28 days"
+      },
+      {
+        "label": "D",
+        "text": "21 days"
+      }
+    ],
+    "answer": 0,
+    "explanation": "Эх сурвалж: FIDIC Yellow Book 2017, Sub-Clause 10.1."
+  },
+  {
+    "q": "According to the Yellow Book 2017, within how many days after receiving the Contractor's Notice must the Engineer issue the Taking-Over Certificate or reject the application?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "21 days"
+      },
+      {
+        "label": "B",
+        "text": "14 days"
+      },
+      {
+        "label": "C",
+        "text": "28 days"
+      },
+      {
+        "label": "D",
+        "text": "42 days"
+      }
+    ],
+    "answer": 2,
+    "explanation": "Эх сурвалж: FIDIC Yellow Book 2017, Sub-Clause 10.1."
+  },
+  {
+    "q": "According to the Yellow Book 2017, if the Contractor is prevented for more than how many days (continuous or in total) from carrying out the Tests on Completion by a cause for which the Employer is responsible, the Employer is deemed to have taken over?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "7 days"
+      },
+      {
+        "label": "B",
+        "text": "14 days"
+      },
+      {
+        "label": "C",
+        "text": "21 days"
+      },
+      {
+        "label": "D",
+        "text": "28 days"
+      }
+    ],
+    "answer": 1,
+    "explanation": "Эх сурвалж: FIDIC Yellow Book 2017, Sub-Clause 10.3."
+  },
+  {
+    "q": "According to the Silver Book, the Contractor may apply for a Taking-Over Certificate by giving a Notice not more than how many days before the Works will, in his opinion, be complete and ready for taking over?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "28 days"
+      },
+      {
+        "label": "B",
+        "text": "7 days"
+      },
+      {
+        "label": "C",
+        "text": "21 days"
+      },
+      {
+        "label": "D",
+        "text": "14 days"
+      }
+    ],
+    "answer": 3,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 10.1."
+  },
+  {
+    "q": "According to the Silver Book, within how many days after receiving the application must the Employer issue the Taking-Over Certificate or reject the application?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "42 days"
+      },
+      {
+        "label": "B",
+        "text": "14 days"
+      },
+      {
+        "label": "C",
+        "text": "28 days"
+      },
+      {
+        "label": "D",
+        "text": "21 days"
+      }
+    ],
+    "answer": 2,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 10.1."
+  },
+  {
+    "q": "According to the Silver Book, if the Employer neither issues the Taking-Over Certificate nor rejects the application within the required period (and the relevant conditions are met):",
+    "choices": [
+      {
+        "label": "A",
+        "text": "The DAAB issues it"
+      },
+      {
+        "label": "B",
+        "text": "The Taking-Over Certificate is deemed issued on the last day of that period"
+      },
+      {
+        "label": "C",
+        "text": "The application is deemed rejected"
+      },
+      {
+        "label": "D",
+        "text": "The Contractor must reapply"
+      }
+    ],
+    "answer": 1,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 10.1."
+  }
+]

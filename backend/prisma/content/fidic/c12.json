@@ -1,0 +1,348 @@
+[
+  {
+    "q": "According to the Red Book 2017, how much Notice must the Engineer give the Contractor of a measurement on Site?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Not less than 21 days"
+      },
+      {
+        "label": "B",
+        "text": "Not less than 14 days"
+      },
+      {
+        "label": "C",
+        "text": "Not less than 3 days"
+      },
+      {
+        "label": "D",
+        "text": "Not less than 7 days"
+      }
+    ],
+    "answer": 3,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 12.1.",
+    "trial": true
+  },
+  {
+    "q": "According to the Red Book 2017, if the Contractor fails to attend or send a representative to a measurement, what happens?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "The measurement is postponed"
+      },
+      {
+        "label": "B",
+        "text": "The Contractor is deemed to have accepted the measurement as accurate"
+      },
+      {
+        "label": "C",
+        "text": "The DAAB measures instead"
+      },
+      {
+        "label": "D",
+        "text": "The measurement is invalid"
+      }
+    ],
+    "answer": 1,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 12.1."
+  },
+  {
+    "q": "According to the Red Book 2017, if the Contractor disagrees with a measurement, within how many days after attending or examining the records must he give a Notice, failing which he is deemed to accept it?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "28 days"
+      },
+      {
+        "label": "B",
+        "text": "21 days"
+      },
+      {
+        "label": "C",
+        "text": "7 days"
+      },
+      {
+        "label": "D",
+        "text": "14 days"
+      }
+    ],
+    "answer": 3,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 12.1."
+  },
+  {
+    "q": "According to the Red Book 2017, one condition for a new rate is that the measured quantity changes from the Bill of Quantities quantity by more than:",
+    "choices": [
+      {
+        "label": "A",
+        "text": "5%"
+      },
+      {
+        "label": "B",
+        "text": "25%"
+      },
+      {
+        "label": "C",
+        "text": "15%"
+      },
+      {
+        "label": "D",
+        "text": "10%"
+      }
+    ],
+    "answer": 3,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 12.3."
+  },
+  {
+    "q": "According to the Red Book 2017, one condition for a new rate is that the change in quantity multiplied by the specified rate exceeds:",
+    "choices": [
+      {
+        "label": "A",
+        "text": "10% of the Accepted Contract Amount"
+      },
+      {
+        "label": "B",
+        "text": "1% of the Accepted Contract Amount"
+      },
+      {
+        "label": "C",
+        "text": "0.01% of the Accepted Contract Amount"
+      },
+      {
+        "label": "D",
+        "text": "0.1% of the Accepted Contract Amount"
+      }
+    ],
+    "answer": 2,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 12.3."
+  },
+  {
+    "q": "According to the Red Book 2017, one condition for a new rate is that the change in quantity directly changes the Cost per unit quantity of the item by more than:",
+    "choices": [
+      {
+        "label": "A",
+        "text": "1%"
+      },
+      {
+        "label": "B",
+        "text": "5%"
+      },
+      {
+        "label": "C",
+        "text": "0.5%"
+      },
+      {
+        "label": "D",
+        "text": "10%"
+      }
+    ],
+    "answer": 0,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 12.3."
+  },
+  {
+    "q": "According to the Yellow Book 2017, who provides the electricity, water, fuel, instruments, labour, materials and qualified staff necessary for the Tests after Completion?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "A third-party testing agency"
+      },
+      {
+        "label": "B",
+        "text": "The Contractor"
+      },
+      {
+        "label": "C",
+        "text": "The Engineer"
+      },
+      {
+        "label": "D",
+        "text": "The Employer"
+      }
+    ],
+    "answer": 3,
+    "explanation": "Эх сурвалж: FIDIC Yellow Book 2017, Sub-Clause 12.1."
+  },
+  {
+    "q": "According to the Yellow Book 2017, if not stated in the Employer's Requirements, when are the Tests after Completion carried out?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "As soon as is reasonably practicable after the Works or Section have been taken over"
+      },
+      {
+        "label": "B",
+        "text": "During the Tender period"
+      },
+      {
+        "label": "C",
+        "text": "Before taking-over"
+      },
+      {
+        "label": "D",
+        "text": "At the end of the DNP only"
+      }
+    ],
+    "answer": 0,
+    "explanation": "Эх сурвалж: FIDIC Yellow Book 2017, Sub-Clause 12.1."
+  },
+  {
+    "q": "According to the Yellow Book 2017, how much Notice must the Engineer give of the date and place of the Tests after Completion?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Not less than 28 days"
+      },
+      {
+        "label": "B",
+        "text": "Not less than 21 days"
+      },
+      {
+        "label": "C",
+        "text": "Not less than 14 days"
+      },
+      {
+        "label": "D",
+        "text": "Not less than 7 days"
+      }
+    ],
+    "answer": 1,
+    "explanation": "Эх сурвалж: FIDIC Yellow Book 2017, Sub-Clause 12.1."
+  },
+  {
+    "q": "According to the Yellow Book 2017, if the Contractor does not attend the Tests after Completion at the time and place stated, what happens?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "The tests are void"
+      },
+      {
+        "label": "B",
+        "text": "The tests are postponed"
+      },
+      {
+        "label": "C",
+        "text": "The Employer may proceed, and the tests are deemed made in the Contractor's presence with results accepted as accurate"
+      },
+      {
+        "label": "D",
+        "text": "The DAAB must attend"
+      }
+    ],
+    "answer": 2,
+    "explanation": "Эх сурвалж: FIDIC Yellow Book 2017, Sub-Clause 12.1."
+  },
+  {
+    "q": "According to the Yellow Book 2017, if the Contractor incurs Cost from unreasonable delay by the Employer in carrying out the Tests after Completion, he is entitled to:",
+    "choices": [
+      {
+        "label": "A",
+        "text": "EOT only"
+      },
+      {
+        "label": "B",
+        "text": "Termination"
+      },
+      {
+        "label": "C",
+        "text": "Payment of Cost Plus Profit"
+      },
+      {
+        "label": "D",
+        "text": "Nothing"
+      }
+    ],
+    "answer": 2,
+    "explanation": "Эх сурвалж: FIDIC Yellow Book 2017, Sub-Clause 12.2."
+  },
+  {
+    "q": "According to the Yellow Book 2017, if for reasons not attributable to the Contractor a Test after Completion cannot be completed during the DNP (or other agreed period):",
+    "choices": [
+      {
+        "label": "A",
+        "text": "The Works or Section are deemed to have passed that test"
+      },
+      {
+        "label": "B",
+        "text": "It must be repeated later at the Contractor's cost"
+      },
+      {
+        "label": "C",
+        "text": "The DNP is extended without limit"
+      },
+      {
+        "label": "D",
+        "text": "The Contract Price is reduced"
+      }
+    ],
+    "answer": 0,
+    "explanation": "Эх сурвалж: FIDIC Yellow Book 2017, Sub-Clause 12.2."
+  },
+  {
+    "q": "According to the Yellow Book 2017, if the Works fail the Tests after Completion and the Contractor pays the applicable Performance Damages (set out in the Schedule of Performance Guarantees) during the DNP:",
+    "choices": [
+      {
+        "label": "A",
+        "text": "The Works are deemed to have passed those Tests after Completion"
+      },
+      {
+        "label": "B",
+        "text": "The Performance Security is forfeited"
+      },
+      {
+        "label": "C",
+        "text": "The Contractor must retest anyway"
+      },
+      {
+        "label": "D",
+        "text": "The Employer may still reject the Works"
+      }
+    ],
+    "answer": 0,
+    "explanation": "Эх сурвалж: FIDIC Yellow Book 2017, Sub-Clause 12.4."
+  },
+  {
+    "q": "According to the Silver Book, if for reasons not attributable to the Contractor a Test after Completion cannot be completed during the DNP (or other agreed period):",
+    "choices": [
+      {
+        "label": "A",
+        "text": "The Contract Price is reduced"
+      },
+      {
+        "label": "B",
+        "text": "The DNP is extended without limit"
+      },
+      {
+        "label": "C",
+        "text": "It must be repeated after the DNP at the Contractor's cost"
+      },
+      {
+        "label": "D",
+        "text": "The Works or Section are deemed to have passed that test"
+      }
+    ],
+    "answer": 3,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 12.2."
+  },
+  {
+    "q": "According to the Silver Book, if the Works fail the Tests after Completion and the Contractor pays the non-performance damages stated in the Contract during the DNP:",
+    "choices": [
+      {
+        "label": "A",
+        "text": "The Contractor must retest anyway"
+      },
+      {
+        "label": "B",
+        "text": "The Performance Security is forfeited"
+      },
+      {
+        "label": "C",
+        "text": "The Works are deemed to have passed those Tests after Completion"
+      },
+      {
+        "label": "D",
+        "text": "The Employer may still reject the Works"
+      }
+    ],
+    "answer": 2,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 12.4."
+  }
+]

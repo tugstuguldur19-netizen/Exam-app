@@ -37,6 +37,12 @@ npm run import:docx -- fidic c14 path/to/clause14.docx   # writes prisma/content
 npm run seed
 ```
 
+The FIDIC FCL bank (300 questions from the 2017 Red, Yellow and Silver
+Books, answer key in tables) was converted with
+`python3 scripts/import_fidic_bank.py <file.docx>` (needs `pip install
+python-docx`), which checks every question, option, answer and per-clause
+count before writing `prisma/content/fidic/c01.json`–`c21.json`.
+
 See `prisma/content/README.md` for the JSON format. The seed validates every
 content file and stops with the file name and question number if one is
 malformed.

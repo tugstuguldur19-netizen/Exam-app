@@ -4,7 +4,8 @@ A Mongolian-language mobile app for exam preparation.
 
 - **Subjects → lessons → tests.** Математик, Биологи, Англи хэл (4 lessons,
   60 questions each, with an explanation for every answer) and FIDIC FCL
-  (21 lessons, one per FIDIC 2017 clause — questions to be imported).
+  (21 lessons, one per FIDIC 2017 clause, 300 questions from the Red, Yellow
+  and Silver Books with Sub-Clause references).
 - **Free trial test** in every subject. Everything else in a subject (lesson
   tests with a chosen number of questions, mixed tests with a per-lesson
   count, "fix my mistakes" review) needs a time-based subscription to that

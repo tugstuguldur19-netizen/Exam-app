@@ -1,0 +1,279 @@
+[
+  {
+    "q": "According to the Red Book 2017, which of the following is NOT a condition for an event to be an \"Exceptional Event\"?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "The Party could not reasonably have provided against it before entering into the Contract"
+      },
+      {
+        "label": "B",
+        "text": "It is beyond a Party's control"
+      },
+      {
+        "label": "C",
+        "text": "Having arisen, the Party could not reasonably have avoided or overcome it"
+      },
+      {
+        "label": "D",
+        "text": "It is substantially attributable to the other Party"
+      }
+    ],
+    "answer": 3,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 18.1.",
+    "trial": true
+  },
+  {
+    "q": "According to the Red Book 2017, within how many days after the affected Party became aware (or should have become aware) of an Exceptional Event must it give Notice?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "21 days"
+      },
+      {
+        "label": "B",
+        "text": "14 days"
+      },
+      {
+        "label": "C",
+        "text": "7 days"
+      },
+      {
+        "label": "D",
+        "text": "28 days"
+      }
+    ],
+    "answer": 1,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 18.2."
+  },
+  {
+    "q": "According to the Red Book 2017, if an Exceptional Event has a continuing effect, how often must the affected Party give further Notices describing the effect?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Every 28 days"
+      },
+      {
+        "label": "B",
+        "text": "Every 7 days"
+      },
+      {
+        "label": "C",
+        "text": "Every 3 months"
+      },
+      {
+        "label": "D",
+        "text": "Every 14 days"
+      }
+    ],
+    "answer": 0,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 18.3."
+  },
+  {
+    "q": "According to the Red Book 2017, if the Contractor is delayed by a natural catastrophe (an Exceptional Event), he is entitled to:",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Cost Plus Profit"
+      },
+      {
+        "label": "B",
+        "text": "EOT only"
+      },
+      {
+        "label": "C",
+        "text": "Nothing"
+      },
+      {
+        "label": "D",
+        "text": "EOT and Cost"
+      }
+    ],
+    "answer": 1,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 18.4."
+  },
+  {
+    "q": "According to the Red Book 2017, either Party may terminate if execution of substantially all the Works is prevented by a notified Exceptional Event for a continuous period of:",
+    "choices": [
+      {
+        "label": "A",
+        "text": "140 days"
+      },
+      {
+        "label": "B",
+        "text": "28 days"
+      },
+      {
+        "label": "C",
+        "text": "84 days"
+      },
+      {
+        "label": "D",
+        "text": "56 days"
+      }
+    ],
+    "answer": 2,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 18.5."
+  },
+  {
+    "q": "According to the Red Book 2017, after a Notice of termination under Sub-Clause 18.5, when is the date of termination?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "7 days after the Notice is received by the other Party"
+      },
+      {
+        "label": "B",
+        "text": "Immediately"
+      },
+      {
+        "label": "C",
+        "text": "14 days after the Notice"
+      },
+      {
+        "label": "D",
+        "text": "28 days after the Notice"
+      }
+    ],
+    "answer": 0,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 18.5."
+  },
+  {
+    "q": "According to the Yellow Book 2017, which is a listed example of an Exceptional Event?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "The Contractor's insolvency"
+      },
+      {
+        "label": "B",
+        "text": "A strike solely involving the Contractor's Personnel"
+      },
+      {
+        "label": "C",
+        "text": "Late delivery by a Subcontractor"
+      },
+      {
+        "label": "D",
+        "text": "Natural catastrophes such as earthquake, tsunami, volcanic activity, hurricane or typhoon"
+      }
+    ],
+    "answer": 3,
+    "explanation": "Эх сурвалж: FIDIC Yellow Book 2017, Sub-Clause 18.1."
+  },
+  {
+    "q": "According to the Silver Book, which of the following is NOT a condition for an event to be an \"Exceptional Event\"?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Having arisen, the Party could not reasonably have avoided or overcome it"
+      },
+      {
+        "label": "B",
+        "text": "It is substantially attributable to the other Party"
+      },
+      {
+        "label": "C",
+        "text": "The Party could not reasonably have provided against it before entering into the Contract"
+      },
+      {
+        "label": "D",
+        "text": "It is beyond a Party's control"
+      }
+    ],
+    "answer": 1,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 18.1."
+  },
+  {
+    "q": "According to the Silver Book, which is a listed example of an Exceptional Event?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Natural catastrophes such as earthquake, tsunami, volcanic activity, hurricane or typhoon"
+      },
+      {
+        "label": "B",
+        "text": "The Contractor's insolvency"
+      },
+      {
+        "label": "C",
+        "text": "Late delivery by a Subcontractor"
+      },
+      {
+        "label": "D",
+        "text": "A strike solely involving the Contractor's Personnel"
+      }
+    ],
+    "answer": 0,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 18.1."
+  },
+  {
+    "q": "According to the Silver Book, within how many days after the affected Party became aware (or should have become aware) must Notice of an Exceptional Event be given?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "21 days"
+      },
+      {
+        "label": "B",
+        "text": "28 days"
+      },
+      {
+        "label": "C",
+        "text": "14 days"
+      },
+      {
+        "label": "D",
+        "text": "7 days"
+      }
+    ],
+    "answer": 2,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 18.2."
+  },
+  {
+    "q": "According to the Silver Book, if the Contractor is delayed by a natural catastrophe (Exceptional Event), he is entitled to:",
+    "choices": [
+      {
+        "label": "A",
+        "text": "EOT and Cost"
+      },
+      {
+        "label": "B",
+        "text": "Nothing"
+      },
+      {
+        "label": "C",
+        "text": "EOT only"
+      },
+      {
+        "label": "D",
+        "text": "Cost plus profit"
+      }
+    ],
+    "answer": 2,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 18.4."
+  },
+  {
+    "q": "According to the Silver Book, either Party may terminate if execution of substantially all the Works is prevented by a notified Exceptional Event for a continuous period of:",
+    "choices": [
+      {
+        "label": "A",
+        "text": "84 days"
+      },
+      {
+        "label": "B",
+        "text": "56 days"
+      },
+      {
+        "label": "C",
+        "text": "28 days"
+      },
+      {
+        "label": "D",
+        "text": "140 days"
+      }
+    ],
+    "answer": 0,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 18.5."
+  }
+]

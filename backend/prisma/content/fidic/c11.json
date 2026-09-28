@@ -1,0 +1,348 @@
+[
+  {
+    "q": "According to the Red Book 2017, which remedial work is NOT executed at the Contractor's risk and cost under Sub-Clause 11.2?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Work attributable to design for which the Contractor is responsible"
+      },
+      {
+        "label": "B",
+        "text": "Work attributable to Plant, Materials or workmanship not in accordance with the Contract"
+      },
+      {
+        "label": "C",
+        "text": "Work attributable to the Contractor's failure to comply with any other obligation"
+      },
+      {
+        "label": "D",
+        "text": "Work attributable to a cause for which the Contractor is not responsible"
+      }
+    ],
+    "answer": 3,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 11.2.",
+    "trial": true
+  },
+  {
+    "q": "According to the Red Book 2017, by how much at most may a Defects Notification Period be extended?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "One year"
+      },
+      {
+        "label": "B",
+        "text": "Three years"
+      },
+      {
+        "label": "C",
+        "text": "6 months"
+      },
+      {
+        "label": "D",
+        "text": "Two years after the expiry of the DNP stated in the Contract Data"
+      }
+    ],
+    "answer": 3,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 11.3."
+  },
+  {
+    "q": "According to the Red Book 2017 (2022 reprint), within how many days of completing remedial work must the Contractor give Notice describing the remedied Works and proposed repeated tests?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "7 days"
+      },
+      {
+        "label": "B",
+        "text": "21 days"
+      },
+      {
+        "label": "C",
+        "text": "28 days"
+      },
+      {
+        "label": "D",
+        "text": "14 days"
+      }
+    ],
+    "answer": 0,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 11.6."
+  },
+  {
+    "q": "According to the Red Book 2017, within what period must the Engineer issue the Performance Certificate?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Within 42 days after the Taking-Over Certificate"
+      },
+      {
+        "label": "B",
+        "text": "Within 14 days after the latest expiry date of the Defects Notification Periods"
+      },
+      {
+        "label": "C",
+        "text": "Within 56 days after the Final Statement"
+      },
+      {
+        "label": "D",
+        "text": "Within 28 days after the latest expiry date of the Defects Notification Periods"
+      }
+    ],
+    "answer": 3,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 11.9."
+  },
+  {
+    "q": "According to the Red Book 2017, which document alone is deemed to constitute acceptance of the Works?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "The Final Payment Certificate"
+      },
+      {
+        "label": "B",
+        "text": "The Interim Payment Certificate"
+      },
+      {
+        "label": "C",
+        "text": "The Performance Certificate"
+      },
+      {
+        "label": "D",
+        "text": "The Taking-Over Certificate"
+      }
+    ],
+    "answer": 2,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 11.9."
+  },
+  {
+    "q": "According to the Red Book 2017, in relation to Plant, the Contractor is not liable for defects occurring more than how long after expiry of the DNP for the Plant (except where prohibited by law or in case of fraud, gross negligence, deliberate default or reckless misconduct)?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Ten years"
+      },
+      {
+        "label": "B",
+        "text": "Five years"
+      },
+      {
+        "label": "C",
+        "text": "Two years"
+      },
+      {
+        "label": "D",
+        "text": "One year"
+      }
+    ],
+    "answer": 2,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 11.10."
+  },
+  {
+    "q": "According to the Red Book 2017, if the Contractor fails to clear the Site within how many days after the issue of the Performance Certificate, the Employer may sell or dispose of remaining items at the Contractor's cost?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "56 days"
+      },
+      {
+        "label": "B",
+        "text": "14 days"
+      },
+      {
+        "label": "C",
+        "text": "28 days"
+      },
+      {
+        "label": "D",
+        "text": "21 days"
+      }
+    ],
+    "answer": 2,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 11.11."
+  },
+  {
+    "q": "According to the Yellow Book 2017, which of the following is at the Contractor's risk and cost under Sub-Clause 11.2?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Remedying damage caused by the Employer's Personnel"
+      },
+      {
+        "label": "B",
+        "text": "Remedying defects in design for which the Employer is responsible"
+      },
+      {
+        "label": "C",
+        "text": "Remedying defects attributable to improper operation or maintenance which was attributable to matters for which the Contractor is responsible (e.g. training, as-built records, O&M Manuals)"
+      },
+      {
+        "label": "D",
+        "text": "Remedying damage caused by an Exceptional Event"
+      }
+    ],
+    "answer": 2,
+    "explanation": "Эх сурвалж: FIDIC Yellow Book 2017, Sub-Clause 11.2."
+  },
+  {
+    "q": "According to the Yellow Book 2017, a DNP shall not be extended by more than:",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Two years after expiry of the DNP stated in the Contract Data"
+      },
+      {
+        "label": "B",
+        "text": "One year after expiry of the DNP stated in the Contract Data"
+      },
+      {
+        "label": "C",
+        "text": "Three years"
+      },
+      {
+        "label": "D",
+        "text": "Five years"
+      }
+    ],
+    "answer": 0,
+    "explanation": "Эх сурвалж: FIDIC Yellow Book 2017, Sub-Clause 11.3."
+  },
+  {
+    "q": "According to the Yellow Book 2017, if the Engineer fails to issue the Performance Certificate within the 28-day period, when is it deemed issued?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Never"
+      },
+      {
+        "label": "B",
+        "text": "On the date of the Final Statement"
+      },
+      {
+        "label": "C",
+        "text": "On the date of taking-over"
+      },
+      {
+        "label": "D",
+        "text": "On the date 28 days after the date on which it should have been issued"
+      }
+    ],
+    "answer": 3,
+    "explanation": "Эх сурвалж: FIDIC Yellow Book 2017, Sub-Clause 11.9."
+  },
+  {
+    "q": "According to the Silver Book, by how much at most may the Defects Notification Period be extended?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Two years"
+      },
+      {
+        "label": "B",
+        "text": "6 months"
+      },
+      {
+        "label": "C",
+        "text": "One year"
+      },
+      {
+        "label": "D",
+        "text": "Three years"
+      }
+    ],
+    "answer": 0,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 11.3."
+  },
+  {
+    "q": "According to the Silver Book, within how many days after the latest expiry date of the Defects Notification Periods must the Performance Certificate be issued?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "56 days"
+      },
+      {
+        "label": "B",
+        "text": "14 days"
+      },
+      {
+        "label": "C",
+        "text": "28 days"
+      },
+      {
+        "label": "D",
+        "text": "21 days"
+      }
+    ],
+    "answer": 2,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 11.9."
+  },
+  {
+    "q": "According to the Silver Book, which document alone is deemed to constitute acceptance of the Works?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "The Taking-Over Certificate"
+      },
+      {
+        "label": "B",
+        "text": "The Performance Certificate"
+      },
+      {
+        "label": "C",
+        "text": "The Final Statement"
+      },
+      {
+        "label": "D",
+        "text": "The Notice of No-objection"
+      }
+    ],
+    "answer": 1,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 11.9."
+  },
+  {
+    "q": "According to the Silver Book, except where prohibited by law or in case of fraud, gross negligence, deliberate default or reckless misconduct, the Contractor is not liable for defects in Plant occurring more than how long after expiry of the DNP for the Plant?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Ten years"
+      },
+      {
+        "label": "B",
+        "text": "One year"
+      },
+      {
+        "label": "C",
+        "text": "Two years"
+      },
+      {
+        "label": "D",
+        "text": "Five years"
+      }
+    ],
+    "answer": 2,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 11.10."
+  },
+  {
+    "q": "According to the Silver Book, if the Contractor has not cleared the Site within how many days after the issue of the Performance Certificate, the Employer may sell or dispose of remaining items and reinstate the Site at the Contractor's cost?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "14 days"
+      },
+      {
+        "label": "B",
+        "text": "28 days"
+      },
+      {
+        "label": "C",
+        "text": "56 days"
+      },
+      {
+        "label": "D",
+        "text": "21 days"
+      }
+    ],
+    "answer": 1,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 11.11."
+  }
+]

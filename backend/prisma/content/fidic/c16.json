@@ -1,0 +1,256 @@
+[
+  {
+    "q": "According to the Red Book 2017, how long after giving Notice may the Contractor suspend work (or reduce the rate of work) under Sub-Clause 16.1?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Not less than 14 days"
+      },
+      {
+        "label": "B",
+        "text": "Not less than 7 days"
+      },
+      {
+        "label": "C",
+        "text": "Not less than 21 days"
+      },
+      {
+        "label": "D",
+        "text": "Not less than 28 days"
+      }
+    ],
+    "answer": 2,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 16.1.",
+    "trial": true
+  },
+  {
+    "q": "According to the Red Book 2017, which is a ground for suspension by the Contractor?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Exceptionally adverse weather"
+      },
+      {
+        "label": "B",
+        "text": "The Engineer's Representative is replaced"
+      },
+      {
+        "label": "C",
+        "text": "The Engineer rejects the Contractor's programme"
+      },
+      {
+        "label": "D",
+        "text": "The Employer fails to comply with a binding agreement, final and binding determination, or DAAB decision, and the failure is a material breach"
+      }
+    ],
+    "answer": 3,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 16.1."
+  },
+  {
+    "q": "According to the Red Book 2017, the Contractor may give Notice of intention to terminate if the Engineer fails to issue the relevant Payment Certificate within how many days after receiving a Statement and supporting documents?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "56 days"
+      },
+      {
+        "label": "B",
+        "text": "42 days"
+      },
+      {
+        "label": "C",
+        "text": "28 days"
+      },
+      {
+        "label": "D",
+        "text": "84 days"
+      }
+    ],
+    "answer": 0,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 16.2.1."
+  },
+  {
+    "q": "According to the Red Book 2017, the Contractor may give Notice of intention to terminate if he does not receive the amount due under any Payment Certificate within how many days after expiry of the time stated in Sub-Clause 14.7?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "56 days"
+      },
+      {
+        "label": "B",
+        "text": "28 days"
+      },
+      {
+        "label": "C",
+        "text": "14 days"
+      },
+      {
+        "label": "D",
+        "text": "42 days"
+      }
+    ],
+    "answer": 3,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 16.2.1."
+  },
+  {
+    "q": "According to the Red Book 2017, the Contractor may give Notice of intention to terminate if he does not receive a Notice of the Commencement Date within how many days after receiving the Letter of Acceptance?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "84 days"
+      },
+      {
+        "label": "B",
+        "text": "56 days"
+      },
+      {
+        "label": "C",
+        "text": "112 days"
+      },
+      {
+        "label": "D",
+        "text": "42 days"
+      }
+    ],
+    "answer": 0,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 16.2.1."
+  },
+  {
+    "q": "According to the Red Book 2017, after the Contractor's Notice of intention to terminate, if the Employer fails to remedy the matter within how many days may the Contractor terminate by a second Notice?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "7 days"
+      },
+      {
+        "label": "B",
+        "text": "14 days"
+      },
+      {
+        "label": "C",
+        "text": "28 days"
+      },
+      {
+        "label": "D",
+        "text": "42 days"
+      }
+    ],
+    "answer": 1,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 16.2.2."
+  },
+  {
+    "q": "According to the Silver Book, how much Notice must the Contractor give before suspending work or reducing the rate of work?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Not less than 7 days"
+      },
+      {
+        "label": "B",
+        "text": "Not less than 14 days"
+      },
+      {
+        "label": "C",
+        "text": "Not less than 21 days"
+      },
+      {
+        "label": "D",
+        "text": "Not less than 28 days"
+      }
+    ],
+    "answer": 2,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 16.1."
+  },
+  {
+    "q": "According to the Silver Book, which of the following is a ground for the Contractor's suspension added in the 2017 edition?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "The Employer's Representative is replaced"
+      },
+      {
+        "label": "B",
+        "text": "The Employer rejects the programme"
+      },
+      {
+        "label": "C",
+        "text": "The Employer fails to comply with a final and binding DAAB decision"
+      },
+      {
+        "label": "D",
+        "text": "Exceptionally adverse weather"
+      }
+    ],
+    "answer": 2,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 16.1."
+  },
+  {
+    "q": "According to the Silver Book, the Contractor may give Notice of intention to terminate if he does not receive the amount due within how many days after expiry of the time stated in Sub-Clause 14.7?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "42 days"
+      },
+      {
+        "label": "B",
+        "text": "28 days"
+      },
+      {
+        "label": "C",
+        "text": "56 days"
+      },
+      {
+        "label": "D",
+        "text": "14 days"
+      }
+    ],
+    "answer": 0,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 16.2."
+  },
+  {
+    "q": "According to the Silver Book, after the Contractor's Notice of intention to terminate, if the Employer fails to remedy the matter within how many days may the Contractor terminate by a second Notice?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "14 days"
+      },
+      {
+        "label": "B",
+        "text": "7 days"
+      },
+      {
+        "label": "C",
+        "text": "42 days"
+      },
+      {
+        "label": "D",
+        "text": "28 days"
+      }
+    ],
+    "answer": 0,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 16.2."
+  },
+  {
+    "q": "According to the Silver Book, after termination under Sub-Clause 16.2, the Employer shall promptly pay the Contractor in accordance with Sub-Clause 18.5 and also (subject to Sub-Clause 20.2) pay:",
+    "choices": [
+      {
+        "label": "A",
+        "text": "The Employer's Representative's fees"
+      },
+      {
+        "label": "B",
+        "text": "Delay damages"
+      },
+      {
+        "label": "C",
+        "text": "The Contractor's loss of profit or other losses and damages suffered as a result of the termination"
+      },
+      {
+        "label": "D",
+        "text": "Nothing further"
+      }
+    ],
+    "answer": 2,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 16.4."
+  }
+]

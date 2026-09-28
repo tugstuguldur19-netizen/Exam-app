@@ -1,0 +1,532 @@
+[
+  {
+    "q": "According to the Red Book 2017, how much Notice of the Commencement Date must the Engineer give the Contractor?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Not less than 28 days"
+      },
+      {
+        "label": "B",
+        "text": "Not less than 14 days"
+      },
+      {
+        "label": "C",
+        "text": "Not less than 21 days"
+      },
+      {
+        "label": "D",
+        "text": "Not less than 7 days"
+      }
+    ],
+    "answer": 1,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 8.1.",
+    "trial": true
+  },
+  {
+    "q": "According to the Red Book 2017, unless otherwise stated in the Particular Conditions, the Commencement Date shall be within:",
+    "choices": [
+      {
+        "label": "A",
+        "text": "84 days after the Contractor receives the Letter of Acceptance"
+      },
+      {
+        "label": "B",
+        "text": "28 days after the Contractor receives the Letter of Acceptance"
+      },
+      {
+        "label": "C",
+        "text": "56 days after the Contractor receives the Letter of Acceptance"
+      },
+      {
+        "label": "D",
+        "text": "42 days after the Contractor receives the Letter of Acceptance"
+      }
+    ],
+    "answer": 3,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 8.1."
+  },
+  {
+    "q": "According to the Red Book 2017, within how many days after receiving the Notice under Sub-Clause 8.1 must the Contractor submit the initial programme?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "14 days"
+      },
+      {
+        "label": "B",
+        "text": "21 days"
+      },
+      {
+        "label": "C",
+        "text": "28 days"
+      },
+      {
+        "label": "D",
+        "text": "42 days"
+      }
+    ],
+    "answer": 2,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 8.3."
+  },
+  {
+    "q": "According to the Red Book 2017, if the Engineer gives no Notice within how many days after receiving the initial programme, he is deemed to have given a Notice of No-objection?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "14 days"
+      },
+      {
+        "label": "B",
+        "text": "7 days"
+      },
+      {
+        "label": "C",
+        "text": "28 days"
+      },
+      {
+        "label": "D",
+        "text": "21 days"
+      }
+    ],
+    "answer": 3,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 8.3."
+  },
+  {
+    "q": "According to the Red Book 2017, Sub-Clause 8.4 [Advance Warning] requires:",
+    "choices": [
+      {
+        "label": "A",
+        "text": "The Contractor to give daily weather reports"
+      },
+      {
+        "label": "B",
+        "text": "Only the Employer to warn of payment delays"
+      },
+      {
+        "label": "C",
+        "text": "Each Party to advise the other (and the Engineer to advise the Parties) of known or probable future events that may adversely affect the work, increase the Contract Price or delay the Works"
+      },
+      {
+        "label": "D",
+        "text": "The DAAB to warn of disputes"
+      }
+    ],
+    "answer": 2,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 8.4."
+  },
+  {
+    "q": "According to the Red Book 2017, which is NOT a ground for Extension of Time?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Unforeseeable shortages of personnel or Goods caused by epidemic or governmental actions"
+      },
+      {
+        "label": "B",
+        "text": "Delay caused by the Contractor's shortage of equipment"
+      },
+      {
+        "label": "C",
+        "text": "A Variation"
+      },
+      {
+        "label": "D",
+        "text": "Exceptionally adverse climatic conditions"
+      }
+    ],
+    "answer": 1,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 8.5."
+  },
+  {
+    "q": "According to the Red Book 2017, the total amount of Delay Damages shall not exceed:",
+    "choices": [
+      {
+        "label": "A",
+        "text": "10% of the Accepted Contract Amount in all cases"
+      },
+      {
+        "label": "B",
+        "text": "The Retention Money"
+      },
+      {
+        "label": "C",
+        "text": "The maximum amount of Delay Damages (if any) stated in the Contract Data"
+      },
+      {
+        "label": "D",
+        "text": "The Performance Security"
+      }
+    ],
+    "answer": 2,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 8.8."
+  },
+  {
+    "q": "According to the Red Book 2017, if the Contractor suffers delay and/or Cost from complying with a suspension instruction under Sub-Clause 8.9, he is entitled (subject to Sub-Clause 20.2) to:",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Cost only"
+      },
+      {
+        "label": "B",
+        "text": "Termination"
+      },
+      {
+        "label": "C",
+        "text": "EOT and/or Cost Plus Profit"
+      },
+      {
+        "label": "D",
+        "text": "Nothing"
+      }
+    ],
+    "answer": 2,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 8.10."
+  },
+  {
+    "q": "According to the Red Book 2017, the Contractor is entitled to payment for suspended Plant and Materials not yet delivered if work on them or their delivery has been suspended for more than:",
+    "choices": [
+      {
+        "label": "A",
+        "text": "21 days"
+      },
+      {
+        "label": "B",
+        "text": "14 days"
+      },
+      {
+        "label": "C",
+        "text": "84 days"
+      },
+      {
+        "label": "D",
+        "text": "28 days"
+      }
+    ],
+    "answer": 3,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 8.11."
+  },
+  {
+    "q": "According to the Red Book 2017, after how many days of suspension may the Contractor request permission to proceed?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "28 days"
+      },
+      {
+        "label": "B",
+        "text": "140 days"
+      },
+      {
+        "label": "C",
+        "text": "56 days"
+      },
+      {
+        "label": "D",
+        "text": "84 days"
+      }
+    ],
+    "answer": 3,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 8.12."
+  },
+  {
+    "q": "According to the Red Book 2017, if the Engineer does not respond within how many days to the Contractor's request to proceed after a prolonged suspension, the Contractor may take further action?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "14 days"
+      },
+      {
+        "label": "B",
+        "text": "21 days"
+      },
+      {
+        "label": "C",
+        "text": "28 days"
+      },
+      {
+        "label": "D",
+        "text": "42 days"
+      }
+    ],
+    "answer": 2,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 8.12."
+  },
+  {
+    "q": "According to the Yellow Book 2017, unless otherwise stated in the Particular Conditions, the Commencement Date shall be within how many days after the Contractor receives the Letter of Acceptance?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "28 days"
+      },
+      {
+        "label": "B",
+        "text": "84 days"
+      },
+      {
+        "label": "C",
+        "text": "56 days"
+      },
+      {
+        "label": "D",
+        "text": "42 days"
+      }
+    ],
+    "answer": 3,
+    "explanation": "Эх сурвалж: FIDIC Yellow Book 2017, Sub-Clause 8.1."
+  },
+  {
+    "q": "According to the Yellow Book 2017, which is NOT a ground for Extension of Time?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Late delivery by the Contractor's own supplier"
+      },
+      {
+        "label": "B",
+        "text": "Delay caused by the Employer or the Employer's Personnel"
+      },
+      {
+        "label": "C",
+        "text": "Exceptionally adverse climatic conditions"
+      },
+      {
+        "label": "D",
+        "text": "A Variation"
+      }
+    ],
+    "answer": 0,
+    "explanation": "Эх сурвалж: FIDIC Yellow Book 2017, Sub-Clause 8.5."
+  },
+  {
+    "q": "According to the Yellow Book 2017, Delay Damages are the only damages due from the Contractor for failure to complete on time, other than:",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Late payment"
+      },
+      {
+        "label": "B",
+        "text": "Any Variation"
+      },
+      {
+        "label": "C",
+        "text": "Retention"
+      },
+      {
+        "label": "D",
+        "text": "Termination under Sub-Clause 15.2 [Termination for Contractor's Default] before completion of the Works"
+      }
+    ],
+    "answer": 3,
+    "explanation": "Эх сурвалж: FIDIC Yellow Book 2017, Sub-Clause 8.8."
+  },
+  {
+    "q": "According to the Silver Book, how much notice of the Commencement Date must the Employer give the Contractor?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Not less than 7 days"
+      },
+      {
+        "label": "B",
+        "text": "Not less than 21 days"
+      },
+      {
+        "label": "C",
+        "text": "Not less than 14 days"
+      },
+      {
+        "label": "D",
+        "text": "Not less than 28 days"
+      }
+    ],
+    "answer": 2,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 8.1."
+  },
+  {
+    "q": "According to the Silver Book, within how many days after receiving the Notice under Sub-Clause 8.1 must the Contractor submit the initial programme?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "14 days"
+      },
+      {
+        "label": "B",
+        "text": "42 days"
+      },
+      {
+        "label": "C",
+        "text": "28 days"
+      },
+      {
+        "label": "D",
+        "text": "21 days"
+      }
+    ],
+    "answer": 2,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 8.3."
+  },
+  {
+    "q": "According to the Silver Book, within how many days after receiving a programme may the Employer give Notice that it does not comply with the Contract?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "7 days"
+      },
+      {
+        "label": "B",
+        "text": "28 days"
+      },
+      {
+        "label": "C",
+        "text": "14 days"
+      },
+      {
+        "label": "D",
+        "text": "21 days"
+      }
+    ],
+    "answer": 3,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 8.3."
+  },
+  {
+    "q": "According to the Silver Book, what does Sub-Clause 8.4 [Advance Warning] require?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Each Party must advise the other of known or probable future events that may adversely affect the work, increase the Contract Price or delay the Works"
+      },
+      {
+        "label": "B",
+        "text": "The Contractor must warn of weather each day"
+      },
+      {
+        "label": "C",
+        "text": "The DAAB must warn of disputes"
+      },
+      {
+        "label": "D",
+        "text": "Only the Employer must warn of payment delays"
+      }
+    ],
+    "answer": 0,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 8.4."
+  },
+  {
+    "q": "According to the Silver Book, which of the following is NOT listed as a cause for extension of time under Sub-Clause 8.5?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "A Variation"
+      },
+      {
+        "label": "B",
+        "text": "Delay caused by the Employer or the Employer's Personnel"
+      },
+      {
+        "label": "C",
+        "text": "Exceptionally adverse climatic conditions"
+      },
+      {
+        "label": "D",
+        "text": "A cause of delay giving entitlement under another Sub-Clause"
+      }
+    ],
+    "answer": 2,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 8.5."
+  },
+  {
+    "q": "According to the Silver Book, if a delay caused by the Employer is concurrent with a delay caused by the Contractor, the Contractor's entitlement to EOT is assessed:",
+    "choices": [
+      {
+        "label": "A",
+        "text": "By the Contractor alone"
+      },
+      {
+        "label": "B",
+        "text": "In accordance with the rules and procedures stated in the Special Provisions (if not stated, taking due regard of all relevant circumstances)"
+      },
+      {
+        "label": "C",
+        "text": "Always in the Employer's favour"
+      },
+      {
+        "label": "D",
+        "text": "Always in the Contractor's favour"
+      }
+    ],
+    "answer": 1,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 8.5."
+  },
+  {
+    "q": "According to the Silver Book, the total amount of delay damages shall not exceed:",
+    "choices": [
+      {
+        "label": "A",
+        "text": "10% of the Contract Price in all cases"
+      },
+      {
+        "label": "B",
+        "text": "The retention money"
+      },
+      {
+        "label": "C",
+        "text": "The Performance Security"
+      },
+      {
+        "label": "D",
+        "text": "The maximum amount stated in the Contract Data"
+      }
+    ],
+    "answer": 3,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 8.8."
+  },
+  {
+    "q": "According to the Silver Book, the Contractor is entitled to payment for Plant and Materials after the Employer's suspension if the suspension has continued for more than:",
+    "choices": [
+      {
+        "label": "A",
+        "text": "28 days"
+      },
+      {
+        "label": "B",
+        "text": "21 days"
+      },
+      {
+        "label": "C",
+        "text": "14 days"
+      },
+      {
+        "label": "D",
+        "text": "84 days"
+      }
+    ],
+    "answer": 0,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 8.11."
+  },
+  {
+    "q": "According to the Silver Book, after how many days of suspension may the Contractor request the Employer's permission to proceed?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "28 days"
+      },
+      {
+        "label": "B",
+        "text": "56 days"
+      },
+      {
+        "label": "C",
+        "text": "140 days"
+      },
+      {
+        "label": "D",
+        "text": "84 days"
+      }
+    ],
+    "answer": 3,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 8.12."
+  }
+]

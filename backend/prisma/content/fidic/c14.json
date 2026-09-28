@@ -1,0 +1,578 @@
+[
+  {
+    "q": "According to the Red Book 2017, within how many days after the Employer receives the Performance Security and Advance Payment Guarantee (and the Engineer receives the application) must the Engineer issue the Advance Payment Certificate?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "28 days"
+      },
+      {
+        "label": "B",
+        "text": "21 days"
+      },
+      {
+        "label": "C",
+        "text": "14 days"
+      },
+      {
+        "label": "D",
+        "text": "7 days"
+      }
+    ],
+    "answer": 2,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 14.2.2.",
+    "trial": true
+  },
+  {
+    "q": "According to the Red Book 2017, unless other percentages are stated, repayment of the advance payment begins when certified interim payments exceed what percentage of the Accepted Contract Amount less Provisional Sums?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "10%"
+      },
+      {
+        "label": "B",
+        "text": "20%"
+      },
+      {
+        "label": "C",
+        "text": "25%"
+      },
+      {
+        "label": "D",
+        "text": "5%"
+      }
+    ],
+    "answer": 0,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 14.2.3."
+  },
+  {
+    "q": "According to the Red Book 2017, unless other percentages are stated, at what amortisation rate is the advance payment deducted from each IPC?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "10%"
+      },
+      {
+        "label": "B",
+        "text": "50%"
+      },
+      {
+        "label": "C",
+        "text": "25% (one quarter)"
+      },
+      {
+        "label": "D",
+        "text": "20%"
+      }
+    ],
+    "answer": 2,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 14.2.3."
+  },
+  {
+    "q": "According to the Red Book 2017, if no period of payment is stated in the Contract Data, when does the Contractor submit a Statement?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "At each milestone"
+      },
+      {
+        "label": "B",
+        "text": "After each quarter"
+      },
+      {
+        "label": "C",
+        "text": "After the end of each week"
+      },
+      {
+        "label": "D",
+        "text": "After the end of each month"
+      }
+    ],
+    "answer": 3,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 14.3."
+  },
+  {
+    "q": "According to the Red Book 2017, if there is no Schedule of Payments, within how many days after the Commencement Date must the first non-binding estimate of payments be submitted?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "42 days"
+      },
+      {
+        "label": "B",
+        "text": "84 days"
+      },
+      {
+        "label": "C",
+        "text": "56 days"
+      },
+      {
+        "label": "D",
+        "text": "28 days"
+      }
+    ],
+    "answer": 0,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 14.4."
+  },
+  {
+    "q": "According to the Red Book 2017, the amount certified for qualifying Plant and Materials intended for the Works is what percentage of their agreed or determined value?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "80%"
+      },
+      {
+        "label": "B",
+        "text": "100%"
+      },
+      {
+        "label": "C",
+        "text": "70%"
+      },
+      {
+        "label": "D",
+        "text": "50%"
+      }
+    ],
+    "answer": 0,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 14.5."
+  },
+  {
+    "q": "According to the Red Book 2017, within how many days after receiving a Statement and supporting documents must the Engineer issue an IPC?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "14 days"
+      },
+      {
+        "label": "B",
+        "text": "21 days"
+      },
+      {
+        "label": "C",
+        "text": "56 days"
+      },
+      {
+        "label": "D",
+        "text": "28 days"
+      }
+    ],
+    "answer": 3,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 14.6.1."
+  },
+  {
+    "q": "According to the Red Book 2017, if not stated in the Contract Data, within what period must the Employer pay the amount certified in each IPC?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "42 days after the Engineer receives the Statement"
+      },
+      {
+        "label": "B",
+        "text": "28 days after the Engineer receives the Statement"
+      },
+      {
+        "label": "C",
+        "text": "56 days after the Engineer receives the Statement and supporting documents"
+      },
+      {
+        "label": "D",
+        "text": "84 days after the Engineer receives the Statement"
+      }
+    ],
+    "answer": 2,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 14.7."
+  },
+  {
+    "q": "According to the Red Book 2017, if not stated in the Contract Data, within what period after receiving the Advance Payment Certificate must the Employer pay it?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "21 days"
+      },
+      {
+        "label": "B",
+        "text": "28 days"
+      },
+      {
+        "label": "C",
+        "text": "14 days"
+      },
+      {
+        "label": "D",
+        "text": "42 days"
+      }
+    ],
+    "answer": 0,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 14.7."
+  },
+  {
+    "q": "According to the Red Book 2017, unless otherwise stated in the Contract Data, financing charges on delayed payment are calculated at:",
+    "choices": [
+      {
+        "label": "A",
+        "text": "The central bank discount rate only"
+      },
+      {
+        "label": "B",
+        "text": "3% above the average bank short-term lending rate to prime borrowers for the currency of payment at the place for payment"
+      },
+      {
+        "label": "C",
+        "text": "5% per annum"
+      },
+      {
+        "label": "D",
+        "text": "The Contractor's own borrowing rate"
+      }
+    ],
+    "answer": 1,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 14.8."
+  },
+  {
+    "q": "According to the Red Book 2017, when may the Contractor include the first half of the Retention Money in a Statement?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "When the Performance Certificate is issued"
+      },
+      {
+        "label": "B",
+        "text": "When the Final Payment Certificate is issued"
+      },
+      {
+        "label": "C",
+        "text": "When the Taking-Over Certificate has been issued for the Works"
+      },
+      {
+        "label": "D",
+        "text": "On the Commencement Date"
+      }
+    ],
+    "answer": 2,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 14.9."
+  },
+  {
+    "q": "According to the Red Book 2017, within how many days after the Date of Completion of the Works must the Contractor submit the Statement at Completion?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "56 days"
+      },
+      {
+        "label": "B",
+        "text": "28 days"
+      },
+      {
+        "label": "C",
+        "text": "84 days"
+      },
+      {
+        "label": "D",
+        "text": "42 days"
+      }
+    ],
+    "answer": 2,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 14.10."
+  },
+  {
+    "q": "According to the Red Book 2017, within how many days after the issue of the Performance Certificate must the Contractor submit a draft final Statement?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "84 days"
+      },
+      {
+        "label": "B",
+        "text": "56 days"
+      },
+      {
+        "label": "C",
+        "text": "28 days"
+      },
+      {
+        "label": "D",
+        "text": "42 days"
+      }
+    ],
+    "answer": 1,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 14.11.1."
+  },
+  {
+    "q": "According to the Red Book 2017, within how many days after receiving the Final Statement (or Partially Agreed Final Statement) and the discharge must the Engineer issue the Final Payment Certificate?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "28 days"
+      },
+      {
+        "label": "B",
+        "text": "21 days"
+      },
+      {
+        "label": "C",
+        "text": "14 days"
+      },
+      {
+        "label": "D",
+        "text": "56 days"
+      }
+    ],
+    "answer": 0,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 14.13."
+  },
+  {
+    "q": "According to the Yellow Book 2017, unless otherwise stated in the Particular Conditions, the Contract Price is:",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Based on Daywork only"
+      },
+      {
+        "label": "B",
+        "text": "Remeasured on actual quantities"
+      },
+      {
+        "label": "C",
+        "text": "The lump sum Accepted Contract Amount, subject to adjustments, additions and deductions under the Contract"
+      },
+      {
+        "label": "D",
+        "text": "Cost plus fee"
+      }
+    ],
+    "answer": 2,
+    "explanation": "Эх сурвалж: FIDIC Yellow Book 2017, Sub-Clause 14.1."
+  },
+  {
+    "q": "According to the Yellow Book 2017, any quantities set out in a Schedule are:",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Binding for measurement"
+      },
+      {
+        "label": "B",
+        "text": "The actual and correct quantities"
+      },
+      {
+        "label": "C",
+        "text": "Estimated quantities, not to be taken as the actual and correct quantities"
+      },
+      {
+        "label": "D",
+        "text": "Guaranteed by the Employer"
+      }
+    ],
+    "answer": 2,
+    "explanation": "Эх сурвалж: FIDIC Yellow Book 2017, Sub-Clause 14.1."
+  },
+  {
+    "q": "According to the Yellow Book 2017, if the Contract does not include a Schedule of Payments, when must the Contractor submit the first non-binding estimate of payments?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Within 14 days after the Commencement Date"
+      },
+      {
+        "label": "B",
+        "text": "With the Tender"
+      },
+      {
+        "label": "C",
+        "text": "After the first IPC"
+      },
+      {
+        "label": "D",
+        "text": "Within 42 days after the Commencement Date, then revised every 3 months"
+      }
+    ],
+    "answer": 3,
+    "explanation": "Эх сурвалж: FIDIC Yellow Book 2017, Sub-Clause 14.4."
+  },
+  {
+    "q": "According to the Yellow Book 2017, the sum certified in an IPC for qualifying Plant and Materials intended for the Works is:",
+    "choices": [
+      {
+        "label": "A",
+        "text": "100% of the agreed or determined amount"
+      },
+      {
+        "label": "B",
+        "text": "50% of the agreed or determined amount"
+      },
+      {
+        "label": "C",
+        "text": "70% of the agreed or determined amount"
+      },
+      {
+        "label": "D",
+        "text": "80% of the agreed or determined amount"
+      }
+    ],
+    "answer": 3,
+    "explanation": "Эх сурвалж: FIDIC Yellow Book 2017, Sub-Clause 14.5."
+  },
+  {
+    "q": "According to the Yellow Book 2017, unless the Contractor makes a Claim within how many days of receiving a copy of the FPC, he is deemed to have accepted the amounts certified?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "28 days"
+      },
+      {
+        "label": "B",
+        "text": "42 days"
+      },
+      {
+        "label": "C",
+        "text": "84 days"
+      },
+      {
+        "label": "D",
+        "text": "56 days"
+      }
+    ],
+    "answer": 3,
+    "explanation": "Эх сурвалж: FIDIC Yellow Book 2017, Sub-Clause 14.14."
+  },
+  {
+    "q": "According to the Silver Book, unless otherwise stated in the Particular Conditions, the Contract Price is:",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Remeasured on actual quantities"
+      },
+      {
+        "label": "B",
+        "text": "Determined by Daywork"
+      },
+      {
+        "label": "C",
+        "text": "The lump sum Contract Price stated in the Contract Agreement, subject to adjustments under the Contract"
+      },
+      {
+        "label": "D",
+        "text": "Cost plus fee"
+      }
+    ],
+    "answer": 2,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 14.1."
+  },
+  {
+    "q": "According to the Silver Book, within how many days after receiving a Statement and supporting documents must the Employer pay the interim amount due?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "42 days"
+      },
+      {
+        "label": "B",
+        "text": "28 days"
+      },
+      {
+        "label": "C",
+        "text": "56 days"
+      },
+      {
+        "label": "D",
+        "text": "84 days"
+      }
+    ],
+    "answer": 2,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 14.7."
+  },
+  {
+    "q": "According to the Silver Book, financing charges on delayed payment are calculated (unless otherwise stated in the Contract Data) at:",
+    "choices": [
+      {
+        "label": "A",
+        "text": "The Contractor's own borrowing rate"
+      },
+      {
+        "label": "B",
+        "text": "5% per annum"
+      },
+      {
+        "label": "C",
+        "text": "Three percent (3%) above the average bank short-term lending rate to prime borrowers for the currency of payment at the place for payment"
+      },
+      {
+        "label": "D",
+        "text": "The central bank discount rate only"
+      }
+    ],
+    "answer": 2,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 14.8."
+  },
+  {
+    "q": "According to the Silver Book, within how many days after the Date of Completion of the Works must the Contractor submit the Statement at Completion?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "28 days"
+      },
+      {
+        "label": "B",
+        "text": "42 days"
+      },
+      {
+        "label": "C",
+        "text": "56 days"
+      },
+      {
+        "label": "D",
+        "text": "84 days"
+      }
+    ],
+    "answer": 3,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 14.10."
+  },
+  {
+    "q": "According to the Silver Book, within how many days after the issue of the Performance Certificate must the Contractor submit the draft Final Statement?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "42 days"
+      },
+      {
+        "label": "B",
+        "text": "84 days"
+      },
+      {
+        "label": "C",
+        "text": "28 days"
+      },
+      {
+        "label": "D",
+        "text": "56 days"
+      }
+    ],
+    "answer": 3,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 14.11."
+  },
+  {
+    "q": "According to the Silver Book, what does the Contractor's discharge confirm?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "That the DAAB's term has ended"
+      },
+      {
+        "label": "B",
+        "text": "That insurances are cancelled"
+      },
+      {
+        "label": "C",
+        "text": "That no defects exist"
+      },
+      {
+        "label": "D",
+        "text": "That the total of the Final Statement represents full and final settlement of all moneys due to the Contractor"
+      }
+    ],
+    "answer": 3,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 14.12."
+  }
+]

@@ -1,0 +1,141 @@
+[
+  {
+    "q": "According to the Red Book 2017, how much Notice must the Engineer give of his intention to attend tests?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Not less than 72 hours"
+      },
+      {
+        "label": "B",
+        "text": "Not less than 24 hours"
+      },
+      {
+        "label": "C",
+        "text": "Not less than 48 hours"
+      },
+      {
+        "label": "D",
+        "text": "Not less than 7 days"
+      }
+    ],
+    "answer": 0,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 7.4.",
+    "trial": true
+  },
+  {
+    "q": "According to the Red Book 2017, if the Engineer does not attend tests at the time and place stated in the Contractor's Notice, what happens?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "The Contractor may proceed, and the tests are deemed to have been made in the Engineer's presence"
+      },
+      {
+        "label": "B",
+        "text": "The tests are cancelled"
+      },
+      {
+        "label": "C",
+        "text": "The tests must be repeated"
+      },
+      {
+        "label": "D",
+        "text": "The Employer attends instead"
+      }
+    ],
+    "answer": 0,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 7.4."
+  },
+  {
+    "q": "According to the Red Book 2017, if the Engineer gives no Notice within how many days after receiving the Contractor's proposal for remedial work, he is deemed to have given a Notice of No-objection?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "7 days"
+      },
+      {
+        "label": "B",
+        "text": "28 days"
+      },
+      {
+        "label": "C",
+        "text": "14 days"
+      },
+      {
+        "label": "D",
+        "text": "21 days"
+      }
+    ],
+    "answer": 2,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 7.5."
+  },
+  {
+    "q": "According to the Red Book 2017, when does Plant become the property of the Employer?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "At the earlier of delivery to the Site or when the Contractor becomes entitled to payment of its value under Sub-Clause 8.11"
+      },
+      {
+        "label": "B",
+        "text": "On the Taking-Over Certificate"
+      },
+      {
+        "label": "C",
+        "text": "On the Performance Certificate"
+      },
+      {
+        "label": "D",
+        "text": "On signing of the Contract Agreement"
+      }
+    ],
+    "answer": 0,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 7.7."
+  },
+  {
+    "q": "According to the Silver Book, when does Plant become the property of the Employer (free from liens)?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "At the Performance Certificate"
+      },
+      {
+        "label": "B",
+        "text": "At signing of the Contract Agreement"
+      },
+      {
+        "label": "C",
+        "text": "At taking-over"
+      },
+      {
+        "label": "D",
+        "text": "At the earlier of delivery to the Site or when the Contractor becomes entitled to payment of its value under Sub-Clause 8.11"
+      }
+    ],
+    "answer": 3,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 7.7."
+  },
+  {
+    "q": "According to the Silver Book, who pays royalties and other payments for natural Materials obtained from outside the Site?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "The Contractor, unless otherwise stated"
+      },
+      {
+        "label": "B",
+        "text": "The landowner"
+      },
+      {
+        "label": "C",
+        "text": "The Employer's Representative"
+      },
+      {
+        "label": "D",
+        "text": "The Employer"
+      }
+    ],
+    "answer": 0,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 7.8."
+  }
+]

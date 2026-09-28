@@ -1,0 +1,233 @@
+[
+  {
+    "q": "According to the Red Book 2017, a Notice to Correct must specify:",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Only the penalty amount"
+      },
+      {
+        "label": "B",
+        "text": "A new Contractor's Representative"
+      },
+      {
+        "label": "C",
+        "text": "Immediate termination"
+      },
+      {
+        "label": "D",
+        "text": "The failure, the obligation breached, and a reasonable time within which to remedy it"
+      }
+    ],
+    "answer": 3,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 15.1.",
+    "trial": true
+  },
+  {
+    "q": "According to the Red Book 2017, the Employer may give Notice of intention to terminate if the Contractor fails, without reasonable excuse, to comply with a Notice of rejection under Sub-Clause 7.5 or an instruction under Sub-Clause 7.6 within:",
+    "choices": [
+      {
+        "label": "A",
+        "text": "14 days"
+      },
+      {
+        "label": "B",
+        "text": "28 days"
+      },
+      {
+        "label": "C",
+        "text": "42 days"
+      },
+      {
+        "label": "D",
+        "text": "21 days"
+      }
+    ],
+    "answer": 1,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 15.2.1."
+  },
+  {
+    "q": "According to the Red Book 2017, after a Notice of intention to terminate, if the Contractor fails to remedy the matter within how many days may the Employer terminate by a second Notice?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "7 days"
+      },
+      {
+        "label": "B",
+        "text": "42 days"
+      },
+      {
+        "label": "C",
+        "text": "28 days"
+      },
+      {
+        "label": "D",
+        "text": "14 days"
+      }
+    ],
+    "answer": 3,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 15.2.2."
+  },
+  {
+    "q": "According to the Red Book 2017, in which cases may the Employer terminate immediately by the Notice under Sub-Clause 15.2.1?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Failure to attend a management meeting"
+      },
+      {
+        "label": "B",
+        "text": "Subcontracting or assignment in breach of the Contract, the Contractor's bankruptcy/insolvency, or corrupt, fraudulent, collusive or coercive practice"
+      },
+      {
+        "label": "C",
+        "text": "Late submission of progress reports"
+      },
+      {
+        "label": "D",
+        "text": "Any breach of the Contract"
+      }
+    ],
+    "answer": 1,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 15.2.2."
+  },
+  {
+    "q": "According to the Red Book 2017, when does termination for the Employer's convenience take effect?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "28 days after the later of the Contractor's receipt of the Notice or the Employer's return of the Performance Security"
+      },
+      {
+        "label": "B",
+        "text": "Immediately"
+      },
+      {
+        "label": "C",
+        "text": "56 days after Notice"
+      },
+      {
+        "label": "D",
+        "text": "7 days after Notice"
+      }
+    ],
+    "answer": 0,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 15.5."
+  },
+  {
+    "q": "According to the Silver Book, what must a Notice to Correct under Sub-Clause 15.1 do?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Replace the Contractor's Representative"
+      },
+      {
+        "label": "B",
+        "text": "Impose a fine"
+      },
+      {
+        "label": "C",
+        "text": "Terminate the Contract"
+      },
+      {
+        "label": "D",
+        "text": "Describe the Contractor's failure and specify a reasonable time within which to remedy it"
+      }
+    ],
+    "answer": 3,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 15.1."
+  },
+  {
+    "q": "According to the Silver Book, after the Employer gives a Notice of intention to terminate, how long does the Contractor have to remedy the default before the Employer may give a second Notice terminating the Contract?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "42 days"
+      },
+      {
+        "label": "B",
+        "text": "14 days"
+      },
+      {
+        "label": "C",
+        "text": "28 days"
+      },
+      {
+        "label": "D",
+        "text": "7 days"
+      }
+    ],
+    "answer": 1,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 15.2."
+  },
+  {
+    "q": "According to the Silver Book, in which cases may the Employer terminate immediately by giving a Notice under Sub-Clause 15.2.1?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Late submission of progress reports"
+      },
+      {
+        "label": "B",
+        "text": "Failure to attend a management meeting"
+      },
+      {
+        "label": "C",
+        "text": "Subcontracting or assignment in breach of the Contract, the Contractor's bankruptcy/insolvency, or corrupt, fraudulent, collusive or coercive practice"
+      },
+      {
+        "label": "D",
+        "text": "Any breach of the Contract"
+      }
+    ],
+    "answer": 2,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 15.2."
+  },
+  {
+    "q": "According to the Silver Book, when does termination for the Employer's convenience take effect?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Immediately"
+      },
+      {
+        "label": "B",
+        "text": "28 days after the later of the Contractor's receipt of the Notice or the Employer's return of the Performance Security"
+      },
+      {
+        "label": "C",
+        "text": "84 days after Notice"
+      },
+      {
+        "label": "D",
+        "text": "7 days after Notice"
+      }
+    ],
+    "answer": 1,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 15.5."
+  },
+  {
+    "q": "According to the Silver Book, after termination for convenience, until the Contractor has received payment of the amount due under Sub-Clause 15.6, the Employer shall not:",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Use the Site for any purpose"
+      },
+      {
+        "label": "B",
+        "text": "Execute (any part of) the Works or arrange for (any part of) the Works to be executed by any other entities"
+      },
+      {
+        "label": "C",
+        "text": "Replace the Employer's Representative"
+      },
+      {
+        "label": "D",
+        "text": "Return the Performance Security"
+      }
+    ],
+    "answer": 1,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 15.5."
+  }
+]

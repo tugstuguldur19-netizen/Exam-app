@@ -1,0 +1,164 @@
+[
+  {
+    "q": "According to the Red Book 2017, if the Contractor suffers delay and/or Cost because the Employer fails to give right of access to the Site in time, the Contractor is entitled to:",
+    "choices": [
+      {
+        "label": "A",
+        "text": "EOT and/or Cost Plus Profit"
+      },
+      {
+        "label": "B",
+        "text": "Terminate the Contract immediately"
+      },
+      {
+        "label": "C",
+        "text": "EOT only"
+      },
+      {
+        "label": "D",
+        "text": "Cost only, without profit"
+      }
+    ],
+    "answer": 0,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 2.1.",
+    "trial": true
+  },
+  {
+    "q": "According to the Red Book 2017, within how many days after receiving the Contractor's request must the Employer provide reasonable evidence of financial arrangements?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "21 days"
+      },
+      {
+        "label": "B",
+        "text": "14 days"
+      },
+      {
+        "label": "C",
+        "text": "42 days"
+      },
+      {
+        "label": "D",
+        "text": "28 days"
+      }
+    ],
+    "answer": 3,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 2.4."
+  },
+  {
+    "q": "According to the Red Book 2017, the Contractor may request evidence of financial arrangements if he receives an instruction to execute a Variation with a price greater than what percentage of the Accepted Contract Amount?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "30%"
+      },
+      {
+        "label": "B",
+        "text": "5%"
+      },
+      {
+        "label": "C",
+        "text": "10%"
+      },
+      {
+        "label": "D",
+        "text": "20%"
+      }
+    ],
+    "answer": 2,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 2.4."
+  },
+  {
+    "q": "According to the Red Book 2017, by when must the Employer have made available the relevant Site data in his possession?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Before the Base Date"
+      },
+      {
+        "label": "B",
+        "text": "Within 28 days after the Letter of Acceptance"
+      },
+      {
+        "label": "C",
+        "text": "On the Commencement Date"
+      },
+      {
+        "label": "D",
+        "text": "At taking-over"
+      }
+    ],
+    "answer": 0,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 2.5."
+  },
+  {
+    "q": "According to the Silver Book, if no time for access to the Site is stated in the Contract Data, from when must the Employer give access?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "From the date of the Performance Security"
+      },
+      {
+        "label": "B",
+        "text": "From the Commencement Date"
+      },
+      {
+        "label": "C",
+        "text": "28 days after the Commencement Date"
+      },
+      {
+        "label": "D",
+        "text": "From the Base Date"
+      }
+    ],
+    "answer": 1,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 2.1."
+  },
+  {
+    "q": "According to the Silver Book, within how many days after receiving the Contractor's request must the Employer submit reasonable evidence of financial arrangements?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "42 days"
+      },
+      {
+        "label": "B",
+        "text": "14 days"
+      },
+      {
+        "label": "C",
+        "text": "28 days"
+      },
+      {
+        "label": "D",
+        "text": "21 days"
+      }
+    ],
+    "answer": 2,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 2.4."
+  },
+  {
+    "q": "According to the Silver Book, by when must the Employer have made available the relevant Site data in his possession (topography, sub-surface, hydrological, climatic and environmental conditions)?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "At taking-over"
+      },
+      {
+        "label": "B",
+        "text": "Within 28 days after signing the Contract Agreement"
+      },
+      {
+        "label": "C",
+        "text": "Before the Base Date"
+      },
+      {
+        "label": "D",
+        "text": "On the Commencement Date"
+      }
+    ],
+    "answer": 2,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 2.5."
+  }
+]

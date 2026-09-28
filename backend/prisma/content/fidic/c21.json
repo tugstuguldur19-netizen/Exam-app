@@ -1,0 +1,371 @@
+[
+  {
+    "q": "According to the Red Book 2017, if not stated in the Contract Data, within how many days after the Contractor receives the Letter of Acceptance must the Parties jointly appoint the DAAB?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "28 days"
+      },
+      {
+        "label": "B",
+        "text": "14 days"
+      },
+      {
+        "label": "C",
+        "text": "42 days"
+      },
+      {
+        "label": "D",
+        "text": "56 days"
+      }
+    ],
+    "answer": 0,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 21.1.",
+    "trial": true
+  },
+  {
+    "q": "According to the Red Book 2017, a Dispute arising from a NOD against the Engineer's determination must be referred to the DAAB within how many days, otherwise the NOD lapses?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "28 days"
+      },
+      {
+        "label": "B",
+        "text": "84 days"
+      },
+      {
+        "label": "C",
+        "text": "56 days"
+      },
+      {
+        "label": "D",
+        "text": "42 days"
+      }
+    ],
+    "answer": 3,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 21.4.1."
+  },
+  {
+    "q": "According to the Red Book 2017, within how many days after receiving a reference must the DAAB give its decision (unless otherwise agreed)?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "56 days"
+      },
+      {
+        "label": "B",
+        "text": "28 days"
+      },
+      {
+        "label": "C",
+        "text": "42 days"
+      },
+      {
+        "label": "D",
+        "text": "84 days"
+      }
+    ],
+    "answer": 3,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 21.4.3."
+  },
+  {
+    "q": "According to the Red Book 2017, within how many days after receiving the DAAB's decision must a dissatisfied Party give a NOD?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "56 days"
+      },
+      {
+        "label": "B",
+        "text": "42 days"
+      },
+      {
+        "label": "C",
+        "text": "28 days"
+      },
+      {
+        "label": "D",
+        "text": "14 days"
+      }
+    ],
+    "answer": 2,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 21.4.4."
+  },
+  {
+    "q": "According to the Red Book 2017, arbitration may be commenced on or after which day following the NOD, even without an attempt at amicable settlement?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "The 28th day"
+      },
+      {
+        "label": "B",
+        "text": "The 14th day"
+      },
+      {
+        "label": "C",
+        "text": "The 56th day"
+      },
+      {
+        "label": "D",
+        "text": "The 84th day"
+      }
+    ],
+    "answer": 0,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 21.5."
+  },
+  {
+    "q": "According to the Red Book 2017, unless otherwise agreed, how is a Dispute finally settled?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "By national courts only"
+      },
+      {
+        "label": "B",
+        "text": "Under the ICC Rules of Arbitration by one or three arbitrators"
+      },
+      {
+        "label": "C",
+        "text": "Under UNCITRAL rules by five arbitrators"
+      },
+      {
+        "label": "D",
+        "text": "By the DAAB"
+      }
+    ],
+    "answer": 1,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 21.6."
+  },
+  {
+    "q": "According to the Yellow Book 2017, what type of dispute board is provided?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "An ad hoc DAB appointed only when a dispute arises"
+      },
+      {
+        "label": "B",
+        "text": "A board appointed by the ICC after arbitration"
+      },
+      {
+        "label": "C",
+        "text": "No dispute board"
+      },
+      {
+        "label": "D",
+        "text": "A standing Dispute Avoidance/Adjudication Board (DAAB)"
+      }
+    ],
+    "answer": 3,
+    "explanation": "Эх сурвалж: FIDIC Yellow Book 2017, Sub-Clause 21.1."
+  },
+  {
+    "q": "According to the Yellow Book 2017, if no NOD is given within 28 days after receiving the DAAB's decision, the decision:",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Lapses"
+      },
+      {
+        "label": "B",
+        "text": "Is reviewed by the Engineer"
+      },
+      {
+        "label": "C",
+        "text": "May still be arbitrated at any time"
+      },
+      {
+        "label": "D",
+        "text": "Becomes final and binding on both Parties"
+      }
+    ],
+    "answer": 3,
+    "explanation": "Эх сурвалж: FIDIC Yellow Book 2017, Sub-Clause 21.4.4."
+  },
+  {
+    "q": "According to the Yellow Book 2017, arbitration may be commenced on or after which day following the NOD?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "The 14th day"
+      },
+      {
+        "label": "B",
+        "text": "The 56th day"
+      },
+      {
+        "label": "C",
+        "text": "The 28th day"
+      },
+      {
+        "label": "D",
+        "text": "The 84th day"
+      }
+    ],
+    "answer": 2,
+    "explanation": "Эх сурвалж: FIDIC Yellow Book 2017, Sub-Clause 21.5."
+  },
+  {
+    "q": "According to the Silver Book, what type of dispute board is provided in the 2017 edition?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "A standing Dispute Avoidance/Adjudication Board (DAAB)"
+      },
+      {
+        "label": "B",
+        "text": "An ad hoc DAB appointed only when a dispute arises"
+      },
+      {
+        "label": "C",
+        "text": "A dispute board appointed by the ICC only after arbitration"
+      },
+      {
+        "label": "D",
+        "text": "No dispute board"
+      }
+    ],
+    "answer": 0,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 21.1."
+  },
+  {
+    "q": "According to the Silver Book, under Sub-Clause 21.3 [Avoidance of Disputes], the Parties may jointly request the DAAB to:",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Provide assistance and/or informally discuss and attempt to resolve any issue or disagreement"
+      },
+      {
+        "label": "B",
+        "text": "Replace the Employer's Representative"
+      },
+      {
+        "label": "C",
+        "text": "Act as arbitrator"
+      },
+      {
+        "label": "D",
+        "text": "Issue a binding determination"
+      }
+    ],
+    "answer": 0,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 21.3."
+  },
+  {
+    "q": "According to the Silver Book, if a dispute arises from a NOD against a determination under Sub-Clause 3.5, within how many days after the NOD must it be referred to the DAAB, otherwise the NOD lapses?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "56 days"
+      },
+      {
+        "label": "B",
+        "text": "42 days"
+      },
+      {
+        "label": "C",
+        "text": "84 days"
+      },
+      {
+        "label": "D",
+        "text": "28 days"
+      }
+    ],
+    "answer": 1,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 21.4."
+  },
+  {
+    "q": "According to the Silver Book, within how many days after receiving a reference (or the advance payment of its fees) must the DAAB give its decision, unless otherwise agreed?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "84 days"
+      },
+      {
+        "label": "B",
+        "text": "42 days"
+      },
+      {
+        "label": "C",
+        "text": "56 days"
+      },
+      {
+        "label": "D",
+        "text": "28 days"
+      }
+    ],
+    "answer": 0,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 21.4."
+  },
+  {
+    "q": "According to the Silver Book, within how many days after receiving the DAAB's decision must a dissatisfied Party give a NOD?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "14 days"
+      },
+      {
+        "label": "B",
+        "text": "28 days"
+      },
+      {
+        "label": "C",
+        "text": "42 days"
+      },
+      {
+        "label": "D",
+        "text": "56 days"
+      }
+    ],
+    "answer": 1,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 21.4."
+  },
+  {
+    "q": "According to the Silver Book, arbitration may be commenced on or after which day following the NOD, even if no attempt at amicable settlement has been made?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "The 56th day"
+      },
+      {
+        "label": "B",
+        "text": "The 84th day"
+      },
+      {
+        "label": "C",
+        "text": "The 28th day"
+      },
+      {
+        "label": "D",
+        "text": "The 14th day"
+      }
+    ],
+    "answer": 2,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 21.5."
+  },
+  {
+    "q": "According to the Silver Book, unless otherwise agreed, how is a dispute finally settled in international arbitration?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "By national courts only"
+      },
+      {
+        "label": "B",
+        "text": "By the DAAB"
+      },
+      {
+        "label": "C",
+        "text": "Under UNCITRAL rules by five arbitrators"
+      },
+      {
+        "label": "D",
+        "text": "Under the ICC Rules of Arbitration by one or three arbitrators"
+      }
+    ],
+    "answer": 3,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 21.6."
+  }
+]

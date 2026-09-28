@@ -6,5 +6,6 @@ export default defineConfig({
     include: ["src/**/*.test.ts"],
     // Integration tests share one database.
     fileParallelism: false,
+    env: { AUTH_RATE_LIMIT: "1000" },
   },
 });

@@ -1,0 +1,601 @@
+[
+  {
+    "q": "According to the Red Book 2017, what is the \"Base Date\"?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "The date 28 days before the latest date for submission of the Tender"
+      },
+      {
+        "label": "B",
+        "text": "The Commencement Date"
+      },
+      {
+        "label": "C",
+        "text": "The date the Contract Agreement is signed"
+      },
+      {
+        "label": "D",
+        "text": "The date the Letter of Acceptance is issued"
+      }
+    ],
+    "answer": 0,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 1.1.",
+    "trial": true
+  },
+  {
+    "q": "According to the Red Book 2017, if no Defects Notification Period is stated in the Contract Data, how long is it?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "730 days"
+      },
+      {
+        "label": "B",
+        "text": "One year"
+      },
+      {
+        "label": "C",
+        "text": "2 years"
+      },
+      {
+        "label": "D",
+        "text": "6 months"
+      }
+    ],
+    "answer": 1,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 1.1."
+  },
+  {
+    "q": "According to the Red Book 2017, what does \"day\" mean?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "A working day"
+      },
+      {
+        "label": "B",
+        "text": "A business day in the Country"
+      },
+      {
+        "label": "C",
+        "text": "A day excluding public holidays"
+      },
+      {
+        "label": "D",
+        "text": "A calendar day"
+      }
+    ],
+    "answer": 3,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 1.1."
+  },
+  {
+    "q": "According to the Red Book 2017, which document ranks immediately after the Contract Agreement in the order of priority?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "The Particular Conditions Part A – Contract Data"
+      },
+      {
+        "label": "B",
+        "text": "The Letter of Acceptance"
+      },
+      {
+        "label": "C",
+        "text": "The General Conditions"
+      },
+      {
+        "label": "D",
+        "text": "The Specification"
+      }
+    ],
+    "answer": 1,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 1.5."
+  },
+  {
+    "q": "According to the Red Book 2017, which of these documents has the lowest priority?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "The Schedules"
+      },
+      {
+        "label": "B",
+        "text": "The Particular Conditions Part B – Special Provisions"
+      },
+      {
+        "label": "C",
+        "text": "The Letter of Tender"
+      },
+      {
+        "label": "D",
+        "text": "The Drawings"
+      }
+    ],
+    "answer": 0,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 1.5."
+  },
+  {
+    "q": "According to the Red Book 2017, which ranks higher in the order of priority?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "The Drawings over the Specification"
+      },
+      {
+        "label": "B",
+        "text": "The Particular Conditions Part A – Contract Data over the General Conditions"
+      },
+      {
+        "label": "C",
+        "text": "The Schedules over the Drawings"
+      },
+      {
+        "label": "D",
+        "text": "The Specification over the General Conditions"
+      }
+    ],
+    "answer": 1,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 1.5."
+  },
+  {
+    "q": "According to the Red Book 2017 (2022 reprint), within what period must the Parties sign the Contract Agreement, unless they agree otherwise?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Within 21 days after the Contractor receives the Letter of Acceptance"
+      },
+      {
+        "label": "B",
+        "text": "Within 35 days after the Contractor receives the Letter of Acceptance"
+      },
+      {
+        "label": "C",
+        "text": "Within 42 days after the Contractor receives the Letter of Acceptance"
+      },
+      {
+        "label": "D",
+        "text": "Within 28 days after the Contractor receives the Letter of Acceptance"
+      }
+    ],
+    "answer": 1,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 1.6."
+  },
+  {
+    "q": "According to the Red Book 2017, if the Contractor suffers delay and/or Cost because the Engineer fails to issue a notified drawing or instruction within a reasonable time, the Contractor is entitled (subject to Sub-Clause 20.2) to:",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Cost only"
+      },
+      {
+        "label": "B",
+        "text": "Nothing, as this is a Contractor's risk"
+      },
+      {
+        "label": "C",
+        "text": "EOT and/or Cost Plus Profit"
+      },
+      {
+        "label": "D",
+        "text": "EOT only"
+      }
+    ],
+    "answer": 2,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 1.9."
+  },
+  {
+    "q": "According to the Red Book 2017, unless otherwise stated in the Specification, which permission is the Employer responsible for obtaining?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Work permits for the Contractor's Personnel"
+      },
+      {
+        "label": "B",
+        "text": "Permits for the Contractor's Equipment"
+      },
+      {
+        "label": "C",
+        "text": "Import licences for the Contractor's Goods"
+      },
+      {
+        "label": "D",
+        "text": "Planning, zoning or building permit or similar permits for the Permanent Works"
+      }
+    ],
+    "answer": 3,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 1.13."
+  },
+  {
+    "q": "According to the Red Book 2017, if no sum is stated in the Contract Data, the Contractor's total liability to the Employer (subject to the listed exceptions) shall not exceed:",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Twice the Accepted Contract Amount"
+      },
+      {
+        "label": "B",
+        "text": "The Performance Security"
+      },
+      {
+        "label": "C",
+        "text": "The insurance cover"
+      },
+      {
+        "label": "D",
+        "text": "The Accepted Contract Amount"
+      }
+    ],
+    "answer": 3,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 1.15."
+  },
+  {
+    "q": "According to the Red Book 2017, the limitation of liability does NOT apply in any case of:",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Late completion"
+      },
+      {
+        "label": "B",
+        "text": "Defective design"
+      },
+      {
+        "label": "C",
+        "text": "An Exceptional Event"
+      },
+      {
+        "label": "D",
+        "text": "Fraud, gross negligence, deliberate default or reckless misconduct"
+      }
+    ],
+    "answer": 3,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 1.15."
+  },
+  {
+    "q": "According to the Red Book 2017, subject to mandatory law, termination of the Contract under any Sub-Clause requires:",
+    "choices": [
+      {
+        "label": "A",
+        "text": "A DAAB decision"
+      },
+      {
+        "label": "B",
+        "text": "No action whatsoever by either Party other than as stated in the Sub-Clause"
+      },
+      {
+        "label": "C",
+        "text": "A court order"
+      },
+      {
+        "label": "D",
+        "text": "The Engineer's consent"
+      }
+    ],
+    "answer": 1,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 1.16."
+  },
+  {
+    "q": "According to the Yellow Book 2017, which of the following is NOT one of the documents forming the \"Contract\"?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "The Bill of Quantities"
+      },
+      {
+        "label": "B",
+        "text": "The Schedules"
+      },
+      {
+        "label": "C",
+        "text": "The Contractor's Proposal"
+      },
+      {
+        "label": "D",
+        "text": "The Employer's Requirements"
+      }
+    ],
+    "answer": 0,
+    "explanation": "Эх сурвалж: FIDIC Yellow Book 2017, Sub-Clause 1.1."
+  },
+  {
+    "q": "According to the Yellow Book 2017, which document has the lowest priority among these?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "The Contractor's Proposal"
+      },
+      {
+        "label": "B",
+        "text": "The General Conditions"
+      },
+      {
+        "label": "C",
+        "text": "The Employer's Requirements"
+      },
+      {
+        "label": "D",
+        "text": "The Schedules"
+      }
+    ],
+    "answer": 0,
+    "explanation": "Эх сурвалж: FIDIC Yellow Book 2017, Sub-Clause 1.5."
+  },
+  {
+    "q": "According to the Yellow Book 2017, in the order of priority, which document comes immediately after the General Conditions?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "The Letter of Tender"
+      },
+      {
+        "label": "B",
+        "text": "The Contractor's Proposal"
+      },
+      {
+        "label": "C",
+        "text": "The Schedules"
+      },
+      {
+        "label": "D",
+        "text": "The Employer's Requirements"
+      }
+    ],
+    "answer": 3,
+    "explanation": "Эх сурвалж: FIDIC Yellow Book 2017, Sub-Clause 1.5."
+  },
+  {
+    "q": "According to the Yellow Book 2017 (2022 reprint), within what period must the Parties sign the Contract Agreement, unless they agree otherwise?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Within 42 days after the Contractor receives the Letter of Acceptance"
+      },
+      {
+        "label": "B",
+        "text": "Within 56 days after the Contractor receives the Letter of Acceptance"
+      },
+      {
+        "label": "C",
+        "text": "Within 35 days after the Contractor receives the Letter of Acceptance"
+      },
+      {
+        "label": "D",
+        "text": "Within 28 days after the Contractor receives the Letter of Acceptance"
+      }
+    ],
+    "answer": 2,
+    "explanation": "Эх сурвалж: FIDIC Yellow Book 2017, Sub-Clause 1.6."
+  },
+  {
+    "q": "According to the Yellow Book 2017, if not stated in the Contract Data, within what period (from the Commencement Date) must the Contractor give Notice of errors found in the Employer's Requirements when scrutinising them under Sub-Clause 5.1?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "56 days"
+      },
+      {
+        "label": "B",
+        "text": "42 days"
+      },
+      {
+        "label": "C",
+        "text": "14 days"
+      },
+      {
+        "label": "D",
+        "text": "28 days"
+      }
+    ],
+    "answer": 1,
+    "explanation": "Эх сурвалж: FIDIC Yellow Book 2017, Sub-Clause 1.9."
+  },
+  {
+    "q": "According to the Yellow Book 2017, if an error in the Employer's Requirements could not have been discovered by an experienced contractor exercising due care, and no Variation measures are required but the Contractor suffers delay/Cost, he is entitled to:",
+    "choices": [
+      {
+        "label": "A",
+        "text": "EOT and/or Cost Plus Profit"
+      },
+      {
+        "label": "B",
+        "text": "Cost only"
+      },
+      {
+        "label": "C",
+        "text": "Nothing"
+      },
+      {
+        "label": "D",
+        "text": "EOT only"
+      }
+    ],
+    "answer": 0,
+    "explanation": "Эх сурвалж: FIDIC Yellow Book 2017, Sub-Clause 1.9."
+  },
+  {
+    "q": "According to the Yellow Book 2017, if the Contractor finds an error in the Employer's Requirements after the notification period has expired, what must he do?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Correct it at his own cost without notice"
+      },
+      {
+        "label": "B",
+        "text": "Still give a Notice to the Engineer describing the error"
+      },
+      {
+        "label": "C",
+        "text": "Refer it directly to the DAAB"
+      },
+      {
+        "label": "D",
+        "text": "Nothing, as the period has expired"
+      }
+    ],
+    "answer": 1,
+    "explanation": "Эх сурвалж: FIDIC Yellow Book 2017, Sub-Clause 1.9."
+  },
+  {
+    "q": "According to the Silver Book, the \"Base Date\" is:",
+    "choices": [
+      {
+        "label": "A",
+        "text": "The date 28 days before the latest date for submission of the Tender"
+      },
+      {
+        "label": "B",
+        "text": "The date the Performance Security is delivered"
+      },
+      {
+        "label": "C",
+        "text": "The Commencement Date"
+      },
+      {
+        "label": "D",
+        "text": "The date the Contract Agreement is signed"
+      }
+    ],
+    "answer": 0,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 1.1."
+  },
+  {
+    "q": "According to the Silver Book, in the 2017 edition, where are project-specific data such as the Time for Completion and delay damages stated?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "The Employer's Requirements only"
+      },
+      {
+        "label": "B",
+        "text": "The Schedules of Payments"
+      },
+      {
+        "label": "C",
+        "text": "The Contract Data (Particular Conditions Part A)"
+      },
+      {
+        "label": "D",
+        "text": "The Appendix to Tender"
+      }
+    ],
+    "answer": 2,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 1.1."
+  },
+  {
+    "q": "According to the Silver Book, what distinguishes a \"Notice\" from other communications?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "It is signed by both Parties"
+      },
+      {
+        "label": "B",
+        "text": "It may be oral"
+      },
+      {
+        "label": "C",
+        "text": "It must be sent by courier only"
+      },
+      {
+        "label": "D",
+        "text": "It is in writing and identified as a Notice"
+      }
+    ],
+    "answer": 3,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 1.3."
+  },
+  {
+    "q": "According to the Silver Book, which document has the highest priority?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "The Employer's Requirements"
+      },
+      {
+        "label": "B",
+        "text": "The Contract Agreement"
+      },
+      {
+        "label": "C",
+        "text": "The General Conditions"
+      },
+      {
+        "label": "D",
+        "text": "The Tender"
+      }
+    ],
+    "answer": 1,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 1.5."
+  },
+  {
+    "q": "According to the Silver Book, which permission is the Employer responsible for obtaining (unless stated otherwise)?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "All work permits for the Contractor's Personnel"
+      },
+      {
+        "label": "B",
+        "text": "Planning, zoning, building permit or similar permissions for the Permanent Works, and any others described in the Employer's Requirements as obtained by the Employer"
+      },
+      {
+        "label": "C",
+        "text": "All permits for the Contractor's Equipment"
+      },
+      {
+        "label": "D",
+        "text": "All import licences for Goods"
+      }
+    ],
+    "answer": 1,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 1.12."
+  },
+  {
+    "q": "According to the Silver Book, if the Contractor is a joint venture, how are its members liable to the Employer?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Each only for its own share"
+      },
+      {
+        "label": "B",
+        "text": "Liability depends on the Employer's choice after completion"
+      },
+      {
+        "label": "C",
+        "text": "Only the leader is liable"
+      },
+      {
+        "label": "D",
+        "text": "Jointly and severally"
+      }
+    ],
+    "answer": 3,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 1.13."
+  },
+  {
+    "q": "According to the Silver Book, the limitation of liability under Sub-Clause 1.14 does NOT apply in any case of:",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Defects notified during the DNP"
+      },
+      {
+        "label": "B",
+        "text": "Fraud, gross negligence, deliberate default or reckless misconduct"
+      },
+      {
+        "label": "C",
+        "text": "Exceptional Events"
+      },
+      {
+        "label": "D",
+        "text": "Late completion"
+      }
+    ],
+    "answer": 1,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 1.14."
+  }
+]

@@ -1,0 +1,394 @@
+[
+  {
+    "q": "According to the Red Book 2017, what authority does the Engineer have to amend the Contract?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Full authority"
+      },
+      {
+        "label": "B",
+        "text": "No authority"
+      },
+      {
+        "label": "C",
+        "text": "Authority only with the Contractor's consent"
+      },
+      {
+        "label": "D",
+        "text": "Authority limited to Variations"
+      }
+    ],
+    "answer": 1,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 3.2.",
+    "trial": true
+  },
+  {
+    "q": "According to the Red Book 2017, if the Contractor gives Notice that an Engineer's instruction constitutes a Variation and the Engineer does not respond within 7 days, the instruction is:",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Deemed revoked"
+      },
+      {
+        "label": "B",
+        "text": "Deemed confirmed"
+      },
+      {
+        "label": "C",
+        "text": "Referred to the DAAB"
+      },
+      {
+        "label": "D",
+        "text": "Deemed a Variation"
+      }
+    ],
+    "answer": 0,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 3.5."
+  },
+  {
+    "q": "According to the Red Book 2017, how much Notice must the Employer give the Contractor before replacing the Engineer?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Not less than 28 days"
+      },
+      {
+        "label": "B",
+        "text": "Not less than 56 days"
+      },
+      {
+        "label": "C",
+        "text": "Not less than 14 days"
+      },
+      {
+        "label": "D",
+        "text": "Not less than 42 days"
+      }
+    ],
+    "answer": 3,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 3.6."
+  },
+  {
+    "q": "According to the Red Book 2017, if the Contractor does not object within how many days to the proposed replacement Engineer, he is deemed to have accepted the replacement?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "14 days"
+      },
+      {
+        "label": "B",
+        "text": "28 days"
+      },
+      {
+        "label": "C",
+        "text": "7 days"
+      },
+      {
+        "label": "D",
+        "text": "21 days"
+      }
+    ],
+    "answer": 0,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 3.6."
+  },
+  {
+    "q": "According to the Red Book 2017, when carrying out duties under Sub-Clause 3.7 [Agreement or Determination], the Engineer shall:",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Refer every matter to the DAAB"
+      },
+      {
+        "label": "B",
+        "text": "Follow the Contractor's position"
+      },
+      {
+        "label": "C",
+        "text": "Act solely for the Employer"
+      },
+      {
+        "label": "D",
+        "text": "Act neutrally between the Parties and not be deemed to act for the Employer"
+      }
+    ],
+    "answer": 3,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 3.7."
+  },
+  {
+    "q": "According to the Red Book 2017, unless otherwise agreed, what is the time limit for agreement under Sub-Clause 3.7?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "14 days"
+      },
+      {
+        "label": "B",
+        "text": "28 days"
+      },
+      {
+        "label": "C",
+        "text": "42 days"
+      },
+      {
+        "label": "D",
+        "text": "56 days"
+      }
+    ],
+    "answer": 2,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 3.7.3."
+  },
+  {
+    "q": "According to the Red Book 2017, the Engineer must give Notice of his determination within how many days (unless otherwise agreed)?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "42 days"
+      },
+      {
+        "label": "B",
+        "text": "14 days"
+      },
+      {
+        "label": "C",
+        "text": "28 days"
+      },
+      {
+        "label": "D",
+        "text": "84 days"
+      }
+    ],
+    "answer": 0,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 3.7.3."
+  },
+  {
+    "q": "According to the Red Book 2017, within how many days after receiving the Engineer's determination must a dissatisfied Party give a NOD?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "42 days"
+      },
+      {
+        "label": "B",
+        "text": "28 days"
+      },
+      {
+        "label": "C",
+        "text": "14 days"
+      },
+      {
+        "label": "D",
+        "text": "21 days"
+      }
+    ],
+    "answer": 1,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 3.7.5."
+  },
+  {
+    "q": "According to the Red Book 2017, if no NOD is given within the required period, the Engineer's determination is:",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Reconsidered by the Employer"
+      },
+      {
+        "label": "B",
+        "text": "Void"
+      },
+      {
+        "label": "C",
+        "text": "Automatically referred to the DAAB"
+      },
+      {
+        "label": "D",
+        "text": "Deemed accepted by both Parties and final and binding"
+      }
+    ],
+    "answer": 3,
+    "explanation": "Эх сурвалж: FIDIC Red Book 2017, Sub-Clause 3.7.5."
+  },
+  {
+    "q": "According to the Yellow Book 2017, except as otherwise stated in the Conditions, when carrying out his duties the Engineer shall act as a skilled professional and be deemed to act for:",
+    "choices": [
+      {
+        "label": "A",
+        "text": "The DAAB"
+      },
+      {
+        "label": "B",
+        "text": "Both Parties equally"
+      },
+      {
+        "label": "C",
+        "text": "The Employer"
+      },
+      {
+        "label": "D",
+        "text": "The Contractor"
+      }
+    ],
+    "answer": 2,
+    "explanation": "Эх сурвалж: FIDIC Yellow Book 2017, Sub-Clause 3.2."
+  },
+  {
+    "q": "According to the Yellow Book 2017, unless otherwise agreed, what is the time limit for agreement under Sub-Clause 3.7?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "28 days"
+      },
+      {
+        "label": "B",
+        "text": "56 days"
+      },
+      {
+        "label": "C",
+        "text": "14 days"
+      },
+      {
+        "label": "D",
+        "text": "42 days"
+      }
+    ],
+    "answer": 3,
+    "explanation": "Эх сурвалж: FIDIC Yellow Book 2017, Sub-Clause 3.7.3."
+  },
+  {
+    "q": "According to the Silver Book, which party administers the Contract, since there is no Engineer?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "An independent certifier"
+      },
+      {
+        "label": "B",
+        "text": "The Employer, through the Employer's Representative whom the Employer shall appoint"
+      },
+      {
+        "label": "C",
+        "text": "The Contractor"
+      },
+      {
+        "label": "D",
+        "text": "The DAAB"
+      }
+    ],
+    "answer": 1,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 3.1."
+  },
+  {
+    "q": "According to the Silver Book, when carrying out duties under Sub-Clause 3.5 [Agreement or Determination], the Employer's Representative shall:",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Refer every matter to the DAAB"
+      },
+      {
+        "label": "B",
+        "text": "Follow the Contractor's position"
+      },
+      {
+        "label": "C",
+        "text": "Act solely on the Employer's instructions"
+      },
+      {
+        "label": "D",
+        "text": "Not be deemed to act for the Employer"
+      }
+    ],
+    "answer": 3,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 3.5."
+  },
+  {
+    "q": "According to the Silver Book, unless otherwise stated, what is the time limit for reaching agreement during consultation under Sub-Clause 3.5?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "42 days"
+      },
+      {
+        "label": "B",
+        "text": "56 days"
+      },
+      {
+        "label": "C",
+        "text": "14 days"
+      },
+      {
+        "label": "D",
+        "text": "28 days"
+      }
+    ],
+    "answer": 0,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 3.5."
+  },
+  {
+    "q": "According to the Silver Book, if no agreement is reached, the determination must be given within how many days after the time limit for agreement?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "42 days"
+      },
+      {
+        "label": "B",
+        "text": "28 days"
+      },
+      {
+        "label": "C",
+        "text": "14 days"
+      },
+      {
+        "label": "D",
+        "text": "84 days"
+      }
+    ],
+    "answer": 0,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 3.5."
+  },
+  {
+    "q": "According to the Silver Book, within how many days after receiving a determination must a dissatisfied Party give a Notice of Dissatisfaction (NOD)?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "14 days"
+      },
+      {
+        "label": "B",
+        "text": "28 days"
+      },
+      {
+        "label": "C",
+        "text": "42 days"
+      },
+      {
+        "label": "D",
+        "text": "21 days"
+      }
+    ],
+    "answer": 1,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 3.5."
+  },
+  {
+    "q": "According to the Silver Book, if no NOD is given within the required period, the determination is:",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Reconsidered by the Employer"
+      },
+      {
+        "label": "B",
+        "text": "Automatically referred to the DAAB"
+      },
+      {
+        "label": "C",
+        "text": "Deemed accepted by both Parties and final and binding"
+      },
+      {
+        "label": "D",
+        "text": "Void"
+      }
+    ],
+    "answer": 2,
+    "explanation": "Эх сурвалж: FIDIC Silver Book 2017, Sub-Clause 3.5."
+  }
+]
