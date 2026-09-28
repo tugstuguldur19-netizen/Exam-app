@@ -60,7 +60,12 @@ export default function SubjectDetailScreen({ route, navigation }: Props) {
           color={colors.warning}
           bg={colors.warningSoft}
           title="Туршилтын тест"
-          text={`${subject.trialQuestionCount} асуулт · сэдэв бүрээс · үнэгүй`}
+          text={
+            subject.trialQuestionCount > 0
+              ? `${subject.trialQuestionCount} асуулт · сэдэв бүрээс · үнэгүй`
+              : "Асуултууд удахгүй нэмэгдэнэ"
+          }
+          disabled={subject.trialQuestionCount === 0}
           loading={starting === "TRIAL"}
           onPress={() => start({ mode: "TRIAL", subjectId })}
         />
@@ -69,8 +74,9 @@ export default function SubjectDetailScreen({ route, navigation }: Props) {
           color={colors.primary}
           bg={colors.primarySoft}
           title="Холимог тест"
-          text="Бүх сэдвээс өөрөө тоогоо сонгож холимог тест үүсгэнэ"
+          text="Нийт тоогоо өгвөл апп сэдвүүдээс хуваарилна, эсвэл сэдэв бүрээс өөрөө сонгоно"
           locked={!subscribed}
+          disabled={subscribed && subject.questionCount === 0}
           onPress={() => (subscribed ? navigation.navigate("MixedBuilder", { subjectId, subjectName: subject.name }) : openPlans())}
         />
         <ModeCard
@@ -87,14 +93,18 @@ export default function SubjectDetailScreen({ route, navigation }: Props) {
 
         <SectionTitle title="Сэдвүүд" />
         {subject.lessons.map((l, i) => (
-          <Card key={l.id} style={styles.lesson} onPress={() => (subscribed ? setLessonPick(l) : openPlans())}>
+          <Card
+            key={l.id}
+            style={[styles.lesson, l.questionCount === 0 && { opacity: 0.6 }]}
+            onPress={l.questionCount === 0 ? undefined : () => (subscribed ? setLessonPick(l) : openPlans())}
+          >
             <View style={styles.lessonNum}>
               <Text style={styles.lessonNumText}>{i + 1}</Text>
             </View>
             <View style={{ flex: 1 }}>
               <Text style={styles.lessonName}>{l.name}</Text>
               <Text style={styles.lessonMeta} numberOfLines={2}>
-                {l.questionCount} асуулт{l.description ? ` · ${l.description}` : ""}
+                {l.questionCount > 0 ? `${l.questionCount} асуулт` : "Удахгүй"}{l.description ? ` · ${l.description}` : ""}
               </Text>
               {l.stats.attempted > 0 && (
                 <View style={styles.lessonProgress}>
@@ -105,11 +115,15 @@ export default function SubjectDetailScreen({ route, navigation }: Props) {
                 </View>
               )}
             </View>
-            <Ionicons
-              name={subscribed ? "play-circle" : "lock-closed"}
-              size={subscribed ? 30 : 20}
-              color={subscribed ? colors.primary : colors.textMuted}
-            />
+            {l.questionCount === 0 ? (
+              <Ionicons name="time-outline" size={20} color={colors.textMuted} />
+            ) : (
+              <Ionicons
+                name={subscribed ? "play-circle" : "lock-closed"}
+                size={subscribed ? 30 : 20}
+                color={subscribed ? colors.primary : colors.textMuted}
+              />
+            )}
           </Card>
         ))}
 

@@ -12,7 +12,8 @@
     "seed": "tsx prisma/seed.ts",
     "typecheck": "tsc --noEmit",
     "pretest": "DATABASE_URL=postgresql://examprep:examprep@localhost:5432/examprep_test prisma migrate reset --force --skip-seed && DATABASE_URL=postgresql://examprep:examprep@localhost:5432/examprep_test tsx prisma/seed.ts",
-    "test": "DATABASE_URL=postgresql://examprep:examprep@localhost:5432/examprep_test vitest run"
+    "test": "DATABASE_URL=postgresql://examprep:examprep@localhost:5432/examprep_test vitest run",
+    "import:docx": "tsx scripts/importDocx.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.32.1",

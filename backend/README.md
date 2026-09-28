@@ -24,9 +24,22 @@ npm run seed      # subjects, lessons, question bank, plans, demo user (idempote
 npm run dev       # http://localhost:4000
 ```
 
-The curated content lives in `prisma/seedData.ts` — add questions, lessons or
-subjects there and rerun `npm run seed`. Ids are derived from the keys, so
-reseeding updates content in place and never breaks users' history.
+The curated content lives in `prisma/seedData.ts` (+ `seedDataExtra.ts`,
+`seedFidic.ts`) — add questions, lessons or subjects there and rerun
+`npm run seed`. Ids are derived from the keys, so reseeding updates content in
+place and never breaks users' history.
+
+To add a lesson's questions from a Word test (e.g. the FIDIC clauses, lesson
+keys `c01`–`c21`):
+
+```bash
+npm run import:docx -- fidic c14 path/to/clause14.docx   # writes prisma/content/fidic/c14.json
+npm run seed
+```
+
+See `prisma/content/README.md` for the JSON format. The seed validates every
+content file and stops with the file name and question number if one is
+malformed.
 
 ## Tests
 

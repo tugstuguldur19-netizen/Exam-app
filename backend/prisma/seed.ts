@@ -1,13 +1,48 @@
 import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcryptjs";
-import { PLAN_TEMPLATES, SUBJECTS } from "./seedData";
+import { PLAN_TEMPLATES, SUBJECTS as BASE_SUBJECTS } from "./seedData";
 import { EXTRA_QUESTIONS } from "./seedDataExtra";
+import { FIDIC_SUBJECT } from "./seedFidic";
+import { loadContent } from "./content";
 
 const prisma = new PrismaClient();
-// Displayed labels are Mongolian (А Б В Г); ids keep Latin suffixes so they
-// stay stable and ASCII.
+const SUBJECTS = [...BASE_SUBJECTS, FIDIC_SUBJECT];
+
+// Built-in questions display Mongolian labels (А Б В Г); ids keep Latin
+// suffixes so they stay stable and ASCII.
 const LABELS = ["А", "Б", "В", "Г"];
-const ID_SUFFIX = ["A", "B", "C", "D"];
+const ID_SUFFIX = "ABCDEFGHIJ";
+
+type SeedQuestion = {
+  id: string;
+  prompt: string;
+  choices: { label: string; text: string; isCorrect: boolean }[];
+  correctText: string | null;
+  explanation: string | null;
+  trial: boolean;
+};
+
+function lessonQuestions(subjectKey: string, lesson: (typeof SUBJECTS)[number]["lessons"][number]): SeedQuestion[] {
+  const pad2 = (n: number) => String(n).padStart(2, "0");
+  const builtIn = [...lesson.questions, ...(EXTRA_QUESTIONS[`${subjectKey}/${lesson.key}`] ?? [])].map((q, i) => ({
+    id: `q_${subjectKey}_${lesson.key}_${pad2(i + 1)}`,
+    prompt: q.q,
+    choices: q.choices.map((text, ci) => ({ label: LABELS[ci], text, isCorrect: ci === q.answer })),
+    correctText: null,
+    explanation: q.explanation,
+    trial: Boolean(q.trial),
+  }));
+  // Imported questions get their own id namespace ("c" + position in file).
+  const imported = loadContent(subjectKey, lesson.key).map((q, i) => ({
+    id: `q_${subjectKey}_${lesson.key}_c${String(i + 1).padStart(3, "0")}`,
+    prompt: q.q.trim(),
+    choices: q.choices.map((c, ci) => ({ label: c.label, text: c.text, isCorrect: ci === q.answer })),
+    correctText: q.choices.length === 0 ? (q.correctText?.trim() || null) : null,
+    explanation: q.explanation?.trim() || null,
+    trial: Boolean(q.trial),
+  }));
+  return [...builtIn, ...imported];
+}
 
 async function main() {
   let questionCount = 0;
@@ -37,34 +72,31 @@ async function main() {
         create: { id: lessonId, subjectId, name: l.name, description: l.description, sortOrder: li },
       });
 
-      const questions = [...l.questions, ...(EXTRA_QUESTIONS[`${s.key}/${l.key}`] ?? [])];
+      const questions = lessonQuestions(s.key, l);
       for (const [qi, q] of questions.entries()) {
-        const questionId = `q_${s.key}_${l.key}_${String(qi + 1).padStart(2, "0")}`;
         const fields = {
           lessonId,
           order: qi,
-          type: "MULTIPLE_CHOICE" as const,
-          prompt: q.q,
+          type: q.choices.length ? ("MULTIPLE_CHOICE" as const) : ("SHORT_ANSWER" as const),
+          prompt: q.prompt,
+          correctText: q.correctText,
           explanation: q.explanation,
-          isTrial: Boolean(q.trial),
+          isTrial: q.trial,
         };
-        await prisma.question.upsert({
-          where: { id: questionId },
-          update: fields,
-          create: { id: questionId, ...fields },
-        });
+        await prisma.question.upsert({ where: { id: q.id }, update: fields, create: { id: q.id, ...fields } });
 
-        for (const [ci, text] of q.choices.entries()) {
-          const choiceId = `${questionId}_${ID_SUFFIX[ci]}`;
-          const choice = { order: ci, label: LABELS[ci], text, isCorrect: ci === q.answer };
-          await prisma.choice.upsert({
-            where: { id: choiceId },
-            update: choice,
-            create: { id: choiceId, questionId, ...choice },
-          });
+        const choiceIds: string[] = [];
+        for (const [ci, c] of q.choices.entries()) {
+          const choiceId = `${q.id}_${ID_SUFFIX[ci] ?? ci}`;
+          choiceIds.push(choiceId);
+          const choice = { order: ci, label: c.label, text: c.text, isCorrect: c.isCorrect };
+          await prisma.choice.upsert({ where: { id: choiceId }, update: choice, create: { id: choiceId, questionId: q.id, ...choice } });
         }
+        await prisma.choice.deleteMany({ where: { questionId: q.id, id: { notIn: choiceIds } } });
         questionCount++;
       }
+      // Questions removed from the bank (e.g. a shorter re-import) go away.
+      await prisma.question.deleteMany({ where: { lessonId, id: { notIn: questions.map((q) => q.id) } } });
     }
   }
 

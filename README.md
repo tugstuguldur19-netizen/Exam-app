@@ -2,13 +2,16 @@
 
 A Mongolian-language mobile app for exam preparation.
 
-- **Subjects → lessons → tests.** Three starter subjects (Математик, Биологи,
-  Англи хэл), each split into lessons with a curated question bank and an
-  explanation for every answer.
+- **Subjects → lessons → tests.** Математик, Биологи, Англи хэл (4 lessons,
+  60 questions each, with an explanation for every answer) and FIDIC FCL
+  (21 lessons, one per FIDIC 2017 clause — questions to be imported).
 - **Free trial test** in every subject. Everything else in a subject (lesson
   tests with a chosen number of questions, mixed tests with a per-lesson
   count, "fix my mistakes" review) needs a time-based subscription to that
   subject (1 month / 3 months / 1 year, priced in ₮).
+- **Auto mixed test**: enter just a total; the app splits it across the
+  subject's lessons (at least one per lesson, the rest in proportion to each
+  lesson's size), and you can still adjust each lesson before starting.
 - **Upload your own .docx test** — independent of subjects. Free accounts get
   one upload per rolling week; any active subscription makes it unlimited.
   The parser understands Mongolian layouts (А) Б) В) Г) options,

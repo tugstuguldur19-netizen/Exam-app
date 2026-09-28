@@ -96,15 +96,29 @@ describe("auth", () => {
 });
 
 describe("subjects", () => {
-  it("lists the three subjects with lessons, trial counts and MNT plans", async () => {
+  it("lists the subjects with lessons, trial counts and MNT plans", async () => {
     const { token } = await register();
     const res = await request(app).get("/subjects").set(auth(token)).expect(200);
-    expect(res.body.map((s: { name: string }) => s.name)).toEqual(["Математик", "Биологи", "Англи хэл"]);
+    expect(res.body.map((s: { name: string }) => s.name)).toEqual(["Математик", "Биологи", "Англи хэл", "FIDIC FCL"]);
     const math = res.body[0];
     expect(math.lessonCount).toBe(4);
     expect(math.trialQuestionCount).toBeGreaterThan(0);
     expect(math.subscription).toBeNull();
     expect(math.plans[0]).toMatchObject({ currency: "MNT", durationDays: 30 });
+    const fidic = res.body[3];
+    expect(fidic.lessonCount).toBe(21);
+    expect(fidic.lessons[0]).toMatchObject({ name: "Ерөнхий заалтууд", description: "Clause 1 — General Provisions" });
+  });
+
+  it("says a subject's tests are coming soon while it has no questions", async () => {
+    const { token } = await register();
+    const trial = await request(app).post("/tests").set(auth(token)).send({ mode: "TRIAL", subjectId: "subj_fidic" });
+    expect(trial.status).toBe(400);
+    expect(trial.body).toMatchObject({ code: "NO_QUESTIONS", error: "Энэ хэсгийн асуултууд удахгүй нэмэгдэнэ." });
+    await subscribe(token, "subj_fidic");
+    const lesson = await request(app).post("/tests").set(auth(token)).send({ mode: "LESSON", lessonId: "les_fidic_c01" });
+    expect(lesson.status).toBe(400);
+    expect(lesson.body.code).toBe("NO_QUESTIONS");
   });
 
   it("extends an active subscription instead of overlapping it", async () => {
@@ -328,5 +342,5 @@ describe("uploads", () => {
 
 beforeAll(async () => {
   // Sanity check that the seed ran.
-  expect(await prisma.subject.count()).toBe(3);
+  expect(await prisma.subject.count()).toBe(4);
 });

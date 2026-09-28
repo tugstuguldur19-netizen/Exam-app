@@ -47,6 +47,7 @@ const accentBySlug: Record<string, Accent> = {
   math: subjectAccents[0],
   biology: subjectAccents[1],
   english: { icon: "language", bg: "#FFF1E6", fg: "#C2540A" },
+  fidic: { icon: "briefcase", bg: "#E0F2FE", fg: "#0369A1" },
 };
 
 export function accentForSlug(slug: string | null | undefined, fallbackIndex = 0) {

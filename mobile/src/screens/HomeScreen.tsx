@@ -106,7 +106,9 @@ function SubjectCard({ subject: s, index, onPress }: { subject: Subject; index: 
         <Ionicons name="chevron-forward" size={20} color={colors.textMuted} />
       </View>
       <View style={styles.subjectBadges}>
-        {s.subscription ? (
+        {s.questionCount === 0 ? (
+          <Badge icon="time-outline" text="Тестүүд удахгүй нэмэгдэнэ" color={colors.textSecondary} bg={colors.background} />
+        ) : s.subscription ? (
           <Badge icon="checkmark-circle" text={`Идэвхтэй · ${daysLeft(s.subscription.endAt)} хоног`} color={colors.success} bg={colors.successSoft} />
         ) : (
           <Badge icon="gift-outline" text={`Туршилт үнэгүй · ${s.trialQuestionCount} асуулт`} color={colors.warning} bg={colors.warningSoft} />

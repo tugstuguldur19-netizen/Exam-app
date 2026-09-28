@@ -18,6 +18,8 @@ import {
 export const testsRouter = Router();
 testsRouter.use(requireAuth);
 
+const COMING_SOON = "Энэ хэсгийн асуултууд удахгүй нэмэгдэнэ.";
+
 const count = z.number().int().min(0).max(MAX_QUESTIONS_PER_TEST);
 const id = z.string().min(1);
 
@@ -64,6 +66,7 @@ testsRouter.post("/", async (req: AuthedRequest, res) => {
         orderBy: [{ lesson: { sortOrder: "asc" } }, { order: "asc" }],
         select: { id: true },
       });
+      if (questions.length === 0) throw new HttpError(400, COMING_SOON, "NO_QUESTIONS");
       session = await createSession({
         userId,
         mode: "TRIAL",
@@ -81,6 +84,7 @@ testsRouter.post("/", async (req: AuthedRequest, res) => {
       });
       if (!lesson) throw notFound("Сэдэв");
       await assertSubscribed(userId, lesson.subjectId);
+      if (lesson.questions.length === 0) throw new HttpError(400, COMING_SOON, "NO_QUESTIONS");
       const ids = shuffle(lesson.questions.map((q) => q.id));
       session = await createSession({
         userId,
